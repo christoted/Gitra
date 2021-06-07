@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522785A8266E579C005BF33E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785A7266E579C005BF33E /* NetworkManager.swift */; };
+		522785BA266E58FC005BF33E /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785B9266E58FC005BF33E /* Setting.storyboard */; };
+		522785C0266E591B005BF33E /* ChordVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785BF266E591B005BF33E /* ChordVoice.storyboard */; };
+		522785C3266E5925005BF33E /* ChordPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785C2266E5925005BF33E /* ChordPicker.storyboard */; };
+		522785C6266E592E005BF33E /* ChordDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785C5266E592E005BF33E /* ChordDetail.storyboard */; };
+		522785CA266E5AC2005BF33E /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785C9266E5AC2005BF33E /* OnBoardingViewController.swift */; };
+		522785CE266E5AFA005BF33E /* ChordVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785CD266E5AFA005BF33E /* ChordVoiceViewController.swift */; };
+		522785D1266E5B04005BF33E /* ChordPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785D0266E5B04005BF33E /* ChordPickerViewController.swift */; };
+		522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785D3266E5B0D005BF33E /* ChordDetailViewController.swift */; };
+		522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785D6266E5B17005BF33E /* SettingViewController.swift */; };
+		522785E1266E5CE4005BF33E /* ChordPickerTuner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785E0266E5CE4005BF33E /* ChordPickerTuner.storyboard */; };
+		522785E5266E5D2F005BF33E /* ChordPickerChord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785E4266E5D2F005BF33E /* ChordPickerChord.storyboard */; };
+		522785E8266E5D6B005BF33E /* ChordVoiceChord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785E7266E5D6B005BF33E /* ChordVoiceChord.storyboard */; };
+		522785EB266E5D77005BF33E /* ChordVoiceTuner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522785EA266E5D77005BF33E /* ChordVoiceTuner.storyboard */; };
+		522785F6266E5F0C005BF33E /* ChordVoiceTunerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785F5266E5F0C005BF33E /* ChordVoiceTunerViewController.swift */; };
+		522785FA266E5F36005BF33E /* ChordPickerTunerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522785F9266E5F36005BF33E /* ChordPickerTunerViewController.swift */; };
 		52698D0E266DE9D5004F7AD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698D0D266DE9D5004F7AD6 /* AppDelegate.swift */; };
 		52698D10266DE9D5004F7AD6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698D0F266DE9D5004F7AD6 /* SceneDelegate.swift */; };
-		52698D12266DE9D5004F7AD6 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698D11266DE9D5004F7AD6 /* HomepageViewController.swift */; };
 		52698D15266DE9D5004F7AD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D13266DE9D5004F7AD6 /* Main.storyboard */; };
 		52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */; };
 		52698D1A266DE9D8004F7AD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52698D19266DE9D8004F7AD6 /* Assets.xcassets */; };
@@ -22,10 +37,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		522785A7266E579C005BF33E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		522785B9266E58FC005BF33E /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		522785BF266E591B005BF33E /* ChordVoice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordVoice.storyboard; sourceTree = "<group>"; };
+		522785C2266E5925005BF33E /* ChordPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordPicker.storyboard; sourceTree = "<group>"; };
+		522785C5266E592E005BF33E /* ChordDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordDetail.storyboard; sourceTree = "<group>"; };
+		522785C9266E5AC2005BF33E /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		522785CD266E5AFA005BF33E /* ChordVoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordVoiceViewController.swift; sourceTree = "<group>"; };
+		522785D0266E5B04005BF33E /* ChordPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordPickerViewController.swift; sourceTree = "<group>"; };
+		522785D3266E5B0D005BF33E /* ChordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordDetailViewController.swift; sourceTree = "<group>"; };
+		522785D6266E5B17005BF33E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		522785E0266E5CE4005BF33E /* ChordPickerTuner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordPickerTuner.storyboard; sourceTree = "<group>"; };
+		522785E4266E5D2F005BF33E /* ChordPickerChord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordPickerChord.storyboard; sourceTree = "<group>"; };
+		522785E7266E5D6B005BF33E /* ChordVoiceChord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordVoiceChord.storyboard; sourceTree = "<group>"; };
+		522785EA266E5D77005BF33E /* ChordVoiceTuner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChordVoiceTuner.storyboard; sourceTree = "<group>"; };
+		522785F5266E5F0C005BF33E /* ChordVoiceTunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordVoiceTunerViewController.swift; sourceTree = "<group>"; };
+		522785F9266E5F36005BF33E /* ChordPickerTunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordPickerTunerViewController.swift; sourceTree = "<group>"; };
 		52698D0A266DE9D5004F7AD6 /* Gitra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gitra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52698D0D266DE9D5004F7AD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52698D0F266DE9D5004F7AD6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52698D11266DE9D5004F7AD6 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		52698D14266DE9D5004F7AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52698D17266DE9D5004F7AD6 /* Gitra.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitra.xcdatamodel; sourceTree = "<group>"; };
 		52698D19266DE9D8004F7AD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +79,139 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		522785A1266E56F9005BF33E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BD9EE8B9266E46C90081B951 /* GradientView.swift */,
+				BD9EE8AE266E3CF80081B951 /* Fonts */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		522785A2266E573D005BF33E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		522785A3266E5747005BF33E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				522785AC266E57CE005BF33E /* Core Data */,
+				522785A4266E5753005BF33E /* Networking */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		522785A4266E5753005BF33E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				522785A6266E578C005BF33E /* Response */,
+				522785A7266E579C005BF33E /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		522785A5266E577F005BF33E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		522785A6266E578C005BF33E /* Response */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		522785AB266E57B1005BF33E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				522785FE266E5F6A005BF33E /* Setting */,
+				522785FC266E5F5A005BF33E /* Chord Detail */,
+				522785F4266E5E9D005BF33E /* Chord Picker */,
+				522785EF266E5E37005BF33E /* Chord Voice */,
+				522785EE266E5E28005BF33E /* OnBoarding */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		522785AC266E57CE005BF33E /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		522785AD266E57DF005BF33E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		522785AE266E57EB005BF33E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				52698D13266DE9D5004F7AD6 /* Main.storyboard */,
+				522785BF266E591B005BF33E /* ChordVoice.storyboard */,
+				522785E7266E5D6B005BF33E /* ChordVoiceChord.storyboard */,
+				522785EA266E5D77005BF33E /* ChordVoiceTuner.storyboard */,
+				522785C2266E5925005BF33E /* ChordPicker.storyboard */,
+				522785E0266E5CE4005BF33E /* ChordPickerTuner.storyboard */,
+				522785E4266E5D2F005BF33E /* ChordPickerChord.storyboard */,
+				522785C5266E592E005BF33E /* ChordDetail.storyboard */,
+				522785B9266E58FC005BF33E /* Setting.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		522785EE266E5E28005BF33E /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				522785C9266E5AC2005BF33E /* OnBoardingViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		522785EF266E5E37005BF33E /* Chord Voice */ = {
+			isa = PBXGroup;
+			children = (
+				522785CD266E5AFA005BF33E /* ChordVoiceViewController.swift */,
+				522785F5266E5F0C005BF33E /* ChordVoiceTunerViewController.swift */,
+			);
+			path = "Chord Voice";
+			sourceTree = "<group>";
+		};
+		522785F4266E5E9D005BF33E /* Chord Picker */ = {
+			isa = PBXGroup;
+			children = (
+				522785D0266E5B04005BF33E /* ChordPickerViewController.swift */,
+				522785F9266E5F36005BF33E /* ChordPickerTunerViewController.swift */,
+			);
+			path = "Chord Picker";
+			sourceTree = "<group>";
+		};
+		522785FC266E5F5A005BF33E /* Chord Detail */ = {
+			isa = PBXGroup;
+			children = (
+				522785D3266E5B0D005BF33E /* ChordDetailViewController.swift */,
+			);
+			path = "Chord Detail";
+			sourceTree = "<group>";
+		};
+		522785FE266E5F6A005BF33E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				522785D6266E5B17005BF33E /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		52698D01266DE9D5004F7AD6 = {
 			isa = PBXGroup;
 			children = (
@@ -68,26 +231,20 @@
 		52698D0C266DE9D5004F7AD6 /* Gitra */ = {
 			isa = PBXGroup;
 			children = (
+				522785AE266E57EB005BF33E /* Storyboard */,
+				522785AD266E57DF005BF33E /* View */,
+				522785AB266E57B1005BF33E /* Controller */,
+				522785A5266E577F005BF33E /* Feature */,
+				522785A3266E5747005BF33E /* Utilities */,
+				522785A2266E573D005BF33E /* Helper */,
+				522785A1266E56F9005BF33E /* Theme */,
 				52698D0D266DE9D5004F7AD6 /* AppDelegate.swift */,
 				52698D0F266DE9D5004F7AD6 /* SceneDelegate.swift */,
-				52698D11266DE9D5004F7AD6 /* HomepageViewController.swift */,
-				52698D13266DE9D5004F7AD6 /* Main.storyboard */,
 				52698D19266DE9D8004F7AD6 /* Assets.xcassets */,
 				52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */,
 				52698D1E266DE9D8004F7AD6 /* Info.plist */,
-				BD9EE8AD266E3CE60081B951 /* Resources */,
-				52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */,
 			);
 			path = Gitra;
-			sourceTree = "<group>";
-		};
-		BD9EE8AD266E3CE60081B951 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				BD9EE8B9266E46C90081B951 /* GradientView.swift */,
-				BD9EE8AE266E3CF80081B951 /* Fonts */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		BD9EE8AE266E3CF80081B951 /* Fonts */ = {
@@ -158,13 +315,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522785C0266E591B005BF33E /* ChordVoice.storyboard in Resources */,
+				522785C3266E5925005BF33E /* ChordPicker.storyboard in Resources */,
 				52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */,
 				BD9EE8B6266E3D2B0081B951 /* Product Sans Bold.ttf in Resources */,
 				BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */,
+				522785E5266E5D2F005BF33E /* ChordPickerChord.storyboard in Resources */,
 				BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */,
 				52698D1A266DE9D8004F7AD6 /* Assets.xcassets in Resources */,
+				522785EB266E5D77005BF33E /* ChordVoiceTuner.storyboard in Resources */,
 				52698D15266DE9D5004F7AD6 /* Main.storyboard in Resources */,
+				522785BA266E58FC005BF33E /* Setting.storyboard in Resources */,
 				BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */,
+				522785E8266E5D6B005BF33E /* ChordVoiceChord.storyboard in Resources */,
+				522785E1266E5CE4005BF33E /* ChordPickerTuner.storyboard in Resources */,
+				522785C6266E592E005BF33E /* ChordDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,11 +340,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52698D12266DE9D5004F7AD6 /* HomepageViewController.swift in Sources */,
+				522785A8266E579C005BF33E /* NetworkManager.swift in Sources */,
+				522785CA266E5AC2005BF33E /* OnBoardingViewController.swift in Sources */,
 				52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */,
+				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
+				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
 				52698D0E266DE9D5004F7AD6 /* AppDelegate.swift in Sources */,
+				522785FA266E5F36005BF33E /* ChordPickerTunerViewController.swift in Sources */,
+				522785F6266E5F0C005BF33E /* ChordVoiceTunerViewController.swift in Sources */,
 				52698D10266DE9D5004F7AD6 /* SceneDelegate.swift in Sources */,
+				522785CE266E5AFA005BF33E /* ChordVoiceViewController.swift in Sources */,
+				522785D1266E5B04005BF33E /* ChordPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

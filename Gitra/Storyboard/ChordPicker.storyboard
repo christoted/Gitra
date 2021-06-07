@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ga9-t6-EYE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ChordPickerChord-->
+        <scene sceneID="KLf-eJ-5Rc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChordPickerChord" id="mff-Jt-kSB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="k7R-uG-gf1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N8Y-6X-qx2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="-145"/>
+        </scene>
+        <!--ChordPickerTuner-->
+        <scene sceneID="mWi-XS-bdR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChordPickerTuner" id="OcT-If-h9F" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Uyk-9l-oWY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZ3-tc-u80" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1222" y="421"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="dHK-iB-LOa">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ga9-t6-EYE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BLo-PR-HXf">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="OcT-If-h9F" kind="relationship" relationship="viewControllers" id="Zy0-46-zOg"/>
+                        <segue destination="mff-Jt-kSB" kind="relationship" relationship="viewControllers" id="wZk-uX-6Nc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UY4-LN-Ogt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311.59420289855075" y="129.91071428571428"/>
+        </scene>
+    </scenes>
+</document>
