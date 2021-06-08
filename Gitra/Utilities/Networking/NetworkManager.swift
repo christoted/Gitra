@@ -9,4 +9,17 @@ import Foundation
 
 class NetworkManager {
     
+    let BASE_URL = "https://api.uberchord.com/v1/"
+    
+    func getSpecificChord(chord: String) {
+        
+        var components = URLComponents(string: BASE_URL)
+        
+        
+        let request = URLRequest(url: components?.url)
+        
+    }
+    
 }
+
+
