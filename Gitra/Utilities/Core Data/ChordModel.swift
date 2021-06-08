@@ -8,10 +8,10 @@
 import Foundation
 
 struct ChordModel {
-    let strings: String?
-    let fingering: String?
-    let chordName: String?
-    let enharmonicChordName: String?
-    let voicingID: String?
-    let tones: String?
+    var strings: String? = ""
+    var fingering: String? = ""
+    var chordName: String? = ""
+    var enharmonicChordName: String? = ""
+    var voicingID: String? = ""
+    var tones: String? = ""
 }
