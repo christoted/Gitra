@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ILa-G7-7LS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FMq-kJ-6lT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Product Sans Regular.ttf">
+            <string>ProductSans-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Chord Voice View Controller-->
         <scene sceneID="OnP-5t-ZcR">
@@ -15,18 +20,88 @@
                     <view key="view" contentMode="scaleToFill" id="17C-ec-woG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="RHl-43-aw8">
+                                <rect key="frame" x="128" y="0.0" width="158" height="74"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GuitarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nrT-Ca-mz8">
+                                <rect key="frame" x="0.0" y="84" width="414" height="426.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Which chord do you want to play?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-Cg-78v">
+                                <rect key="frame" x="76" y="583" width="263" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="18"/>
+                                <color key="textColor" name="White Background"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chord Input" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-d4-hGB">
+                                <rect key="frame" x="114" y="649" width="187" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="36"/>
+                                <color key="textColor" name="Orange Accent"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="076-Zk-x7Z"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Black Background"/>
+                        <constraints>
+                            <constraint firstItem="nrT-Ca-mz8" firstAttribute="leading" secondItem="076-Zk-x7Z" secondAttribute="leading" id="3aI-zy-ICE"/>
+                            <constraint firstItem="RHl-43-aw8" firstAttribute="leading" secondItem="076-Zk-x7Z" secondAttribute="leading" constant="128" id="5vW-VC-t5W"/>
+                            <constraint firstItem="076-Zk-x7Z" firstAttribute="trailing" secondItem="nrT-Ca-mz8" secondAttribute="trailing" id="Hri-PV-A1v"/>
+                            <constraint firstItem="076-Zk-x7Z" firstAttribute="bottom" secondItem="RHl-43-aw8" secondAttribute="bottom" constant="700" id="eRa-V6-brB"/>
+                            <constraint firstItem="076-Zk-x7Z" firstAttribute="trailing" secondItem="RHl-43-aw8" secondAttribute="trailing" constant="128" id="nDn-Qr-kTY"/>
+                            <constraint firstItem="RHl-43-aw8" firstAttribute="top" secondItem="076-Zk-x7Z" secondAttribute="top" id="nkY-8p-WY0"/>
+                            <constraint firstItem="nrT-Ca-mz8" firstAttribute="top" secondItem="RHl-43-aw8" secondAttribute="bottom" constant="10" id="qSO-eo-pR0"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Eut-xh-Kom">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="kvG-pJ-PCm">
+                            <color key="tintColor" name="Yellow Accent"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27Z-cm-FVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="475.36231884057975" y="-34.151785714285715"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yse-Tx-RfW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zui-Mj-LNI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FMq-kJ-6lT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Y1c-Av-iX7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Black Background"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="White Background"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ILa-G7-7LS" kind="relationship" relationship="rootViewController" id="T6H-GW-H51"/>
+                    </connections>
+                </navigationController>
             </objects>
             <point key="canvasLocation" x="-434.78260869565219" y="-34.151785714285715"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Gitra Text Logo" width="154.5" height="47"/>
+        <image name="GuitarIcon" width="375" height="426.5"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <namedColor name="Black Background">
+            <color red="0.050980392156862744" green="0.050980392156862744" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Orange Accent">
+            <color red="0.9882352941176471" green="0.37647058823529411" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White Background">
+            <color red="0.93333333333333335" green="0.92941176470588238" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Yellow Accent">
+            <color red="0.96078431372549022" green="0.62352941176470589" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
