@@ -63,11 +63,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageTap" destination="nrT-Ca-mz8" id="GFO-Ea-haC"/>
+                        <outlet property="lblResult" destination="HhI-d4-hGB" id="388-fI-HVa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27Z-cm-FVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475.36231884057975" y="-34.151785714285715"/>
+            <point key="canvasLocation" x="473.84615384615381" y="-34.834123222748815"/>
         </scene>
     </scenes>
     <resources>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow the recognition of the speech for the testing purpose</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Microphone usage will be done</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
 	<key>CFBundleDevelopmentRegion</key>

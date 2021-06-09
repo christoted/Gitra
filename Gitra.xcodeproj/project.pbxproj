@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,11 +29,11 @@
 		52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */; };
 		52698D1A266DE9D8004F7AD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52698D19266DE9D8004F7AD6 /* Assets.xcassets */; };
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
-
-		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
-
+		52C517C4267116C4002B5136 /* audio.json in Resources */ = {isa = PBXBuildFile; fileRef = 52C517C3267116C4002B5136 /* audio.json */; };
+		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
+		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */; };
 		BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */; };
 		BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */; };
@@ -66,12 +66,11 @@
 		52698D19266DE9D8004F7AD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52698D1C266DE9D8004F7AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-
-		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
-
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
-
+		52C517C3267116C4002B5136 /* audio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = audio.json; path = ../../../../../Downloads/audio.json; sourceTree = "<group>"; };
+		52C517C6267116C7002B5136 /* audio.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = audio.json; sourceTree = "<group>"; };
+		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
 		BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
 		BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold Italic.ttf"; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C517DA267121A6002B5136 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +245,7 @@
 		52698D0C266DE9D5004F7AD6 /* Gitra */ = {
 			isa = PBXGroup;
 			children = (
+				52C517C3267116C4002B5136 /* audio.json */,
 				522785AE266E57EB005BF33E /* Storyboard */,
 				522785AD266E57DF005BF33E /* View */,
 				522785AB266E57B1005BF33E /* Controller */,
@@ -253,6 +254,7 @@
 				522785A2266E573D005BF33E /* Helper */,
 				522785A1266E56F9005BF33E /* Theme */,
 				52698D0D266DE9D5004F7AD6 /* AppDelegate.swift */,
+				52C517C6267116C7002B5136 /* audio.json */,
 				52698D0F266DE9D5004F7AD6 /* SceneDelegate.swift */,
 				52698D19266DE9D8004F7AD6 /* Assets.xcassets */,
 				52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */,
@@ -288,6 +290,9 @@
 			dependencies = (
 			);
 			name = Gitra;
+			packageProductDependencies = (
+				52C517D9267121A6002B5136 /* Lottie */,
+			);
 			productName = Gitra;
 			productReference = 52698D0A266DE9D5004F7AD6 /* Gitra.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +320,9 @@
 				Base,
 			);
 			mainGroup = 52698D01266DE9D5004F7AD6;
+			packageReferences = (
+				52C517D8267121A6002B5136 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 52698D0B266DE9D5004F7AD6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,6 +341,7 @@
 				522785C3266E5925005BF33E /* ChordPicker.storyboard in Resources */,
 				52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */,
 				BD9EE8B6266E3D2B0081B951 /* Product Sans Bold.ttf in Resources */,
+				52C517C4267116C4002B5136 /* audio.json in Resources */,
 				BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */,
 				522785E5266E5D2F005BF33E /* ChordPickerChord.storyboard in Resources */,
 				BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */,
@@ -570,6 +579,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52C517D8267121A6002B5136 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52C517D9267121A6002B5136 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52C517D8267121A6002B5136 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */ = {
