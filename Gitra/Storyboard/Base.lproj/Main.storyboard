@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Moa-9D-0NK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Moa-9D-0NK">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--On Boarding View Controller-->
+        <!--On Boarding Animation-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="onboarding" id="BYZ-38-t0r" customClass="OnBoardingViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onboarding" id="BYZ-38-t0r" customClass="OnBoardingAnimation" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GitraIcon-Small" translatesAutoresizingMaskIntoConstraints="NO" id="J4z-an-GWc">
                                 <rect key="frame" x="171.66666666666666" y="279" width="47" height="98"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="If you need help, there’s an instruction button on the top right of the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgZ-1D-FGK">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you need help, there’s an instruction button on the top right of the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgZ-1D-FGK">
                                 <rect key="frame" x="62" y="508" width="266" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="5FM-yc-xTG"/>
@@ -45,7 +45,7 @@
                                 <color key="textColor" name="Yellow Accent"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Before you start please make sure that you’ve tuned your guitar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBM-GV-IHz">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before you start please make sure that you’ve tuned your guitar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBM-GV-IHz">
                                 <rect key="frame" x="62" y="410" width="266" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="r1r-36-DRU"/>
@@ -54,7 +54,7 @@
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We also recommend you to use earphones or headset." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUm-su-WUh">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We also recommend you to use earphones or headset." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUm-su-WUh">
                                 <rect key="frame" x="62" y="460" width="266" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="uP0-Bk-DKL"/>
@@ -67,20 +67,31 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Black Background"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gBM-GV-IHz" secondAttribute="trailing" constant="62" id="2db-a8-hmo"/>
                             <constraint firstItem="J4z-an-GWc" firstAttribute="top" secondItem="yfp-Ag-Rf4" secondAttribute="bottom" constant="32" id="4jy-0w-EQn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PUm-su-WUh" secondAttribute="trailing" constant="62" id="6E6-0D-1g6"/>
+                            <constraint firstItem="gBM-GV-IHz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="Bf7-pV-6Rc"/>
                             <constraint firstItem="gBM-GV-IHz" firstAttribute="top" secondItem="J4z-an-GWc" secondAttribute="bottom" constant="33" id="PEf-1Q-tfw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ki7-0D-bbx" secondAttribute="trailing" constant="150" id="X7z-AV-amz"/>
                             <constraint firstItem="yfp-Ag-Rf4" firstAttribute="top" secondItem="Ki7-0D-bbx" secondAttribute="bottom" constant="15" id="YdU-jU-QcQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yfp-Ag-Rf4" secondAttribute="trailing" constant="108" id="aDs-j8-i0X"/>
                             <constraint firstItem="yfp-Ag-Rf4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="108" id="aTn-yE-D3O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LgZ-1D-FGK" secondAttribute="trailing" constant="62" id="avG-Sy-FhP"/>
+                            <constraint firstItem="PUm-su-WUh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="cLU-oU-h0u"/>
                             <constraint firstItem="J4z-an-GWc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gGJ-Mg-WA5"/>
                             <constraint firstItem="PUm-su-WUh" firstAttribute="top" secondItem="gBM-GV-IHz" secondAttribute="bottom" constant="16" id="prN-0C-1jw"/>
                             <constraint firstItem="J4z-an-GWc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="wfk-oN-cxq"/>
                             <constraint firstItem="Ki7-0D-bbx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="yMy-6b-eeg"/>
                             <constraint firstItem="LgZ-1D-FGK" firstAttribute="top" secondItem="PUm-su-WUh" secondAttribute="bottom" constant="14" id="zAx-mK-e4m"/>
+                            <constraint firstItem="LgZ-1D-FGK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="zz3-iw-H09"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lhz-5h-k3K"/>
+                    <connections>
+                        <outlet property="sentence1" destination="gBM-GV-IHz" id="q13-0A-mWR"/>
+                        <outlet property="sentence2" destination="PUm-su-WUh" id="zYa-vV-ONR"/>
+                        <outlet property="sentence3" destination="LgZ-1D-FGK" id="hvv-eg-gh3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
