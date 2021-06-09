@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chord Voice Tuner View Controller-->
+        <!--Tuner-->
         <scene sceneID="7k9-uc-KxE">
             <objects>
                 <viewController storyboardIdentifier="chordvoicetuner" id="Y9T-Ng-UXN" customClass="ChordVoiceTunerViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,6 +18,8 @@
                         <viewLayoutGuide key="safeArea" id="29H-Qd-qi0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Tuner" image="tuningfork" catalog="system" id="bBx-mH-Eek"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7EQ-yf-fQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -25,6 +27,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tuningfork" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
