@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meY-uD-2LW">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meY-uD-2LW">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,30 +18,33 @@
             <objects>
                 <viewController storyboardIdentifier="chordpickerchord" id="iFh-B7-1L4" customClass="ChordPickerViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="55y-Fg-iKz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-Ed-2CU">
                                 <rect key="frame" x="128" y="0.0" width="158" height="47"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which chord do you want to play?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh6-hG-rBJ">
-                                <rect key="frame" x="0.0" y="127" width="414" height="21"/>
+                                <rect key="frame" x="68.5" y="222" width="277.5" height="22"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="18"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xL-au-uMG">
-                                <rect key="frame" x="19.5" y="163" width="375" height="470"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="White Background"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xL-au-uMG">
+                                <rect key="frame" x="0.0" y="244" width="414" height="320"/>
                                 <color key="tintColor" name="Yellow Accent"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="uyY-Xb-OSw"/>
+                                </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-Eo-Z0E">
-                                <rect key="frame" x="107" y="678" width="200" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-Eo-Z0E">
+                                <rect key="frame" x="80" y="564" width="254" height="50"/>
                                 <color key="backgroundColor" name="Yellow Accent"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iXF-GY-FqV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="17"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Choose Chord">
                                     <color key="titleColor" name="Black Background"/>
                                 </state>
                             </button>
@@ -50,18 +53,28 @@
                         <color key="backgroundColor" name="Black Background"/>
                         <constraints>
                             <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="Hbn-Ed-2CU" secondAttribute="trailing" constant="128" id="7eY-LT-7JF"/>
-                            <constraint firstItem="oh6-hG-rBJ" firstAttribute="top" secondItem="Hbn-Ed-2CU" secondAttribute="bottom" constant="80" id="8cE-6Q-NzG"/>
-                            <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="oh6-hG-rBJ" secondAttribute="trailing" id="Gnu-6f-eAO"/>
+                            <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="centerX" secondItem="55y-Fg-iKz" secondAttribute="centerX" id="91L-tJ-duf"/>
+                            <constraint firstItem="9xL-au-uMG" firstAttribute="top" secondItem="oh6-hG-rBJ" secondAttribute="bottom" id="H50-Tr-dC7"/>
+                            <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="9xL-au-uMG" secondAttribute="trailing" id="Rz5-pd-xWi"/>
                             <constraint firstItem="Hbn-Ed-2CU" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" constant="128" id="S1b-nf-XOw"/>
-                            <constraint firstItem="oh6-hG-rBJ" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" id="qDw-ts-mXs"/>
+                            <constraint firstItem="9xL-au-uMG" firstAttribute="centerY" secondItem="55y-Fg-iKz" secondAttribute="centerY" id="Ypn-N0-xwd"/>
+                            <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" constant="80" id="d5L-5Q-vgL"/>
+                            <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="top" secondItem="9xL-au-uMG" secondAttribute="bottom" id="hK8-8Z-Vtg"/>
+                            <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="ozQ-Eo-Z0E" secondAttribute="trailing" constant="80" id="hvT-ON-yo0"/>
+                            <constraint firstItem="9xL-au-uMG" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" id="k4T-fM-5OU"/>
+                            <constraint firstItem="oh6-hG-rBJ" firstAttribute="centerX" secondItem="55y-Fg-iKz" secondAttribute="centerX" id="pmA-gO-PcA"/>
                             <constraint firstItem="Hbn-Ed-2CU" firstAttribute="top" secondItem="N4W-Ju-2Nq" secondAttribute="top" id="uwh-S2-E5b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dha-aZ-utT">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="dha-aZ-utT">
                         <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="204-mh-nOp">
                             <color key="tintColor" name="Yellow Accent"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="chooseButton" destination="ozQ-Eo-Z0E" id="bPD-7D-RVL"/>
+                        <outlet property="chordPicker" destination="9xL-au-uMG" id="fuu-Z5-tmf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWc-rz-OjZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
