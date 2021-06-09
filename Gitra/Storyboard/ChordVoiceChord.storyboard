@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FMq-kJ-6lT">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ILa-G7-7LS">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -13,29 +13,29 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Chord Voice View Controller-->
+        <!--Chord-->
         <scene sceneID="OnP-5t-ZcR">
             <objects>
                 <viewController storyboardIdentifier="chordvoicechord" id="ILa-G7-7LS" customClass="ChordVoiceViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17C-ec-woG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="RHl-43-aw8">
-                                <rect key="frame" x="128" y="0.0" width="158" height="74"/>
+                                <rect key="frame" x="128" y="44" width="134" height="17"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GuitarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nrT-Ca-mz8">
-                                <rect key="frame" x="0.0" y="84" width="414" height="426.5"/>
+                                <rect key="frame" x="0.0" y="71.000000000000028" width="390" height="426.66666666666674"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Which chord do you want to play?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-Cg-78v">
-                                <rect key="frame" x="76" y="583" width="263" height="22"/>
+                                <rect key="frame" x="64" y="608" width="263" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="18"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chord Input" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-d4-hGB">
-                                <rect key="frame" x="114" y="649" width="187" height="44"/>
+                                <rect key="frame" x="102" y="668" width="187" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="36"/>
                                 <color key="textColor" name="Orange Accent"/>
@@ -54,43 +54,27 @@
                             <constraint firstItem="nrT-Ca-mz8" firstAttribute="top" secondItem="RHl-43-aw8" secondAttribute="bottom" constant="10" id="qSO-eo-pR0"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Chord" image="music.note.list" catalog="system" id="PVm-U9-wCG"/>
                     <navigationItem key="navigationItem" id="Eut-xh-Kom">
                         <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="kvG-pJ-PCm">
                             <color key="tintColor" name="Yellow Accent"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageTap" destination="nrT-Ca-mz8" id="GFO-Ea-haC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27Z-cm-FVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="475.36231884057975" y="-34.151785714285715"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yse-Tx-RfW">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zui-Mj-LNI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FMq-kJ-6lT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Y1c-Av-iX7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Black Background"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="White Background"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ILa-G7-7LS" kind="relationship" relationship="rootViewController" id="T6H-GW-H51"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-434.78260869565219" y="-34.151785714285715"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="Gitra Text Logo" width="154.5" height="47"/>
-        <image name="GuitarIcon" width="375" height="426.5"/>
+        <image name="Gitra Text Logo" width="154.33332824707031" height="47"/>
+        <image name="GuitarIcon" width="375" height="426.66665649414062"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <namedColor name="Black Background">
             <color red="0.050980392156862744" green="0.050980392156862744" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -6,13 +6,25 @@
 //
 
 import UIKit
+import Speech
 
 class ChordVoiceViewController: UIViewController {
+    
+    @IBOutlet weak var imageTap: UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageTap.isUserInteractionEnabled = true
+        imageTap.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        print("TEST")
     }
     
 
