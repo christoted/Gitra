@@ -29,6 +29,8 @@
 		52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */; };
 		52698D1A266DE9D8004F7AD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52698D19266DE9D8004F7AD6 /* Assets.xcassets */; };
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
+		5278D92726708D6100D9D640 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278D92626708D6100D9D640 /* ChordModel.swift */; };
+		5278D92A26708D9A00D9D640 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278D92926708D9A00D9D640 /* ChordResponse.swift */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */; };
 		BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */; };
@@ -62,6 +64,8 @@
 		52698D19266DE9D8004F7AD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52698D1C266DE9D8004F7AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5278D92626708D6100D9D640 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
+		5278D92926708D9A00D9D640 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
 		BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 		522785A6266E578C005BF33E /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				5278D92926708D9A00D9D640 /* ChordResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */,
+				5278D92626708D6100D9D640 /* ChordModel.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -353,9 +359,11 @@
 				52698D0E266DE9D5004F7AD6 /* AppDelegate.swift in Sources */,
 				522785FA266E5F36005BF33E /* ChordPickerTunerViewController.swift in Sources */,
 				522785F6266E5F0C005BF33E /* ChordVoiceTunerViewController.swift in Sources */,
+				5278D92726708D6100D9D640 /* ChordModel.swift in Sources */,
 				52698D10266DE9D5004F7AD6 /* SceneDelegate.swift in Sources */,
 				522785CE266E5AFA005BF33E /* ChordVoiceViewController.swift in Sources */,
 				522785D1266E5B04005BF33E /* ChordPickerViewController.swift in Sources */,
+				5278D92A26708D9A00D9D640 /* ChordResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
