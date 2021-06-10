@@ -31,6 +31,8 @@
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
+		90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163C2671085A0054ED9D /* ChordQuality.swift */; };
+		90B0163F26710C490054ED9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163E26710C490054ED9D /* Database.swift */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */; };
 		BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */; };
@@ -67,6 +69,8 @@
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
+		90B0163C2671085A0054ED9D /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
+		90B0163E26710C490054ED9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
 		BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLibrary.swift; sourceTree = "<group>"; };
 		BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 			children = (
 				52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */,
 				5293C815266F346E00151BF7 /* ChordModel.swift */,
+				90B0163C2671085A0054ED9D /* ChordQuality.swift */,
+				90B0163E26710C490054ED9D /* Database.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -368,11 +374,13 @@
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
 				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
+				90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */,
 				52698D0E266DE9D5004F7AD6 /* AppDelegate.swift in Sources */,
 				5293C813266F339100151BF7 /* ChordResponse.swift in Sources */,
 				522785FA266E5F36005BF33E /* ChordPickerTunerViewController.swift in Sources */,
 				522785F6266E5F0C005BF33E /* ChordVoiceTunerViewController.swift in Sources */,
 				5293C816266F346E00151BF7 /* ChordModel.swift in Sources */,
+				90B0163F26710C490054ED9D /* Database.swift in Sources */,
 				52698D10266DE9D5004F7AD6 /* SceneDelegate.swift in Sources */,
 				522785CE266E5AFA005BF33E /* ChordVoiceViewController.swift in Sources */,
 				522785D1266E5B04005BF33E /* ChordPickerViewController.swift in Sources */,
@@ -523,13 +531,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4NVTRVW5X;
+				DEVELOPMENT_TEAM = S6LU55DTCY;
 				INFOPLIST_FILE = Gitra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.teddy.Gitra;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.yahya.gitra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -542,13 +550,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4NVTRVW5X;
+				DEVELOPMENT_TEAM = S6LU55DTCY;
 				INFOPLIST_FILE = Gitra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.teddy.Gitra;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.yahya.gitra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
