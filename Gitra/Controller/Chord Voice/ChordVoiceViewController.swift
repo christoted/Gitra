@@ -26,6 +26,10 @@ class ChordVoiceViewController: UIViewController {
     
     let animationView = AnimationView()
     
+    //Audio
+    var player: AVAudioPlayer?
+    
+    
     //Timer
     var timer: Timer?
     
@@ -48,10 +52,13 @@ class ChordVoiceViewController: UIViewController {
         imageTap.addGestureRecognizer(tapGestureRecognizer)
         
         requestPermission()
+      
         
       //  hideAnimation()
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.playSound()
             self.lottieAnimation()
             self.isStart = true
             self.speechRecognitionActive()
@@ -71,6 +78,29 @@ class ChordVoiceViewController: UIViewController {
     
     private func hideAnimation() {
         animationView.isHidden = true
+    }
+    
+    private func playSound() {
+        guard let url = Bundle.main.path(forResource: "siri", ofType: "m4a") else {
+            print("URL not found")
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            let backgroundMusic = NSURL(fileURLWithPath: url)
+            
+            player = try AVAudioPlayer(contentsOf: backgroundMusic as URL, fileTypeHint: AVFileType.m4a.rawValue)
+            
+            guard let player = player else {return}
+            
+            player.play()
+            
+        } catch let error {
+            print("Error ", error.localizedDescription)
+        }
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
