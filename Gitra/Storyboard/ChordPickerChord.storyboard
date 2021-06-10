@@ -18,27 +18,24 @@
             <objects>
                 <viewController storyboardIdentifier="chordpickerchord" id="iFh-B7-1L4" customClass="ChordPickerViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="55y-Fg-iKz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-Ed-2CU">
                                 <rect key="frame" x="128" y="0.0" width="158" height="47"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which chord do you want to play?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh6-hG-rBJ">
-                                <rect key="frame" x="68.5" y="222" width="277.5" height="22"/>
+                                <rect key="frame" x="69.5" y="221.5" width="275.5" height="21"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="18"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xL-au-uMG">
-                                <rect key="frame" x="0.0" y="244" width="414" height="320"/>
+                                <rect key="frame" x="0.0" y="242.5" width="414" height="323"/>
                                 <color key="tintColor" name="Yellow Accent"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="uyY-Xb-OSw"/>
-                                </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-Eo-Z0E">
-                                <rect key="frame" x="80" y="564" width="254" height="50"/>
+                                <rect key="frame" x="80" y="565.5" width="254" height="50"/>
                                 <color key="backgroundColor" name="Yellow Accent"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iXF-GY-FqV"/>
@@ -47,6 +44,9 @@
                                 <state key="normal" title="Choose Chord">
                                     <color key="titleColor" name="Black Background"/>
                                 </state>
+                                <connections>
+                                    <action selector="chooseChord:" destination="iFh-B7-1L4" eventType="touchUpInside" id="byb-kH-ySa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N4W-Ju-2Nq"/>
@@ -55,6 +55,7 @@
                             <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="Hbn-Ed-2CU" secondAttribute="trailing" constant="128" id="7eY-LT-7JF"/>
                             <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="centerX" secondItem="55y-Fg-iKz" secondAttribute="centerX" id="91L-tJ-duf"/>
                             <constraint firstItem="9xL-au-uMG" firstAttribute="top" secondItem="oh6-hG-rBJ" secondAttribute="bottom" id="H50-Tr-dC7"/>
+                            <constraint firstItem="9xL-au-uMG" firstAttribute="height" secondItem="55y-Fg-iKz" secondAttribute="height" multiplier="0.4" id="QPE-fW-os0"/>
                             <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="9xL-au-uMG" secondAttribute="trailing" id="Rz5-pd-xWi"/>
                             <constraint firstItem="Hbn-Ed-2CU" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" constant="128" id="S1b-nf-XOw"/>
                             <constraint firstItem="9xL-au-uMG" firstAttribute="centerY" secondItem="55y-Fg-iKz" secondAttribute="centerY" id="Ypn-N0-xwd"/>

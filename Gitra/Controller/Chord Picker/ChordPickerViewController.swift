@@ -12,39 +12,67 @@ class ChordPickerViewController: UIViewController {
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var chordPicker: UIPickerView!
     
-    let root = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-    let quality = ["-" : ["-", "7", "7#5", "7b5", "7#9", "7b9", "9", "11", "13"],
-                   "Major" : ["-", "6", "6/9", "7", "9", "11", "13"],
-                   "Minor" : ["-", "6", "7", "7b5", "9", "11", "13"],
-                   "Add" : ["9", "11"],
-                   "Sus" : ["2", "4"],
-                   "Dim" : ["-", "7"],
-                   "Aug" : ["-", "7"]
-    ]
-    //    let quality = ["-","Major", "Minor", "Aug", "Dim"]
-    //    let tension = ["-", "2", "4", "7", "9"]
+    var note = Database.shared.getNote()
+    var chord = Database.shared.getChord()
     
-    var chord: [[String]] = []
-    
-    let listOfQuality: [String] = []
-    let listOfTension: [String] = []
+    var root = ""
+    var quality = ""
+    var tension = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         chooseButton.layer.cornerRadius = chooseButton.frame.height / 2
         
         chordPicker.dataSource = self
         chordPicker.delegate = self
         
-//        populateChord()
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "Setting"
+        updateUI()
     }
     
-//    func populateChord(){
-//        chord.append(root)
-//        chord.append(quality)
-//        chord.append(tension)
-//    }
+    @IBAction func chooseChord(_ sender: Any) {
+        print(root + "_" + quality + "_" + tension)
+    }
+    
+    func updateUI() {
+        root = note[chordPicker.selectedRow(inComponent: 0)]
+        quality = chord[chordPicker.selectedRow(inComponent: 1)].quality ?? ""
+        tension = chord[chordPicker.selectedRow(inComponent: 1)].tension?[chordPicker.selectedRow(inComponent: 2)] ?? ""
+        
+        chooseButton.accessibilityLabel = selectedChordLabel()
+    }
+    
+    func selectedChordLabel() -> String {
+//        let root = note[chordPicker.selectedRow(inComponent: 0)]
+//        let quality = chord[chordPicker.selectedRow(inComponent: 1)].quality ?? ""
+//        let tension = chord[chordPicker.selectedRow(inComponent: 1)].tension?[chordPicker.selectedRow(inComponent: 2)] ?? ""
+                
+        let selectedChord = (transformChord(root) +  transformChord(quality) + transformChord(tension))
+        
+        return "Choose Chord, \(selectedChord)"
+    }
+    
+    func transformChord(_ input: String) -> String {
+        var output = input
+        output = output.replacingOccurrences(of: "#", with: "Sharp")
+        output = output.replacingOccurrences(of: "b", with: "Flat")
+        
+        switch output {
+        case "-":
+            output = ""
+        case "Dim":
+            output = "Diminished"
+        case "Sus":
+            output = "Suspended"
+        case "Aug":
+            output = "Augmented"
+        default:
+            break
+        }
+        return output
+    }
 }
 
 extension ChordPickerViewController: UIPickerViewDataSource {
@@ -54,43 +82,44 @@ extension ChordPickerViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
-            return root.count
+            return note.count
         } else if component == 1 {
-            return quality.count
+            return chord.count
         }
-        
         let selectedRow = chordPicker.selectedRow(inComponent: 1)
-        var selectedKey = ""
-        var count = 0
-        
-        for (kind, _ ) in quality {
-            if selectedRow == count {
-                selectedKey = kind
-            }
-            count += 1
-        }
-        return quality[selectedKey]!.count
+        return chord[selectedRow].tension?.count ?? 1
     }
 }
 
 extension ChordPickerViewController: UIPickerViewDelegate {
-    //    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    //        return chord[component][row]
-    //    }
-    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        
         var pickerLabel: UILabel? = (view as? UILabel)
+        
         if pickerLabel == nil {
             pickerLabel = UILabel()
             pickerLabel?.textAlignment = .center
         }
+        
         pickerLabel?.font = UIFont(name: "Product Sans Bold", size: 42)
-        pickerLabel?.text = chord[component][row]
         
-        let color = (row == pickerView.selectedRow(inComponent: component)) ? UIColor.orange : UIColor.gray
+        if component == 0 {
+            pickerLabel?.text = note[row]
+            pickerLabel?.accessibilityLabel = "Root, " + transformChord(note[row]) + "."
+            pickerLabel?.accessibilityTraits = .adjustable
+        }
+        else if component == 1 {
+            pickerLabel?.text = chord[row].quality
+            pickerLabel?.accessibilityLabel = "Type, " + transformChord(chord[row].quality ?? "") + "."
+            pickerLabel?.accessibilityTraits = .adjustable
+        } else {
+            let selectedRow = chordPicker.selectedRow(inComponent: 1)
+            pickerLabel?.text = chord[selectedRow].tension?[row]
+            pickerLabel?.accessibilityLabel = "Tension, " + transformChord(chord[selectedRow].tension?[row] ?? "") + "."
+            pickerLabel?.accessibilityTraits = .adjustable
+        }
         
-        pickerLabel?.textColor = color
+        //        let color = (row == pickerView.selectedRow(inComponent: component)) ? UIColor.orange : UIColor.gray
+        //        pickerLabel?.textColor = color
         
         return pickerLabel!
     }
@@ -100,9 +129,8 @@ extension ChordPickerViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //        if chord[1][chordPicker.selectedRow(inComponent: 1)] == "Major" {
-        //            print("test")
-        //        }
-        chordPicker.reloadAllComponents()
+        pickerView.reloadAllComponents()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                                        self.updateUI()})
     }
 }
