@@ -45,10 +45,6 @@ class ChordPickerViewController: UIViewController {
     }
     
     func selectedChordLabel() -> String {
-//        let root = note[chordPicker.selectedRow(inComponent: 0)]
-//        let quality = chord[chordPicker.selectedRow(inComponent: 1)].quality ?? ""
-//        let tension = chord[chordPicker.selectedRow(inComponent: 1)].tension?[chordPicker.selectedRow(inComponent: 2)] ?? ""
-                
         let selectedChord = (transformChord(root) +  transformChord(quality) + transformChord(tension))
         
         return "Choose Chord, \(selectedChord)"
@@ -130,7 +126,8 @@ extension ChordPickerViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerView.reloadAllComponents()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                                        self.updateUI()})
+        DispatchQueue.main.async {
+            self.updateUI()
+        }
     }
 }
