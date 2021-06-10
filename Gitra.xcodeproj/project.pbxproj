@@ -33,6 +33,8 @@
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
 		90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163C2671085A0054ED9D /* ChordQuality.swift */; };
 		90B0163F26710C490054ED9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163E26710C490054ED9D /* Database.swift */; };
+		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
+		BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */; };
 		BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */; };
 		BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */; };
 		BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */; };
@@ -69,6 +71,8 @@
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
 		90B0163C2671085A0054ED9D /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
 		90B0163E26710C490054ED9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
+		BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLibrary.swift; sourceTree = "<group>"; };
 		BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
 		BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold Italic.ttf"; sourceTree = "<group>"; };
@@ -90,7 +94,7 @@
 		522785A1266E56F9005BF33E /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				BD9EE8B9266E46C90081B951 /* GradientView.swift */,
+				BD8BC1F72671B0C700A49D44 /* Colors */,
 				BD9EE8AE266E3CF80081B951 /* Fonts */,
 			);
 			path = Theme;
@@ -162,6 +166,7 @@
 		522785AD266E57DF005BF33E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,6 +264,15 @@
 			path = Gitra;
 			sourceTree = "<group>";
 		};
+		BD8BC1F72671B0C700A49D44 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */,
+				BD9EE8B9266E46C90081B951 /* GradientView.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		BD9EE8AE266E3CF80081B951 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,8 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				522785A8266E579C005BF33E /* NetworkManager.swift in Sources */,
+				BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */,
 				522785CA266E5AC2005BF33E /* OnBoardingViewController.swift in Sources */,
 				52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */,
+				7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */,
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
 				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
