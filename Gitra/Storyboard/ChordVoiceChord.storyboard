@@ -34,8 +34,8 @@
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chord Input" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-d4-hGB">
-                                <rect key="frame" x="102" y="668" width="187" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chord Input" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-d4-hGB">
+                                <rect key="frame" x="16" y="668" width="358" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="36"/>
                                 <color key="textColor" name="Orange Accent"/>
@@ -64,6 +64,7 @@
                     <connections>
                         <outlet property="imageTap" destination="nrT-Ca-mz8" id="GFO-Ea-haC"/>
                         <outlet property="lblResult" destination="HhI-d4-hGB" id="388-fI-HVa"/>
+                        <outlet property="lblWhich" destination="lvd-Cg-78v" id="e6P-Cg-8Ig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27Z-cm-FVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

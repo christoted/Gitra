@@ -8,12 +8,14 @@
 import UIKit
 import Speech
 import Lottie
+import AVFoundation
 
 class ChordVoiceViewController: UIViewController {
     
     @IBOutlet weak var imageTap: UIImageView!
     @IBOutlet weak var lblResult: UILabel!
     
+    @IBOutlet weak var lblWhich: UILabel!
     
     //MARK: - Local Properties
     let audioEngine = AVAudioEngine()
@@ -24,8 +26,21 @@ class ChordVoiceViewController: UIViewController {
     
     let animationView = AnimationView()
     
+    //Timer
+    var timer: Timer?
+    
+    let speechSynthesizer = AVSpeechSynthesizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
+        
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechUtterance.rate = 0.5
+        speechSynthesizer.speak(speechUtterance)
+        
         
         // Do any additional setup after loading the view.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -34,7 +49,14 @@ class ChordVoiceViewController: UIViewController {
         
         requestPermission()
         
-        hideAnimation()
+      //  hideAnimation()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.lottieAnimation()
+            self.isStart = true
+            self.speechRecognitionActive()
+        }
+        
     }
     
     private func lottieAnimation(){
@@ -98,32 +120,93 @@ class ChordVoiceViewController: UIViewController {
             self.alertView(message: "Recognization is not available")
         }
         
-        task = speechRecognizer?.recognitionTask(with: request, resultHandler: { (response, error) in
+        task = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             
-            guard let response = response else {
-                
-                if ( error != nil) {
-                    self.alertView(message: error.debugDescription)
-                } else {
-                    self.alertView(message: "Problem in giving response")
-                }
-                
-                return
+//
+//
+//            guard let response = response else {
+//
+//                if ( error != nil) {
+//                    self.alertView(message: error.debugDescription)
+//                } else {
+//                    self.alertView(message: "Problem in giving response")
+//                }
+//
+//                return
+//            }
+//
+//
+//            let message = response.bestTranscription.formattedString
+//
+//            self.lblResult.text = message
+            
+            var isFinal = false
+
+            if let result = result {
+                self.lblResult.text = result.bestTranscription.formattedString
+                // Should I compare the result here to see if it changed?
+                isFinal = result.isFinal
             }
+
+            if isFinal {
+              //  self.cancelSpeechRecognitization()
+//                self.restartSpeechTimer()
+//                print("ISFinal")
+            }
+            else if error == nil {
+                self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
+                    // Do whatever needs to be done when the timer expires
+                    self.cancelSpeechRecognitization()
+                    self.animationView.isHidden = true
+
+                })
+                
+
+                
+            }
+
+           
             
-            
-            let message = response.bestTranscription.formattedString
-            
-            self.lblResult.text = message
-            
+        })
+        
+        
+        if ( task.isFinishing == true) {
+            let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
+        
+            speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+            speechSynthesizer.speak(speechUtterance)
+        }
+    }
+    
+    private func restartSpeechTimer() {
+        
+      //  self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
+            // Do whatever needs to be done when the timer expires
+            self.cancelSpeechRecognitization()
+            print("After 1,5 second end, STOP")
         })
     }
     
+   
+    
     
     private func cancelSpeechRecognitization() {
-        task.finish()
-        task.cancel()
-        task = nil
+        
+        if ( task != nil) {
+            task.finish()
+            task.cancel()
+            task = nil
+            
+            let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
+        
+            speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+            speechSynthesizer.speak(speechUtterance)
+            
+        }
+        
         
         request.endAudio()
         audioEngine.stop()
