@@ -87,7 +87,7 @@ class ChordVoiceViewController: UIViewController {
         }
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
             let backgroundMusic = NSURL(fileURLWithPath: url)
