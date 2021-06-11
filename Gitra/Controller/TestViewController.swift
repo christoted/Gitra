@@ -15,17 +15,23 @@ class TestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let note = ["E2", "B2", "E3", "G#3", "B3", "E4"]
+        let delay = 0.1
+
+            
     }
     
     @IBAction func playGuitarNote(_ sender: Any) {
         let note = ["E2", "B2", "E3", "G#3", "B3", "E4"]
         let delay = 0.1
-        NotesMapping.shared.playSounds(note, withDelay: delay)
+        NotesMapping.shared().playSounds(note, withDelay: delay)
     }
     
     @IBAction func playGuitarNote2(_ sender: Any) {
         let note = ["E2", "B2", "E3", "G#3", "B3", "E4"]
         let delay = 1.0
-        NotesMapping.shared.playSounds(note, withDelay: delay)
+        NotesMapping.shared().playSounds(note, withDelay: delay)
     }
 }

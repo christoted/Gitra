@@ -10,7 +10,17 @@ import AVFoundation
 
 class NotesMapping: NSObject, AVAudioPlayerDelegate {
     
-    static let shared = NotesMapping()
+    private static var sharedManager: NotesMapping = {
+       let shared = NotesMapping()
+        return shared
+    }()
+    
+    class func shared() -> NotesMapping {
+        
+        return sharedManager
+    }
+    
+  //  static let shared = NotesMapping()
     
     override init(){
     }
