@@ -9,10 +9,10 @@ import Foundation
 import AVFoundation
 
 class NotesMapping: NSObject, AVAudioPlayerDelegate {
+    
     static let shared = NotesMapping()
     
     override init(){
-        
     }
     
     var players = [NSURL:AVAudioPlayer]()

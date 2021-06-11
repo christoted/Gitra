@@ -55,14 +55,11 @@ class Database {
         return chordList
     }
     
-    func getGuitarNotes() -> [[String]] {
+    func getNoteList() -> [[String]] {
         return guitarNotes
     }
     
-    func playNote( _ string: Int, _ fret: Int) -> URL {
-        let note = Database.shared.getGuitarNotes()[string][fret]
-        let pathToSound = Bundle.main.path(forResource: note , ofType: "mp3")!
-        
-        return URL(fileURLWithPath: pathToSound)
+    func getGuitarNote( _ string: Int, _ fret: Int) -> String {
+        return Database.shared.getNoteList()[string][fret]
     }
 }
