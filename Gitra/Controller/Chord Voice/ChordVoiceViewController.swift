@@ -87,7 +87,7 @@ class ChordVoiceViewController: UIViewController {
         }
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
             let backgroundMusic = NSURL(fileURLWithPath: url)
@@ -188,7 +188,6 @@ class ChordVoiceViewController: UIViewController {
                     // Do whatever needs to be done when the timer expires
                     self.cancelSpeechRecognitization()
                     self.animationView.isHidden = true
-
                 })
                 
 
@@ -201,6 +200,9 @@ class ChordVoiceViewController: UIViewController {
         
         
         if ( task.isFinishing == true) {
+            
+        
+            //Sound Feedback On
             let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
         
             speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
@@ -208,16 +210,7 @@ class ChordVoiceViewController: UIViewController {
             speechSynthesizer.speak(speechUtterance)
         }
     }
-    
-    private func restartSpeechTimer() {
-        
-      //  self.timer?.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
-            // Do whatever needs to be done when the timer expires
-            self.cancelSpeechRecognitization()
-            print("After 1,5 second end, STOP")
-        })
-    }
+
     
    
     
@@ -234,6 +227,25 @@ class ChordVoiceViewController: UIViewController {
             speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
             speechSynthesizer.speak(speechUtterance)
+            
+            
+            
+            //Call the API
+            let chord = self.lblResult.text
+            
+            guard let chordSave = chord else {return}
+
+            let chordToResponse = Helper().convertStringToParam(chord: chordSave)
+            
+            print(chordToResponse)
+            
+            DispatchQueue.main.async {
+                NetworkManager().getSpecificChord(chord: chordToResponse) { (chordResult) in
+                    print(chordResult.chordName)
+                }
+            }
+            
+          
             
         }
         
