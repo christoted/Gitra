@@ -78,8 +78,6 @@
 		904DC654267258DC00DD799E /* D#5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC626267258DC00DD799E /* D#5.mp3 */; };
 		904DC655267258DC00DD799E /* C#5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC627267258DC00DD799E /* C#5.mp3 */; };
 		904DC656267258DC00DD799E /* D#4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC628267258DC00DD799E /* D#4.mp3 */; };
-		904DC65A26726A5E00DD799E /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 904DC65926726A5E00DD799E /* Test.storyboard */; };
-		904DC65C26726A9700DD799E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DC65B26726A9700DD799E /* TestViewController.swift */; };
 		904DC65E2672EB6A00DD799E /* NotesMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DC65D2672EB6A00DD799E /* NotesMapping.swift */; };
 		90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163C2671085A0054ED9D /* ChordQuality.swift */; };
 		90B0163F26710C490054ED9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163E26710C490054ED9D /* Database.swift */; };
@@ -165,8 +163,6 @@
 		904DC626267258DC00DD799E /* D#5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "D#5.mp3"; sourceTree = "<group>"; };
 		904DC627267258DC00DD799E /* C#5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "C#5.mp3"; sourceTree = "<group>"; };
 		904DC628267258DC00DD799E /* D#4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "D#4.mp3"; sourceTree = "<group>"; };
-		904DC65926726A5E00DD799E /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
-		904DC65B26726A9700DD799E /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		904DC65D2672EB6A00DD799E /* NotesMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMapping.swift; sourceTree = "<group>"; };
 		90B0163C2671085A0054ED9D /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
 		90B0163E26710C490054ED9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -227,6 +223,7 @@
 		522785A5266E577F005BF33E /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				904DC65D2672EB6A00DD799E /* NotesMapping.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -247,7 +244,6 @@
 				522785F4266E5E9D005BF33E /* Chord Picker */,
 				522785EF266E5E37005BF33E /* Chord Voice */,
 				522785EE266E5E28005BF33E /* OnBoarding */,
-				904DC65B26726A9700DD799E /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,7 +255,6 @@
 				5293C815266F346E00151BF7 /* ChordModel.swift */,
 				90B0163C2671085A0054ED9D /* ChordQuality.swift */,
 				90B0163E26710C490054ED9D /* Database.swift */,
-				904DC65D2672EB6A00DD799E /* NotesMapping.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -284,7 +279,6 @@
 				522785E4266E5D2F005BF33E /* ChordPickerChord.storyboard */,
 				522785C5266E592E005BF33E /* ChordDetail.storyboard */,
 				522785B9266E58FC005BF33E /* Setting.storyboard */,
-				904DC65926726A5E00DD799E /* Test.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -500,7 +494,6 @@
 				904DC646267258DC00DD799E /* C5.mp3 in Resources */,
 				522785C0266E591B005BF33E /* ChordVoice.storyboard in Resources */,
 				522785C3266E5925005BF33E /* ChordPicker.storyboard in Resources */,
-				904DC65A26726A5E00DD799E /* Test.storyboard in Resources */,
 				904DC645267258DC00DD799E /* C#3.mp3 in Resources */,
 				52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */,
 				904DC63A267258DC00DD799E /* F#5.mp3 in Resources */,
@@ -578,7 +571,6 @@
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
 				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
 				90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */,
-				904DC65C26726A9700DD799E /* TestViewController.swift in Sources */,
 				52698D0E266DE9D5004F7AD6 /* AppDelegate.swift in Sources */,
 				5293C813266F339100151BF7 /* ChordResponse.swift in Sources */,
 				522785FA266E5F36005BF33E /* ChordPickerTunerViewController.swift in Sources */,
