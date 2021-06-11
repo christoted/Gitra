@@ -20,7 +20,7 @@ class ChordVoiceViewController: UIViewController {
     //MARK: - Local Properties
     let audioEngine = AVAudioEngine()
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
-    var request = SFSpeechAudioBufferRecognitionRequest()
+    var request : SFSpeechAudioBufferRecognitionRequest?
     var task: SFSpeechRecognitionTask!
     var isStart: Bool = false
     
@@ -39,11 +39,6 @@ class ChordVoiceViewController: UIViewController {
         super.viewDidLoad()
         
        
-        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
-        
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechUtterance.rate = 0.5
-        speechSynthesizer.speak(speechUtterance)
         
         
         // Do any additional setup after loading the view.
@@ -61,8 +56,19 @@ class ChordVoiceViewController: UIViewController {
             self.playSound()
             self.lottieAnimation()
             self.isStart = true
-            self.speechRecognitionActive()
+//            self.speechRecognitionActive()
         }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
+        
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechUtterance.rate = 0.5
+        speechSynthesizer.speak(speechUtterance)
         
     }
     
@@ -119,6 +125,8 @@ class ChordVoiceViewController: UIViewController {
     }
     
     private func speechRecognitionActive() {
+        
+        audioEngine.inputNode.removeTap(onBus: 0)
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         
@@ -128,8 +136,9 @@ class ChordVoiceViewController: UIViewController {
         }
         
         
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
-            self.request.append(buffer)
+        node.installTap(onBus: 0, bufferSize: 2048, format: recordingFormat) { (buffer, _) in
+            // Tersangka
+            self.request?.append(buffer)
         }
         
         audioEngine.prepare()
@@ -150,50 +159,50 @@ class ChordVoiceViewController: UIViewController {
             self.alertView(message: "Recognization is not available")
         }
         
-        task = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
+        task = speechRecognizer?.recognitionTask(with: request!, resultHandler: { (response, error) in
             
+
+
+            guard let response = response else {
+
+                if ( error != nil) {
+                    self.alertView(message: error.debugDescription)
+                } else {
+                    self.alertView(message: "Problem in giving response")
+                }
+
+                return
+            }
+
+
+            let message = response.bestTranscription.formattedString
+
+            self.lblResult.text = message
+            
+//            var isFinal = false
 //
-//
-//            guard let response = response else {
-//
-//                if ( error != nil) {
-//                    self.alertView(message: error.debugDescription)
-//                } else {
-//                    self.alertView(message: "Problem in giving response")
-//                }
-//
-//                return
+//            if let result = result {
+//                self.lblResult.text = result.bestTranscription.formattedString
+//                // Should I compare the result here to see if it changed?
+//                isFinal = result.isFinal
 //            }
 //
+//            if isFinal {
+//              //  self.cancelSpeechRecognitization()
+////                self.restartSpeechTimer()
+////                print("ISFinal")
+//            }
+//            else if error == nil {
+//                self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
+//                    // Do whatever needs to be done when the timer expires
+//                    self.cancelSpeechRecognitization()
+//                    self.animationView.isHidden = true
 //
-//            let message = response.bestTranscription.formattedString
+//                })
 //
-//            self.lblResult.text = message
-            
-            var isFinal = false
-
-            if let result = result {
-                self.lblResult.text = result.bestTranscription.formattedString
-                // Should I compare the result here to see if it changed?
-                isFinal = result.isFinal
-            }
-
-            if isFinal {
-              //  self.cancelSpeechRecognitization()
-//                self.restartSpeechTimer()
-//                print("ISFinal")
-            }
-            else if error == nil {
-                self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
-                    // Do whatever needs to be done when the timer expires
-                    self.cancelSpeechRecognitization()
-                    self.animationView.isHidden = true
-
-                })
-                
-
-                
-            }
+//
+//
+//            }
 
            
             
@@ -238,7 +247,7 @@ class ChordVoiceViewController: UIViewController {
         }
         
         
-        request.endAudio()
+        request?.endAudio()
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
     }
