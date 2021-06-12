@@ -13,6 +13,7 @@ class Database {
     
     private var noteList = [String]()
     private var chordList = [ChordQuality]()
+    private var guitarNotes = [[String]]()
     
     init(){
     }
@@ -31,9 +32,19 @@ class Database {
         chordList.append(ChordQuality(quality: "Aug", tension: ["-", "7"]))
     }
     
+    func seedGuitarNotes() {
+        guitarNotes.append(["E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5", "G#5", "A5", "A#5", "B5", "C6"])
+        guitarNotes.append(["B3", "C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5"])
+        guitarNotes.append(["G3", "G#3", "A3", "A#3", "B3", "C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5"])
+        guitarNotes.append(["D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3", "C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4"])
+        guitarNotes.append(["A2", "A#2", "B2", "C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3", "C4", "C#4", "D4", "D#4", "E4", "F4"])
+        guitarNotes.append(["E2", "F2", "F#2", "G2", "G#2", "A2", "A#2", "B2", "C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3", "C3"])
+    }
+    
     func seedData() {
         seedNote()
         seedChord()
+        seedGuitarNotes()
     }
     
     func getNote() -> [String] {
@@ -42,5 +53,13 @@ class Database {
     
     func getChord() -> [ChordQuality] {
         return chordList
+    }
+    
+    func getNoteList() -> [[String]] {
+        return guitarNotes
+    }
+    
+    func getGuitarNote( _ string: Int, _ fret: Int) -> String {
+        return Database.shared.getNoteList()[string][fret]
     }
 }
