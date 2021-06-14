@@ -15,11 +15,6 @@ class RoundedButton: UIButton {
     }
     
     func setup(){
-        self.setTitleColor(UIColor.ColorLibrary.yellowAccent, for: .normal)
-        self.setTitleColor(UIColor.ColorLibrary.yellowAccent.withAlphaComponent(0.5), for: .highlighted)
-//        circleButton.layer.cornerRadius = circleButton.frame.width / 2
-//                circleButton.layer.masksToBounds = true
         self.layer.cornerRadius = 15
     }
-    
 }

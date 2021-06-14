@@ -10,6 +10,8 @@ import AVFoundation
 
 class OnBoardingAnimation: UIViewController{
     
+    let defaults = UserDefaults.standard
+    
     @IBOutlet weak var welcome: UILabel!
     @IBOutlet weak var gitra: UILabel!
     
@@ -22,7 +24,8 @@ class OnBoardingAnimation: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        readSettings()
+        proceedBtn.titleLabel?.text = "Proceed"
         //        let speechSynthesizer = AVSpeechSynthesizer()
         //        let speechUtterance = AVSpeechUtterance(string: welcome.text! + gitra.text! + " " + sentence1.text! + "  " + sentence2.text! + "  " + sentence3.text!)
         //
@@ -52,15 +55,13 @@ class OnBoardingAnimation: UIViewController{
         //            self.performSegue(withIdentifier: "seguetochord", sender: nil)
     }
     
+    func readSettings(){
+        if defaults.object(forKey: "welcomeScreen") != nil {
+            performSegue(withIdentifier: "seguetochord", sender: nil)
+        }
+    }
+    
     @IBAction func buttonDidTapped(_ sender: UIButton){
         self.performSegue(withIdentifier: "seguetochord", sender: nil)
     }
-    
-    
-    
-    
-    
-    
-    //    }
-    
 }
