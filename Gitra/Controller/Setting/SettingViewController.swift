@@ -31,14 +31,14 @@ class SettingViewController: UIViewController{
     
     
     override func viewWillAppear(_ animated: Bool) {
-        //baru
         super.viewWillAppear(animated)
-        //self.viewDidLoad()
-        Settings.shared.reloadData()
+        Settings.shared.reloadDatabase()
+        settingsList = Settings.shared.getSettings()
         tableView.reloadData()
-        print(settingsList[3].selected)
-        print(UserDefaults.standard.integer(forKey: "chordSpeed"))
+//        print(settingsList[3].selected!)
+//        print(UserDefaults.standard.integer(forKey: "chordSpeed"))
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsToSpeed"{
             let destination = segue.destination as? ChordSpeedViewController
