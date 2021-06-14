@@ -210,6 +210,7 @@
 		522785A2266E573D005BF33E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				904DC65D2672EB6A00DD799E /* NotesMapping.swift */,
 				52EE72E126724D5500B3E7EE /* Helper.swift */,
 				52EE72EC26726B2100B3E7EE /* SoundHelper.swift */,
 			);
@@ -237,7 +238,6 @@
 		522785A5266E577F005BF33E /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				904DC65D2672EB6A00DD799E /* NotesMapping.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -359,8 +359,10 @@
 		52698D0C266DE9D5004F7AD6 /* Gitra */ = {
 			isa = PBXGroup;
 			children = (
+
 				D8355D712676F83700F2D718 /* audio.json */,
 				D8355D702676F83700F2D718 /* siri.m4a */,
+
 				522785AE266E57EB005BF33E /* Storyboard */,
 				522785AD266E57DF005BF33E /* View */,
 				522785AB266E57B1005BF33E /* Controller */,
@@ -757,6 +759,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HLL562LRK4;
 				INFOPLIST_FILE = Gitra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -776,6 +779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HLL562LRK4;
 				INFOPLIST_FILE = Gitra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
