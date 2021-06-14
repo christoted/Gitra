@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Product Sans Bold.ttf">
+            <string>ProductSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Automatic Tuner View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="AutomaticTunerViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eUK-x2-TKa">
+                                <rect key="frame" x="49.5" y="672" width="315" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4A-EG-WYp">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="White Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="z4A-EG-WYp" secondAttribute="height" multiplier="1:1" id="aKM-j4-KRo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                        <state key="normal" title="E">
+                                            <color key="titleColor" name="Black Background"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AVn-p4-F0H"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxS-VO-uqF">
+                                        <rect key="frame" x="55" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="White Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="UxS-VO-uqF" secondAttribute="height" multiplier="1:1" id="uFj-1S-vaa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                        <state key="normal" title="A">
+                                            <color key="titleColor" name="Black Background"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VGK-gn-bar"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjx-q1-QJc">
+                                        <rect key="frame" x="110" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="White Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Vjx-q1-QJc" secondAttribute="height" multiplier="1:1" id="xrk-EE-I5a"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                        <state key="normal" title="D">
+                                            <color key="titleColor" name="Black Background"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1AB-2V-z8c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIc-Sm-oyh">
+                                        <rect key="frame" x="165" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="White Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nIc-Sm-oyh" secondAttribute="height" multiplier="1:1" id="9xK-KX-LG2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                        <state key="normal" title="G">
+                                            <color key="titleColor" name="Black Background"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="56v-20-ufs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zU-Sl-OGu">
+                                        <rect key="frame" x="220" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="White Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0zU-Sl-OGu" secondAttribute="height" multiplier="1:1" id="WhI-P3-16E"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                        <state key="normal" title="B">
+                                            <color key="titleColor" name="Black Background"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="F9H-1e-oeK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjT-hB-Jag">
+                                        <rect key="frame" x="275" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="White Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bjT-hB-Jag" secondAttribute="height" multiplier="1:1" id="anj-QS-Tn6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                        <state key="normal" title="E">
+                                            <color key="titleColor" name="Black Background"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonSelected:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EEQ-bg-UUw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9PL-ym-uHY"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e34-0l-ivg">
+                                <rect key="frame" x="97" y="338" width="220" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="Jjq-LI-D7g"/>
+                                    <constraint firstAttribute="width" secondItem="e34-0l-ivg" secondAttribute="height" multiplier="1:1" id="v3f-zb-fV5"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wv2-MV-ZH6">
+                                <rect key="frame" x="148" y="419" width="118.5" height="58.5"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="48"/>
+                                <color key="textColor" name="White Background"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a string" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOY-zg-aMK">
+                                <rect key="frame" x="141.5" y="273.5" width="131.5" height="24.5"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="20"/>
+                                <color key="textColor" name="White Background"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="Black Background"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="eUK-x2-TKa" secondAttribute="bottom" constant="150" id="6O1-dP-fRb"/>
+                            <constraint firstItem="e34-0l-ivg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="QpE-21-ofJ"/>
+                            <constraint firstItem="Wv2-MV-ZH6" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Wkc-uE-cBD"/>
+                            <constraint firstItem="e34-0l-ivg" firstAttribute="top" secondItem="QOY-zg-aMK" secondAttribute="bottom" constant="40" id="hO4-Ah-uzk"/>
+                            <constraint firstItem="eUK-x2-TKa" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="mcN-wg-qPT"/>
+                            <constraint firstItem="QOY-zg-aMK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="xnZ-xe-BUv"/>
+                            <constraint firstItem="Wv2-MV-ZH6" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="yfw-Eo-fhf"/>
+                            <constraint firstItem="e34-0l-ivg" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="yrZ-t3-eDM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="differenceLabel" destination="Wv2-MV-ZH6" id="XhS-OL-lbF"/>
+                        <outlet property="statusLabel" destination="QOY-zg-aMK" id="Evh-Kh-Odq"/>
+                        <outlet property="viewIndicator" destination="e34-0l-ivg" id="GaF-5a-3tu"/>
+                        <outletCollection property="strings" destination="bjT-hB-Jag" collectionClass="NSMutableArray" id="KaA-jc-e5j"/>
+                        <outletCollection property="strings" destination="0zU-Sl-OGu" collectionClass="NSMutableArray" id="nxG-dX-1r7"/>
+                        <outletCollection property="strings" destination="nIc-Sm-oyh" collectionClass="NSMutableArray" id="7h5-4y-dTK"/>
+                        <outletCollection property="strings" destination="Vjx-q1-QJc" collectionClass="NSMutableArray" id="kc1-48-o6P"/>
+                        <outletCollection property="strings" destination="UxS-VO-uqF" collectionClass="NSMutableArray" id="c9J-ES-8yZ"/>
+                        <outletCollection property="strings" destination="z4A-EG-WYp" collectionClass="NSMutableArray" id="zLg-hu-H9F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="78"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Black Background">
+            <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White Background">
+            <color red="0.93300002813339233" green="0.92900002002716064" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

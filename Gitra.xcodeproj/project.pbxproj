@@ -32,8 +32,6 @@
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
 		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
-		52CCB48B2674A2DA001A1A98 /* audio.json in Resources */ = {isa = PBXBuildFile; fileRef = 52CCB48A2674A2DA001A1A98 /* audio.json */; };
-		52CCB48D2674A2ED001A1A98 /* siri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 52CCB48C2674A2ED001A1A98 /* siri.m4a */; };
 		52EE72E226724D5500B3E7EE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72E126724D5500B3E7EE /* Helper.swift */; };
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
@@ -86,6 +84,13 @@
 		904DC65E2672EB6A00DD799E /* NotesMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DC65D2672EB6A00DD799E /* NotesMapping.swift */; };
 		90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163C2671085A0054ED9D /* ChordQuality.swift */; };
 		90B0163F26710C490054ED9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163E26710C490054ED9D /* Database.swift */; };
+		90CD99972676106400464E25 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90CD99962676106400464E25 /* AudioKit */; };
+		90CD999A2676107E00464E25 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90CD99992676107E00464E25 /* SoundpipeAudioKit */; };
+		90CD999C267610C700464E25 /* AutomaticTuner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90CD999B267610C700464E25 /* AutomaticTuner.storyboard */; };
+		90CD999F267610F000464E25 /* AutomaticTunerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CD999E267610F000464E25 /* AutomaticTunerViewController.swift */; };
+		90CD99A1267611C600464E25 /* TunerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CD99A0267611C600464E25 /* TunerData.swift */; };
+		90CD99A3267689D700464E25 /* TunerConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CD99A2267689D700464E25 /* TunerConductor.swift */; };
+		90CD99A52676931100464E25 /* NoteFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CD99A42676931100464E25 /* NoteFrequency.swift */; };
 		BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */; };
 		BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */; };
 		BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */; };
@@ -121,8 +126,6 @@
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
-		52CCB48A2674A2DA001A1A98 /* audio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = audio.json; path = ../../../../../Downloads/audio.json; sourceTree = "<group>"; };
-		52CCB48C2674A2ED001A1A98 /* siri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = siri.m4a; path = ../../../../../Downloads/siri.m4a; sourceTree = "<group>"; };
 		52EE72E126724D5500B3E7EE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
@@ -175,6 +178,11 @@
 		904DC65D2672EB6A00DD799E /* NotesMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMapping.swift; sourceTree = "<group>"; };
 		90B0163C2671085A0054ED9D /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
 		90B0163E26710C490054ED9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		90CD999B267610C700464E25 /* AutomaticTuner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutomaticTuner.storyboard; sourceTree = "<group>"; };
+		90CD999E267610F000464E25 /* AutomaticTunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticTunerViewController.swift; sourceTree = "<group>"; };
+		90CD99A0267611C600464E25 /* TunerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerData.swift; sourceTree = "<group>"; };
+		90CD99A2267689D700464E25 /* TunerConductor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerConductor.swift; sourceTree = "<group>"; };
+		90CD99A42676931100464E25 /* NoteFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFrequency.swift; sourceTree = "<group>"; };
 		BD8BC1F82671B0E800A49D44 /* ColorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLibrary.swift; sourceTree = "<group>"; };
 		BD9EE8AF266E3D2B0081B951 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		BD9EE8B0266E3D2B0081B951 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
@@ -188,7 +196,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90CD99972676106400464E25 /* AudioKit in Frameworks */,
 				52C517DA267121A6002B5136 /* Lottie in Frameworks */,
+				90CD999A2676107E00464E25 /* SoundpipeAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +218,10 @@
 		522785A2266E573D005BF33E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				904DC65D2672EB6A00DD799E /* NotesMapping.swift */,
 				52EE72E126724D5500B3E7EE /* Helper.swift */,
 				52EE72EC26726B2100B3E7EE /* SoundHelper.swift */,
+				90CD99A2267689D700464E25 /* TunerConductor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -235,7 +247,6 @@
 		522785A5266E577F005BF33E /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				904DC65D2672EB6A00DD799E /* NotesMapping.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 		522785AB266E57B1005BF33E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				90CD999D267610D600464E25 /* Tuner */,
 				522785FE266E5F6A005BF33E /* Setting */,
 				522785FC266E5F5A005BF33E /* Chord Detail */,
 				522785F4266E5E9D005BF33E /* Chord Picker */,
@@ -267,6 +279,8 @@
 				5293C815266F346E00151BF7 /* ChordModel.swift */,
 				90B0163C2671085A0054ED9D /* ChordQuality.swift */,
 				90B0163E26710C490054ED9D /* Database.swift */,
+				90CD99A0267611C600464E25 /* TunerData.swift */,
+				90CD99A42676931100464E25 /* NoteFrequency.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -291,6 +305,7 @@
 				522785E4266E5D2F005BF33E /* ChordPickerChord.storyboard */,
 				522785C5266E592E005BF33E /* ChordDetail.storyboard */,
 				522785B9266E58FC005BF33E /* Setting.storyboard */,
+				90CD999B267610C700464E25 /* AutomaticTuner.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -356,8 +371,6 @@
 		52698D0C266DE9D5004F7AD6 /* Gitra */ = {
 			isa = PBXGroup;
 			children = (
-				52CCB48A2674A2DA001A1A98 /* audio.json */,
-				52CCB48C2674A2ED001A1A98 /* siri.m4a */,
 				522785AE266E57EB005BF33E /* Storyboard */,
 				522785AD266E57DF005BF33E /* View */,
 				522785AB266E57B1005BF33E /* Controller */,
@@ -427,6 +440,14 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		90CD999D267610D600464E25 /* Tuner */ = {
+			isa = PBXGroup;
+			children = (
+				90CD999E267610F000464E25 /* AutomaticTunerViewController.swift */,
+			);
+			path = Tuner;
+			sourceTree = "<group>";
+		};
 		BD8BC1F72671B0C700A49D44 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +486,8 @@
 			name = Gitra;
 			packageProductDependencies = (
 				52C517D9267121A6002B5136 /* Lottie */,
+				90CD99962676106400464E25 /* AudioKit */,
+				90CD99992676107E00464E25 /* SoundpipeAudioKit */,
 			);
 			productName = Gitra;
 			productReference = 52698D0A266DE9D5004F7AD6 /* Gitra.app */;
@@ -495,6 +518,8 @@
 			mainGroup = 52698D01266DE9D5004F7AD6;
 			packageReferences = (
 				52C517D8267121A6002B5136 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				90CD99952676106400464E25 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				90CD99982676107E00464E25 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
 			);
 			productRefGroup = 52698D0B266DE9D5004F7AD6 /* Products */;
 			projectDirPath = "";
@@ -515,6 +540,7 @@
 				522785C0266E591B005BF33E /* ChordVoice.storyboard in Resources */,
 				522785C3266E5925005BF33E /* ChordPicker.storyboard in Resources */,
 				904DC645267258DC00DD799E /* C#3.mp3 in Resources */,
+				90CD999C267610C700464E25 /* AutomaticTuner.storyboard in Resources */,
 				52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */,
 				904DC63A267258DC00DD799E /* F#5.mp3 in Resources */,
 				904DC62B267258DC00DD799E /* F#3.mp3 in Resources */,
@@ -544,7 +570,6 @@
 				904DC635267258DC00DD799E /* F3.mp3 in Resources */,
 				904DC642267258DC00DD799E /* G2.mp3 in Resources */,
 				522785BA266E58FC005BF33E /* Setting.storyboard in Resources */,
-				52CCB48B2674A2DA001A1A98 /* audio.json in Resources */,
 				BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */,
 				904DC64A267258DC00DD799E /* B4.mp3 in Resources */,
 				904DC640267258DC00DD799E /* B2.mp3 in Resources */,
@@ -565,7 +590,6 @@
 				904DC639267258DC00DD799E /* D3.mp3 in Resources */,
 				904DC650267258DC00DD799E /* G4.mp3 in Resources */,
 				904DC636267258DC00DD799E /* F5.mp3 in Resources */,
-				52CCB48D2674A2ED001A1A98 /* siri.m4a in Resources */,
 				904DC654267258DC00DD799E /* D#5.mp3 in Resources */,
 				904DC656267258DC00DD799E /* D#4.mp3 in Resources */,
 				904DC62F267258DC00DD799E /* G#3.mp3 in Resources */,
@@ -586,7 +610,11 @@
 				522785A8266E579C005BF33E /* NetworkManager.swift in Sources */,
 				BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */,
 				904DC65E2672EB6A00DD799E /* NotesMapping.swift in Sources */,
+				90CD99A52676931100464E25 /* NoteFrequency.swift in Sources */,
+				90CD999F267610F000464E25 /* AutomaticTunerViewController.swift in Sources */,
+				90CD99A1267611C600464E25 /* TunerData.swift in Sources */,
 				522785CA266E5AC2005BF33E /* OnBoardingViewController.swift in Sources */,
+				90CD99A3267689D700464E25 /* TunerConductor.swift in Sources */,
 				52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */,
 				7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */,
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
@@ -815,6 +843,22 @@
 				minimumVersion = 3.2.3;
 			};
 		};
+		90CD99952676106400464E25 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+		90CD99982676107E00464E25 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -822,6 +866,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52C517D8267121A6002B5136 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		90CD99962676106400464E25 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90CD99952676106400464E25 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		90CD99992676107E00464E25 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90CD99982676107E00464E25 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
