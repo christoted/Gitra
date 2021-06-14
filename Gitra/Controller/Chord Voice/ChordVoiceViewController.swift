@@ -12,6 +12,7 @@ import AVFoundation
 
 class ChordVoiceViewController: UIViewController {
     
+    @IBOutlet weak var textLogo: UIImageView!
     @IBOutlet weak var imageTap: UIImageView!
     @IBOutlet weak var lblResult: UILabel!
     
@@ -39,11 +40,11 @@ class ChordVoiceViewController: UIViewController {
         super.viewDidLoad()
         
        
-        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
-        
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechUtterance.rate = 0.5
-        speechSynthesizer.speak(speechUtterance)
+//        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
+//
+//        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//        speechUtterance.rate = 0.5
+//        speechSynthesizer.speak(speechUtterance)
         
         
         // Do any additional setup after loading the view.
@@ -52,17 +53,28 @@ class ChordVoiceViewController: UIViewController {
         imageTap.addGestureRecognizer(tapGestureRecognizer)
         
         requestPermission()
+        
+        textLogo.isAccessibilityElement = true
+        textLogo.accessibilityHint = "Which Chord, do you want to play? Please tap twice the The Guitar Icon Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
+        
+        imageTap.isAccessibilityElement = true
+        imageTap.accessibilityHint = ""
+        
+        
+        lblWhich.isAccessibilityElement = true
+        lblWhich.accessibilityLabel = "Tap Twice"
+ 
       
         
       //  hideAnimation()
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            self.playSound()
-            self.lottieAnimation()
-            self.isStart = true
-            self.speechRecognitionActive()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+//            self.playSound()
+//            self.lottieAnimation()
+//            self.isStart = true
+//            self.speechRecognitionActive()
+//        }
         
     }
     
@@ -108,6 +120,7 @@ class ChordVoiceViewController: UIViewController {
         isStart = !isStart
         
         if (isStart) {
+            self.playSound()
             lottieAnimation()
             speechRecognitionActive()
             
@@ -239,7 +252,7 @@ class ChordVoiceViewController: UIViewController {
             
             print(chordToResponse)
             
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord: chordToResponse) { (chordResult) in
                     print(chordResult.chordName)
                 }
