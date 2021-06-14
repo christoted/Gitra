@@ -39,7 +39,6 @@ class Settings{
         if UserDefaults.standard.object(forKey: "inputModes") == nil{
             inputModes = 0
         }
-        //welcome screen sm input keknya masih ngaco
         if UserDefaults.standard.object(forKey: "welcomeScreen") == nil{
             welcomeScreen = 1
         }
@@ -51,24 +50,51 @@ class Settings{
         }
         
         settings = [settingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
-                        settingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
-                        settingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
-                        settingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
-                        settingsType(titleSettings: "Instructions", type: .click)]
+                    settingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
+                    settingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
+                    settingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
+                    settingsType(titleSettings: "Instructions", type: .click)]
+        
+    }
+    
+    func reloadData(){
+        self.inputModes = UserDefaults.standard.integer(forKey: "inputMode")
+        self.welcomeScreen = UserDefaults.standard.integer(forKey: "welcomeScreen")
+        self.inputCommand = UserDefaults.standard.integer(forKey: "inputCommand")
+        self.chordSpeed = UserDefaults.standard.integer(forKey: "chordSpeed")
+        
+        if UserDefaults.standard.object(forKey: "inputModes") == nil{
+            inputModes = 0
+        }
+        if UserDefaults.standard.object(forKey: "welcomeScreen") == nil{
+            welcomeScreen = 1
+        }
+        if UserDefaults.standard.object(forKey: "inputCommand") == nil{
+            inputCommand = 1
+        }
+        if UserDefaults.standard.object(forKey: "chordSpeed") == nil{
+            chordSpeed = 1
+        }
+        
+        settings = [settingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
+                    settingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
+                    settingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
+                    settingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
+                    settingsType(titleSettings: "Instructions", type: .click)]
         
     }
     
     func getSettings() -> [settingsType] {
         return settings
     }
-
     
-//    func setSettings(setting: settingsType, value: Int){
-//
-//    }
     
-   /* func getMenu() -> [settingsOption]{
-        return settingsMenu
-    }*/
+    //    func setSettings(setting: settingsType, value: Int){
+    //
+    //    }
+    
+    /* func getMenu() -> [settingsOption]{
+     return settingsMenu
+     }*/
     
 }

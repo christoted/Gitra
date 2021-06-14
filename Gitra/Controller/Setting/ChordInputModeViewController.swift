@@ -31,7 +31,7 @@ class ChordInputModeViewController: UIViewController{
     
     var chordInputMode = [inputMode(inputSettings: "Voice Command", type: .voiceCommand),
                           inputMode(inputSettings: "Picker", type: .picker)]
-
+    
 }
 
 extension ChordInputModeViewController: UITableViewDelegate{
@@ -45,18 +45,18 @@ extension ChordInputModeViewController: UITableViewDelegate{
         UserDefaults.standard.setValue(indexPath.row, forKey: "inputMode")
         
     }
-//    //baru
-//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.accessoryType = .checkmark
-//        return indexPath
-//    }
-//
-//    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.accessoryType = .none
-//        return indexPath
-//    }
+    //    //baru
+    //    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    //        let cell = tableView.cellForRow(at: indexPath)
+    //        cell?.accessoryType = .checkmark
+    //        return indexPath
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+    //        let cell = tableView.cellForRow(at: indexPath)
+    //        cell?.accessoryType = .none
+    //        return indexPath
+    //    }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -73,15 +73,15 @@ extension ChordInputModeViewController: UITableViewDataSource{
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "CIMTableViewCell")
         cell.selectionStyle = .none
         cell.textLabel?.text = chordInputMode[indexPath.row].inputSettings
-//        if (cell.textLabel?.text)! == chordInputMode[UserDefaults.standard.integer(forKey: "inputMode")].inputSettings{
-//            cell.setSelected(true, animated: true   )
-//        }
+        //        if (cell.textLabel?.text)! == chordInputMode[UserDefaults.standard.integer(forKey: "inputMode")].inputSettings{
+        //            cell.setSelected(true, animated: true   )
+        //        }
         if (indexPath.row) == UserDefaults.standard.integer(forKey: "inputMode"){
-//  buat nyala2          tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+            //  buat nyala2          tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
             cell.accessoryType = .checkmark
         }
         
         return cell
     }
-
+    
 }

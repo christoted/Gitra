@@ -22,6 +22,8 @@ class ChordSpeedViewController: UIViewController {
     
     @IBOutlet weak var tableView : UITableView!
     
+    var orangTua: SettingViewController?
+    
     enum destination{
         case speed
         case chordInput
@@ -35,6 +37,11 @@ class ChordSpeedViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        orangTua?.tableView.reloadData()
+        
+    }
+
     var chordSpeed = [kecepatan(speedSettings: "Slow", type: .slow),
                     kecepatan(speedSettings: "Normal", type: .normal),
                     kecepatan(speedSettings: "Fast", type: .fast)]
@@ -50,9 +57,11 @@ extension ChordSpeedViewController : UITableViewDelegate{
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         UserDefaults.standard.setValue(indexPath.row, forKey: "chordSpeed")
-        
+        //orangTua?.tableView.reloadData()
+
+        //SettingViewController().refresh()
     }
-    
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .none
@@ -70,7 +79,7 @@ extension ChordSpeedViewController : UITableViewDataSource{
         cell.selectionStyle = .none
         cell.textLabel?.text = chordSpeed[indexPath.row].speedSettings
         
-        if (indexPath.row) == UserDefaults.standard.integer(forKey: "inputMode"){
+        if (indexPath.row) == UserDefaults.standard.integer(forKey: "chordSpeed"){
             cell.accessoryType = .checkmark
         }
         

@@ -12,18 +12,38 @@ import UIKit
 class SettingViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    let settingsList = Settings.shared
+    var settingsList = Settings.shared.getSettings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.reloadData()
         
     }
+
+//    func refresh(){
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        //baru
+        super.viewWillAppear(animated)
+        //self.viewDidLoad()
+        Settings.shared.reloadData()
         tableView.reloadData()
+        print(settingsList[3].selected)
+        print(UserDefaults.standard.integer(forKey: "chordSpeed"))
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SettingsToSpeed"{
+            let destination = segue.destination as? ChordSpeedViewController
+            destination?.orangTua = self
+        }
     }
 }
 
@@ -47,14 +67,14 @@ extension SettingViewController: UITableViewDelegate{
 
 extension SettingViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsList.getSettings().count
+        return settingsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "SettingsTableViewCell")
-        cell.textLabel?.text = settingsList.getSettings()[indexPath.row].titleSettings
         
-        let selected = settingsList.getSettings()[indexPath.row].selected
+        cell.textLabel?.text = settingsList[indexPath.row].titleSettings
+        let selected = settingsList[indexPath.row].selected
         
         //switch
         let switchView = UISwitch(frame: .zero)
@@ -63,9 +83,9 @@ extension SettingViewController: UITableViewDataSource{
         switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         
         // click/toggle/desc
-        if settingsList.getSettings()[indexPath.row].type == .click{
+        if settingsList[indexPath.row].type == .click{
             cell.accessoryType = .disclosureIndicator
-        } else if settingsList.getSettings()[indexPath.row].type == .toggle{
+        } else if settingsList[indexPath.row].type == .toggle{
             cell.accessoryView = switchView
             if selected == 1{
                 switchView.setOn(true, animated: true)
@@ -73,9 +93,9 @@ extension SettingViewController: UITableViewDataSource{
                 switchView.setOn(false, animated: true)
             }
             
-        } else if settingsList.getSettings()[indexPath.row].type == .description{
+        } else if settingsList[indexPath.row].type == .description{
             cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = settingsList.getSettings()[indexPath.row].menu?[selected ?? 0]
+            cell.detailTextLabel?.text = settingsList[indexPath.row].menu?[selected ?? 0]
         }
         
         return cell
