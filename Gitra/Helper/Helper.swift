@@ -12,7 +12,5 @@ class Helper {
         //C major -> C
         //C minor -> C_m
         //C minor -> C_m7
-        
-        
     }
 }

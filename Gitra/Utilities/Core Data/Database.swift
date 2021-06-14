@@ -19,11 +19,11 @@ class Database {
     }
     
     func seedNote() {
-        noteList = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+        noteList = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
     }
     
     func seedChord() {
-        chordList.append(ChordQuality(quality: "-", tension: ["-", "7", "7#5", "7b5", "7#9", "7b9", "9", "11", "13"]))
+        chordList.append(ChordQuality(quality: "-", tension: ["-", "7", "7♯5", "7♭5", "7♯9", "7♭9", "9", "11", "13"]))
         chordList.append(ChordQuality(quality: "Major", tension: ["-", "6", "6/9", "7", "9", "11", "13"]))
         chordList.append(ChordQuality(quality: "Minor", tension: ["-", "6", "6/9", "7", "9", "11", "13"]))
         chordList.append(ChordQuality(quality: "Add", tension: ["9", "11"]))

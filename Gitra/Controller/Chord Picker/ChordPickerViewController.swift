@@ -33,7 +33,10 @@ class ChordPickerViewController: UIViewController {
     }
     
     @IBAction func chooseChord(_ sender: Any) {
-        print(root + "_" + quality + "_" + tension)
+        updateUI()
+//        let stringToParam = Helper.convertStringToParam(root + " " + quality + " " + tension)
+//        print(stringToParam)
+//        print(root + "_" + quality + "_" + tension)
     }
     
     func updateUI() {
@@ -52,8 +55,8 @@ class ChordPickerViewController: UIViewController {
     
     func transformChord(_ input: String) -> String {
         var output = input
-        output = output.replacingOccurrences(of: "#", with: "Sharp")
-        output = output.replacingOccurrences(of: "b", with: "Flat")
+        output = output.replacingOccurrences(of: "♯", with: "Sharp")
+        output = output.replacingOccurrences(of: "♭", with: "Flat")
         
         switch output {
         case "-":
