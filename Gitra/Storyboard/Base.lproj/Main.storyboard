@@ -21,7 +21,7 @@
             <objects>
                 <viewController storyboardIdentifier="onboarding" id="BYZ-38-t0r" customClass="OnBoardingAnimation" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="yfp-Ag-Rf4">
@@ -30,7 +30,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GitraIcon-Small" translatesAutoresizingMaskIntoConstraints="NO" id="J4z-an-GWc">
                                 <rect key="frame" x="171.66666666666666" y="279" width="47" height="98"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you need help, there’s an instruction button on the top right of the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgZ-1D-FGK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you need help, there’s an instruction button on the top right of the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgZ-1D-FGK">
                                 <rect key="frame" x="62" y="508" width="266" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="5FM-yc-xTG"/>
@@ -45,7 +45,7 @@
                                 <color key="textColor" name="Yellow Accent"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before you start please make sure that you’ve tuned your guitar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBM-GV-IHz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before you start please make sure that you’ve tuned your guitar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBM-GV-IHz">
                                 <rect key="frame" x="62" y="410" width="266" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="r1r-36-DRU"/>
@@ -54,7 +54,7 @@
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We also recommend you to use earphones or headset." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUm-su-WUh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We also recommend you to use earphones or headset." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUm-su-WUh">
                                 <rect key="frame" x="62" y="460" width="266" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="uP0-Bk-DKL"/>
@@ -77,6 +77,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l90-Ra-tUJ" customClass="RoundedButton" customModule="Gitra" customModuleProvider="target">
+                                <rect key="frame" x="88" y="614" width="215" height="47"/>
+                                <color key="backgroundColor" name="Yellow Accent"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="17"/>
+                                <color key="tintColor" name="Black Background"/>
+                                <state key="normal" title="Proceed">
+                                    <color key="titleColor" name="Black Background"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Black Background"/>
@@ -84,6 +93,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gBM-GV-IHz" secondAttribute="trailing" constant="62" id="2db-a8-hmo"/>
                             <constraint firstItem="J4z-an-GWc" firstAttribute="top" secondItem="yfp-Ag-Rf4" secondAttribute="bottom" constant="32" id="4jy-0w-EQn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PUm-su-WUh" secondAttribute="trailing" constant="62" id="6E6-0D-1g6"/>
+                            <constraint firstItem="l90-Ra-tUJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="88" id="8Ro-SE-OzZ"/>
                             <constraint firstItem="gBM-GV-IHz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="Bf7-pV-6Rc"/>
                             <constraint firstItem="gBM-GV-IHz" firstAttribute="top" secondItem="J4z-an-GWc" secondAttribute="bottom" constant="33" id="PEf-1Q-tfw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ki7-0D-bbx" secondAttribute="trailing" constant="150" id="X7z-AV-amz"/>
@@ -91,7 +101,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yfp-Ag-Rf4" secondAttribute="trailing" constant="108" id="aDs-j8-i0X"/>
                             <constraint firstItem="yfp-Ag-Rf4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="108" id="aTn-yE-D3O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LgZ-1D-FGK" secondAttribute="trailing" constant="62" id="avG-Sy-FhP"/>
+                            <constraint firstItem="l90-Ra-tUJ" firstAttribute="top" secondItem="LgZ-1D-FGK" secondAttribute="bottom" constant="72" id="c2z-6s-1Pb"/>
                             <constraint firstItem="PUm-su-WUh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="cLU-oU-h0u"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l90-Ra-tUJ" secondAttribute="trailing" constant="87" id="ePV-4g-eDR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="l90-Ra-tUJ" secondAttribute="bottom" constant="61" id="efI-8q-I5v"/>
                             <constraint firstItem="J4z-an-GWc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gGJ-Mg-WA5"/>
                             <constraint firstItem="PUm-su-WUh" firstAttribute="top" secondItem="gBM-GV-IHz" secondAttribute="bottom" constant="16" id="prN-0C-1jw"/>
                             <constraint firstItem="J4z-an-GWc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="wfk-oN-cxq"/>
@@ -103,6 +116,7 @@
                     <navigationItem key="navigationItem" id="Lhz-5h-k3K"/>
                     <connections>
                         <outlet property="gitra" destination="UuL-Kw-9GI" id="i3y-s2-cqu"/>
+                        <outlet property="proceedBtn" destination="l90-Ra-tUJ" id="lhV-pA-9Dd"/>
                         <outlet property="sentence1" destination="gBM-GV-IHz" id="q13-0A-mWR"/>
                         <outlet property="sentence2" destination="PUm-su-WUh" id="zYa-vV-ONR"/>
                         <outlet property="sentence3" destination="LgZ-1D-FGK" id="hvv-eg-gh3"/>
@@ -152,13 +166,13 @@
         <image name="Gitra Text Logo" width="154.33332824707031" height="47"/>
         <image name="GitraIcon-Small" width="47" height="98"/>
         <namedColor name="Black Background">
-            <color red="0.050980392156862744" green="0.050980392156862744" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White Background">
-            <color red="0.93333333333333335" green="0.92941176470588238" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93300002813339233" green="0.92900002002716064" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Yellow Accent">
-            <color red="0.96078431372549022" green="0.62352941176470589" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.62400001287460327" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
