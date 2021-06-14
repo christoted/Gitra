@@ -33,10 +33,9 @@ class ChordPickerViewController: UIViewController {
     }
     
     @IBAction func chooseChord(_ sender: Any) {
-        updateUI()
-//        let stringToParam = Helper.convertStringToParam(root + " " + quality + " " + tension)
-//        print(stringToParam)
-//        print(root + "_" + quality + "_" + tension)
+        let stringToParam = Helper().convertStringToParam(chord: root + " " + quality + " " + tension)
+        print("Input :" + root + " " + quality + " " + tension)
+        print("Output :" + stringToParam)
     }
     
     func updateUI() {

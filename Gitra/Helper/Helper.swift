@@ -18,15 +18,15 @@ class Helper {
         
         var chordToParam:String = splitChordInput[0]
         
-        if (chord.contains("major") && (!chord.contains("six") || !chord.contains("seven") || !chord.contains("nine") || !chord.contains("eleven") || !chord.contains("thirteen") )) {
+        if ((chord.contains("major") || chord.contains("Major")) && (!chord.contains("six") || !chord.contains("seven") || !chord.contains("nine") || !chord.contains("eleven") || !chord.contains("thirteen") )) {
             chordToParam.append("")
         }
 
-        if (chord.contains("major") && (chord.contains("six") || chord.contains("seven") || chord.contains("nine") || chord.contains("eleven") || chord.contains("thirteen") )) {
+        if ((chord.contains("major") || chord.contains("Major")) && (chord.contains("six") || chord.contains("seven") || chord.contains("nine") || chord.contains("eleven") || chord.contains("thirteen") )) {
             chordToParam.append("_maj")
         }
 
-        if (chord.contains("minor")) {
+        if (chord.contains("minor")) || chord.contains("Minor"){
             chordToParam.append("_m")
         }
 
@@ -46,26 +46,25 @@ class Helper {
             chordToParam.append("_aug")
         }
 
-        if ( chord.contains("six")) {
+        if ( chord.contains("six") || chord.contains("6")) {
             chordToParam.append("6")
         }
 
-        if ( chord.contains("seven")) {
+        if ( chord.contains("seven") || chord.contains("7")) {
             chordToParam.append("7")
         }
 
-        if ( chord.contains("nine")) {
+        if ( chord.contains("nine") || chord.contains("9")) {
             chordToParam.append("9")
         }
 
-        if ( chord.contains("eleven")) {
+        if ( chord.contains("eleven") || chord.contains("11")) {
             chordToParam.append("11")
         }
 
-        if ( chord.contains("thirteen")) {
+        if ( chord.contains("thirteen") || chord.contains("13")) {
             chordToParam.append("13")
         }
-        
         
         return chordToParam
     }
