@@ -19,6 +19,11 @@ class SettingViewController: UIViewController{
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 }
 
@@ -77,9 +82,12 @@ extension SettingViewController: UITableViewDataSource{
     }
     
     @objc func switchChanged( sender: UISwitch!){
+        let status = sender.isOn ? 1 : 0
         
-        print("Table row switch changed \(sender.tag)")
-        print("The switch is \(sender.isOn ? "ON" : "OFF")")
-        
+        if sender.tag == 1{
+            UserDefaults.standard.set(status, forKey: "welcomeScreen")
+        }else{
+            UserDefaults.standard.set(status, forKey: "inputCommand")
+        }
     }
 }

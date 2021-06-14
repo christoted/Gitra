@@ -36,18 +36,17 @@ class Settings{
         self.inputCommand = UserDefaults.standard.integer(forKey: "inputCommand")
         self.chordSpeed = UserDefaults.standard.integer(forKey: "chordSpeed")
         
-        print(welcomeScreen)
-        
         if UserDefaults.standard.object(forKey: "inputModes") == nil{
-            inputModes = 1
+            inputModes = 0
         }
-        if welcomeScreen == nil{
+        //welcome screen sm input keknya masih ngaco
+        if UserDefaults.standard.object(forKey: "welcomeScreen") == nil{
             welcomeScreen = 1
         }
-        if inputCommand == nil{
-            inputCommand = 0
+        if UserDefaults.standard.object(forKey: "inputCommand") == nil{
+            inputCommand = 1
         }
-        if chordSpeed == nil{
+        if UserDefaults.standard.object(forKey: "chordSpeed") == nil{
             chordSpeed = 1
         }
         
@@ -59,12 +58,14 @@ class Settings{
         
     }
     
-  
-    
-    
     func getSettings() -> [settingsType] {
         return settings
     }
+
+    
+//    func setSettings(setting: settingsType, value: Int){
+//
+//    }
     
    /* func getMenu() -> [settingsOption]{
         return settingsMenu

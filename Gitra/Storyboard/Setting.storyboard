@@ -166,39 +166,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2. For the best experience, we recommend you to use earphone or headset." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-VF-Fiu">
-                                <rect key="frame" x="15" y="73.666666666666657" width="360" height="40.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Please make sure that you have tuned your guitar." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ye-jP-UnB">
+                                <rect key="frame" x="20" y="35" width="350" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. This app uses voice command as an input." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q27-yp-LYR">
+                                <rect key="frame" x="20" y="132.33333333333334" width="350" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3. This app uses voice command as an input." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q27-yp-LYR">
-                                <rect key="frame" x="15" y="139.33333333333334" width="360" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. For the best experience, we recommend you to use earphone or headset." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-VF-Fiu">
+                                <rect key="frame" x="20" y="83.666666666666657" width="350" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1. Please make sure that you have tuned your guitar." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ye-jP-UnB">
-                                <rect key="frame" x="15" y="25" width="360" height="40.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WPv-50-PeW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="q27-yp-LYR" firstAttribute="top" secondItem="kLj-VF-Fiu" secondAttribute="bottom" constant="8" symbolic="YES" id="7pQ-YS-nWm"/>
-                            <constraint firstItem="q27-yp-LYR" firstAttribute="leading" secondItem="WPv-50-PeW" secondAttribute="leading" constant="15" id="AxY-sM-fz8"/>
-                            <constraint firstItem="WPv-50-PeW" firstAttribute="trailing" secondItem="8ye-jP-UnB" secondAttribute="trailing" constant="15" id="JLe-F2-QNb"/>
-                            <constraint firstItem="8ye-jP-UnB" firstAttribute="leading" secondItem="WPv-50-PeW" secondAttribute="leading" constant="15" id="MTG-Ta-6kR"/>
-                            <constraint firstItem="q27-yp-LYR" firstAttribute="top" secondItem="kLj-VF-Fiu" secondAttribute="bottom" constant="25" id="MTq-0R-lZ3"/>
-                            <constraint firstItem="kLj-VF-Fiu" firstAttribute="leading" secondItem="kbT-6D-Ye4" secondAttribute="leading" constant="15" id="exd-0Y-rEB"/>
-                            <constraint firstItem="kLj-VF-Fiu" firstAttribute="top" secondItem="8ye-jP-UnB" secondAttribute="bottom" constant="25" id="guV-C3-SfI"/>
-                            <constraint firstItem="WPv-50-PeW" firstAttribute="bottom" secondItem="q27-yp-LYR" secondAttribute="bottom" constant="5" id="k40-St-37y"/>
-                            <constraint firstItem="8ye-jP-UnB" firstAttribute="top" secondItem="WPv-50-PeW" secondAttribute="top" constant="25" id="mX5-N8-UzW"/>
-                            <constraint firstItem="kLj-VF-Fiu" firstAttribute="top" secondItem="8ye-jP-UnB" secondAttribute="bottom" constant="8" symbolic="YES" id="t86-OG-ChW"/>
-                            <constraint firstItem="WPv-50-PeW" firstAttribute="trailing" secondItem="kLj-VF-Fiu" secondAttribute="trailing" constant="15" id="uk6-rl-fue"/>
-                            <constraint firstItem="WPv-50-PeW" firstAttribute="trailing" secondItem="q27-yp-LYR" secondAttribute="trailing" constant="15" id="y0N-2d-H6L"/>
+                            <constraint firstItem="q27-yp-LYR" firstAttribute="leading" secondItem="kLj-VF-Fiu" secondAttribute="leading" id="6o5-HX-k97"/>
+                            <constraint firstItem="q27-yp-LYR" firstAttribute="trailing" secondItem="kLj-VF-Fiu" secondAttribute="trailing" id="Q02-1h-4bI"/>
+                            <constraint firstItem="WPv-50-PeW" firstAttribute="trailing" secondItem="8ye-jP-UnB" secondAttribute="trailing" constant="20" id="RVh-lZ-zwk"/>
+                            <constraint firstItem="8ye-jP-UnB" firstAttribute="top" secondItem="WPv-50-PeW" secondAttribute="top" constant="35" id="Wb0-7D-AwZ"/>
+                            <constraint firstItem="kLj-VF-Fiu" firstAttribute="top" secondItem="8ye-jP-UnB" secondAttribute="bottom" constant="8" symbolic="YES" id="dFg-Jh-CAR"/>
+                            <constraint firstItem="kLj-VF-Fiu" firstAttribute="leading" secondItem="8ye-jP-UnB" secondAttribute="leading" id="iHs-P5-2oC"/>
+                            <constraint firstItem="8ye-jP-UnB" firstAttribute="leading" secondItem="WPv-50-PeW" secondAttribute="leading" constant="20" id="s3y-Hi-IFv"/>
+                            <constraint firstItem="q27-yp-LYR" firstAttribute="top" secondItem="kLj-VF-Fiu" secondAttribute="bottom" constant="8" symbolic="YES" id="veG-by-kyz"/>
+                            <constraint firstItem="kLj-VF-Fiu" firstAttribute="trailing" secondItem="8ye-jP-UnB" secondAttribute="trailing" id="ycv-Aw-EJF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Instruction" id="MwW-8Z-yQY"/>
