@@ -8,7 +8,6 @@
 import Foundation
 
 class Helper {
-
     func convertStringToParam(chord: String) -> String {
         let roots = ["C": ["c", "sea"],
                      "D": ["d", "the"],
@@ -34,17 +33,14 @@ class Helper {
                         11: ["11", "eleven"],
                         13: ["13", "thirteen"]]
 
-
         var output = chord.lowercased()
-        
-        //Split the String
-        //Example string a = "D sharp major seven" -> "D", "sharp", "major", "seven"
+
         let splitChordInput = output.split {
             $0.isWhitespace
         }.map {
             String($0)
         }
-        //Take the first index value
+
         output = checkRoot(splitChordInput[0])
 
         //Determine chord root
@@ -94,7 +90,7 @@ class Helper {
             }
             return ""
         }
-    
+
         //Merging input
         for (index, text) in splitChordInput.enumerated() where index > 0 {
             
@@ -113,8 +109,8 @@ class Helper {
             output.append(checkPitch(text))
             output.append(checkTension(text))
         }
-            
-        if output.contains("maj") && !output.contains("maj7") && (output.count == 5 || output.count == 6) {
+        
+        if output.contains("maj") && !output.contains("maj7") {
             output.removeLast(4)
         }
         
@@ -122,6 +118,7 @@ class Helper {
         
         return output
     }
+    
     
 }
 

@@ -10,11 +10,17 @@ import UIKit
 class ChordDetailViewController: UIViewController {
     @IBOutlet var fretImage:UIImageView!
     @IBOutlet var startFret:UILabel!
+    @IBOutlet var instructionLabel : UILabel!
     @IBOutlet var openCloseIndicators:UIView!
         
+    @IBOutlet weak var previousz: UIBarButtonItem!
+    @IBOutlet weak var nextz: UIBarButtonItem!
+    @IBOutlet weak var repeatz: UIBarButtonItem!
+    
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
+    
     let queryChord = ChordResponse(
             strings: "X 3 2 0 1 0",
             fingering: "X 3 2 X 1 X",
@@ -35,6 +41,7 @@ class ChordDetailViewController: UIViewController {
     var countFinger = 0
     var strings = [0,0,0,0,0,0] //0 is open and -1 is dead
     var fingering = [0,0,0,0,0,0] //-1 means no fingers are there
+    var labelForAccessibility = ["","","","","",""]
     var startingFret = 100 //initialize max value to compare
     var indicators:[FingerIndicator] = []
     
@@ -43,13 +50,63 @@ class ChordDetailViewController: UIViewController {
         navigationSetup()
         translateToCoordinate(chord:queryChord)
         displayIndicators()
+        generateStringForLabel()
+        print(strings)
+        print(fingering)
     }
     //number of frets juga
     //open or dead
     
-    func navigationSetup(){
-        //setting nav titlenya
+    var currString = -1
+    func changeString(isNext:Bool){
+        var prev = 0
+        if currString - 1 >= 0 {
+            prev = indicators.count - currString - 1
+        }else{
+            prev = 5
+        }
+        indicators[prev].backgroundColor = UIColor.ColorLibrary.whiteAccent
+        indicators[prev].setTitleColor(UIColor.ColorLibrary.blackAccent, for: .normal)
+        
+        if isNext{
+            currString = (currString + 1) % 6
+        }else{
+            currString = (currString - 1)
+            if currString < 0{
+                currString = 5
+            }
+        }
+        instructionLabel.text = labelForAccessibility[currString]
+        let imageName = "FretsGlow-" + String(currString + 1)
+        fretImage.image = UIImage(named: imageName)
+        indicators[indicators.count - 1 - currString].backgroundColor = UIColor.ColorLibrary.orangeAccent
+        indicators[indicators.count - 1 - currString].setTitleColor(UIColor.ColorLibrary.whiteAccent, for: .normal)
     }
+    
+    func generateStringForLabel(){ //Jari, Senar, Fret
+        var j = 5
+        for i in (0...5){
+            labelForAccessibility[i] = "String " + String(i+1) + ", "
+            if strings[j] == -1{
+                labelForAccessibility[i] += "Mute. "
+            }
+            else{
+                if strings[j] == 0{
+                    labelForAccessibility[i] += "Open String. "
+                }
+                else if strings[j] > 0{
+                    labelForAccessibility[i] += "Finger " + String(fingering[j]) + ", "
+                    labelForAccessibility[i] += "Fret " + String(strings[j]) + ". "
+                }
+            }
+            j-=1
+        }
+    }
+    
+    func navigationSetup(){
+        //>>>:(
+    }
+    
     
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
     //it also determine the starting fret and how many indicator(s) are present in the diagram
@@ -82,6 +139,7 @@ class ChordDetailViewController: UIViewController {
         }
     }
     
+    
     func displayIndicators(){
         let fretWidth = fretImage.frame.width
         let fretHeight = fretImage.frame.height
@@ -93,18 +151,17 @@ class ChordDetailViewController: UIViewController {
         let betweenFret = CGFloat((fretHeight - top) / 5)
         
         for i in 0..<strings.count{
-            if fingering[i]>0{ //check if there's an indicator or not
-                let indicator: FingerIndicator = {
-                    let button = FingerIndicator(title: fingering[i])
-                    return button
-                }()
-                fretImage.addSubview(indicator)
-                indicator.layer.cornerRadius = size/2
-                indicator.frame = CGRect(x: CGFloat((CGFloat(i) * betweenString)), y:  CGFloat(4 * top + (CGFloat(strings[i]-startingFret) * betweenFret)), width: size, height: size)
-                
-                indicators.append(indicator)
-            }
-        }
+                    let indicator: FingerIndicator = {
+                        let button = FingerIndicator(title: fingering[i])
+                        return button
+                    }()
+                    if fingering[i]>0{ //check if there's an indicator or not
+                        fretImage.addSubview(indicator)
+                        indicator.layer.cornerRadius = size/2
+                        indicator.frame = CGRect(x: CGFloat((CGFloat(i) * betweenString)), y:  CGFloat(4 * top + (CGFloat(strings[i]-startingFret) * betweenFret)), width: size, height: size)
+                    }
+                    indicators.append(indicator)
+                }
         startFret.text = String(startingFret - 1)
         
         for i in 0..<strings.count{
@@ -127,5 +184,16 @@ class ChordDetailViewController: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func previouszTapped(_ sender: UIBarButtonItem){
+        changeString(isNext: false)
+    }
+    @IBAction func nextzTapped(_ sender: UIBarButtonItem){
+        changeString(isNext: true)
+    }
+    @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
+        
+    }
+    
+    
 }

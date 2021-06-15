@@ -12,7 +12,6 @@ import AVFoundation
 
 class ChordVoiceViewController: UIViewController {
     
-    @IBOutlet weak var textLogo: UIImageView!
     @IBOutlet weak var imageTap: UIImageView!
     @IBOutlet weak var lblResult: UILabel!
     
@@ -40,11 +39,11 @@ class ChordVoiceViewController: UIViewController {
         super.viewDidLoad()
         
        
-//        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
-//
-//        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//        speechUtterance.rate = 0.5
-//        speechSynthesizer.speak(speechUtterance)
+        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
+        
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechUtterance.rate = 0.5
+        speechSynthesizer.speak(speechUtterance)
         
         
         // Do any additional setup after loading the view.
@@ -53,28 +52,17 @@ class ChordVoiceViewController: UIViewController {
         imageTap.addGestureRecognizer(tapGestureRecognizer)
         
         requestPermission()
-        
-        textLogo.isAccessibilityElement = true
-        textLogo.accessibilityHint = "Which Chord, do you want to play? Please tap twice the The Guitar Image Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
-        
-        imageTap.isAccessibilityElement = true
-        imageTap.accessibilityHint = ""
-        
-        
-        lblWhich.isAccessibilityElement = true
-        lblWhich.accessibilityLabel = "Tap Twice"
- 
       
         
       //  hideAnimation()
         
         
-//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-//            self.playSound()
-//            self.lottieAnimation()
-//            self.isStart = true
-//            self.speechRecognitionActive()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.playSound()
+            self.lottieAnimation()
+            self.isStart = true
+            self.speechRecognitionActive()
+        }
         
     }
     
@@ -102,12 +90,6 @@ class ChordVoiceViewController: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
-           
-            try AVAudioSession.sharedInstance().setMode(AVAudioSession.Mode.default)
-                 //try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            
             let backgroundMusic = NSURL(fileURLWithPath: url)
             
             player = try AVAudioPlayer(contentsOf: backgroundMusic as URL, fileTypeHint: AVFileType.m4a.rawValue)
@@ -126,12 +108,7 @@ class ChordVoiceViewController: UIViewController {
         isStart = !isStart
         
         if (isStart) {
-            self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
-                // Do whatever needs to be done when the timer expires
-                self.playSound()
-                self.lottieAnimation()
-            })
-           
+            lottieAnimation()
             speechRecognitionActive()
             
         } else {
@@ -175,6 +152,24 @@ class ChordVoiceViewController: UIViewController {
         
         task = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             
+//
+//
+//            guard let response = response else {
+//
+//                if ( error != nil) {
+//                    self.alertView(message: error.debugDescription)
+//                } else {
+//                    self.alertView(message: "Problem in giving response")
+//                }
+//
+//                return
+//            }
+//
+//
+//            let message = response.bestTranscription.formattedString
+//
+//            self.lblResult.text = message
+            
             var isFinal = false
 
             if let result = result {
@@ -206,15 +201,13 @@ class ChordVoiceViewController: UIViewController {
         
         if ( task.isFinishing == true) {
             
-            let text = lblResult.text
-            let splitChordInput = text?.split {
-                $0.isWhitespace
-            }.map {
-                String($0)
-            }
-            
-            
         
+            //Sound Feedback On
+            let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
+        
+            speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+            speechSynthesizer.speak(speechUtterance)
         }
     }
 
@@ -235,6 +228,8 @@ class ChordVoiceViewController: UIViewController {
             speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
             speechSynthesizer.speak(speechUtterance)
             
+            
+            
             //Call the API
             let chord = self.lblResult.text
             
@@ -243,44 +238,14 @@ class ChordVoiceViewController: UIViewController {
             let chordToResponse = Helper().convertStringToParam(chord: chordSave)
             
             print(chordToResponse)
-        
-            DispatchQueue.global().async {
-                
-                NetworkManager().getSpecificChord(chord: chordToResponse) { chordResult in
+            
+            DispatchQueue.main.async {
+                NetworkManager().getSpecificChord(chord: chordToResponse) { (chordResult) in
                     print(chordResult.chordName)
-                } completionFailed: { isFailed in
-                    
-                    let textFailed = "Chord not found, please input again"
-                   
-                    if ( isFailed == true) {
-                        
-                        let speechUtterance = AVSpeechUtterance(string: textFailed)
-                    
-                        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-                        self.speechSynthesizer.speak(speechUtterance)
-                        
-                        // Re-call
-                        DispatchQueue.main.async {
-                            self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
-                                // Do whatever needs to be done when the timer expires
-                                self.playSound()
-                                self.lottieAnimation()
-                                self.speechRecognitionActive()
-
-                            })
-                        }
-                     
-                       
-                    }
-                    
                 }
-
             }
             
-            
-         
-            
+          
             
         }
         
