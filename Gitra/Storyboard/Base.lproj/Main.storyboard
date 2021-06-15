@@ -21,7 +21,7 @@
             <objects>
                 <viewController storyboardIdentifier="onboarding" id="BYZ-38-t0r" customClass="OnBoardingAnimation" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="yfp-Ag-Rf4">
@@ -63,20 +63,6 @@
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gitra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXh-1X-3oM">
-                                <rect key="frame" x="85" y="75" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gitra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UuL-Kw-9GI">
-                                <rect key="frame" x="81" y="69" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l90-Ra-tUJ" customClass="RoundedButton" customModule="Gitra" customModuleProvider="target">
                                 <rect key="frame" x="88" y="614" width="215" height="47"/>
                                 <color key="backgroundColor" name="Yellow Accent"/>
@@ -115,7 +101,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Lhz-5h-k3K"/>
                     <connections>
-                        <outlet property="gitra" destination="UuL-Kw-9GI" id="i3y-s2-cqu"/>
                         <outlet property="proceedBtn" destination="l90-Ra-tUJ" id="lhV-pA-9Dd"/>
                         <outlet property="sentence1" destination="gBM-GV-IHz" id="q13-0A-mWR"/>
                         <outlet property="sentence2" destination="PUm-su-WUh" id="zYa-vV-ONR"/>
