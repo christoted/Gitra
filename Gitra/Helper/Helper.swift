@@ -36,13 +36,15 @@ class Helper {
 
 
         var output = chord.lowercased()
-
+        
+        //Split the String
+        //Example string a = "D sharp major seven" -> "D", "sharp", "major", "seven"
         let splitChordInput = output.split {
             $0.isWhitespace
         }.map {
             String($0)
         }
-
+        //Take the first index value
         output = checkRoot(splitChordInput[0])
 
         //Determine chord root
@@ -92,7 +94,7 @@ class Helper {
             }
             return ""
         }
-
+    
         //Merging input
         for (index, text) in splitChordInput.enumerated() where index > 0 {
             
@@ -111,8 +113,8 @@ class Helper {
             output.append(checkPitch(text))
             output.append(checkTension(text))
         }
-        
-        if output.contains("maj") && !output.contains("maj7") {
+            
+        if output.contains("maj") && !output.contains("maj7") && (output.count == 5 || output.count == 6) {
             output.removeLast(4)
         }
         
@@ -120,7 +122,6 @@ class Helper {
         
         return output
     }
-    
     
 }
 
@@ -132,55 +133,4 @@ extension String {
     mutating func capitalizeFirstLetter() {
       self = self.capitalizingFirstLetter()
     }
-    
-    func checkSpeelString(firstString: String, secondString: String, thirdString: String) -> Bool {
-        
-        let bankChord = ["C", "D", "E", "F", "G", "A", "B"]
-        let bankQuality = ["major", "minor", "add", "sus", "dim", "sus", "aug"]
-        let bankNumber = ["seven", "six", "nine", "eleven", "thirteen"]
-        
-        
-        var isValid = false
-        var isValidChord = false
-        var isValidQuality = false
-        var isValidNumber = false
-        
-        bankChord.forEach { (str) in
-            if ( !firstString.contains(str)) {
-                isValidChord = false
-            } else if (firstString.contains(str)) {
-                isValidChord = true
-            }
-        }
-        
-        bankQuality.forEach { (str) in
-            if ( !secondString.contains(str)) {
-                isValidQuality = false
-            } else if (secondString.contains(str)) {
-                isValidQuality = true
-            }
-        }
-        
-        if ( thirdString.count == 0) {
-            isValidNumber = true
-        } else if ( thirdString.count != 0) {
-            bankNumber.forEach { (str) in
-                if ( !thirdString.contains(str)) {
-                    isValidNumber = false
-                } else if (thirdString.contains(str)) {
-                    isValidNumber = true
-                }
-            }
-            
-        }
-        
-        
-        
-        if ( isValidChord == true && isValidNumber == true && isValidQuality == true) {
-            isValid = true
-        }
-        
-        return isValidChord
-    }
-    
 }

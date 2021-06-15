@@ -175,24 +175,6 @@ class ChordVoiceViewController: UIViewController {
         
         task = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             
-//
-//
-//            guard let response = response else {
-//
-//                if ( error != nil) {
-//                    self.alertView(message: error.debugDescription)
-//                } else {
-//                    self.alertView(message: "Problem in giving response")
-//                }
-//
-//                return
-//            }
-//
-//
-//            let message = response.bestTranscription.formattedString
-//
-//            self.lblResult.text = message
-            
             var isFinal = false
 
             if let result = result {
@@ -232,19 +214,6 @@ class ChordVoiceViewController: UIViewController {
             }
             
             
-            
-        
-                    //Sound Feedback On
-//                    let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
-//
-//                    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//                    speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-//                    speechSynthesizer.speak(speechUtterance)
-        
-            
-       
-          
-            
         
         }
     }
@@ -266,49 +235,6 @@ class ChordVoiceViewController: UIViewController {
             speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
             speechSynthesizer.speak(speechUtterance)
             
-            let text = lblResult.text
-            let splitChordInput = text?.split {
-                $0.isWhitespace
-            }.map {
-                String($0)
-            }
-            
-            var count = 0;
-            
-            for i in 0..<splitChordInput!.count{
-                count += 1
-            }
-            
-            print(count)
-            
-            if ( count == 3) {
-                            var firstString = splitChordInput![0]
-                            print(firstString)
-                            var secondString = splitChordInput![1]
-                            print(secondString)
-                            var thirdString = splitChordInput?[2] ?? ""
-                            print(thirdString)
-                
-              
-                
-                
-                       
-                
-            } else {
-                var firstString = splitChordInput![0]
-                print(firstString)
-                var secondString = splitChordInput![1]
-                print(secondString)
-                
-              
-                
-     
-            }
-            
-            
-          
-
-            
             //Call the API
             let chord = self.lblResult.text
             
@@ -317,14 +243,44 @@ class ChordVoiceViewController: UIViewController {
             let chordToResponse = Helper().convertStringToParam(chord: chordSave)
             
             print(chordToResponse)
-            
+        
             DispatchQueue.global().async {
-                NetworkManager().getSpecificChord(chord: chordToResponse) { (chordResult) in
+                
+                NetworkManager().getSpecificChord(chord: chordToResponse) { chordResult in
                     print(chordResult.chordName)
+                } completionFailed: { isFailed in
+                    
+                    let textFailed = "Chord not found, please input again"
+                   
+                    if ( isFailed == true) {
+                        
+                        let speechUtterance = AVSpeechUtterance(string: textFailed)
+                    
+                        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+                        self.speechSynthesizer.speak(speechUtterance)
+                        
+                        // Re-call
+                        DispatchQueue.main.async {
+                            self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+                                // Do whatever needs to be done when the timer expires
+                                self.playSound()
+                                self.lottieAnimation()
+                                self.speechRecognitionActive()
+
+                            })
+                        }
+                     
+                       
+                    }
+                    
                 }
+
             }
             
-          
+            
+         
+            
             
         }
         
