@@ -48,7 +48,6 @@ class Settings{
             chordSpeed = 1
         }
         
-        
         settings = [settingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
                     settingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
                     settingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
@@ -73,14 +72,4 @@ class Settings{
     func getSettings() -> [settingsType] {
         return settings
     }
-    
-    
-    //    func setSettings(setting: settingsType, value: Int){
-    //
-    //    }
-    
-    /* func getMenu() -> [settingsOption]{
-     return settingsMenu
-     }*/
-    
 }

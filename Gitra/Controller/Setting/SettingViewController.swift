@@ -7,8 +7,6 @@
 
 import UIKit
 
-//UIColor.ColorLibrary
-
 class SettingViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
@@ -16,27 +14,17 @@ class SettingViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
         
     }
 
-//    func refresh(){
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Settings.shared.reloadDatabase()
         settingsList = Settings.shared.getSettings()
         tableView.reloadData()
-//        print(settingsList[3].selected!)
-//        print(UserDefaults.standard.integer(forKey: "chordSpeed"))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,11 +46,6 @@ extension SettingViewController: UITableViewDelegate{
         default: print("default nih")
         }
     }
-    
-    // func tableViewShouldReturn(_ tableView: UITableView) -> Bool {
-    //   userDefaults.setValue(tableView.text, forKey: "settings")
-    //}
-    
 }
 
 extension SettingViewController: UITableViewDataSource{
@@ -76,13 +59,11 @@ extension SettingViewController: UITableViewDataSource{
         cell.textLabel?.text = settingsList[indexPath.row].titleSettings
         let selected = settingsList[indexPath.row].selected
         
-        //switch
         let switchView = UISwitch(frame: .zero)
         switchView.setOn(false, animated: true)
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         
-        // click/toggle/desc
         if settingsList[indexPath.row].type == .click{
             cell.accessoryType = .disclosureIndicator
         } else if settingsList[indexPath.row].type == .toggle{
