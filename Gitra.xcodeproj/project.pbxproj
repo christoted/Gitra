@@ -96,6 +96,7 @@
 		BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */; };
 		BD9EE8B6266E3D2B0081B951 /* Product Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B2266E3D2B0081B951 /* Product Sans Bold.ttf */; };
 		BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EE8B9266E46C90081B951 /* GradientView.swift */; };
+		BDE09EDD267721D0007E0878 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE09EDC267721D0007E0878 /* RoundedButton.swift */; };
 		D8355D752677925C00F2D718 /* FingerIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8355D742677925C00F2D718 /* FingerIndicator.swift */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +193,7 @@
 		BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold Italic.ttf"; sourceTree = "<group>"; };
 		BD9EE8B2266E3D2B0081B951 /* Product Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold.ttf"; sourceTree = "<group>"; };
 		BD9EE8B9266E46C90081B951 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		BDE09EDC267721D0007E0878 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D8355D742677925C00F2D718 /* FingerIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FingerIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 				904DC5FA2672587300DD799E /* Sounds */,
 				BD8BC1F72671B0C700A49D44 /* Colors */,
 				BD9EE8AE266E3CF80081B951 /* Fonts */,
+				BDE09EDC267721D0007E0878 /* RoundedButton.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				522785F6266E5F0C005BF33E /* ChordVoiceTunerViewController.swift in Sources */,
 				52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */,
 				5293C816266F346E00151BF7 /* ChordModel.swift in Sources */,
+				BDE09EDD267721D0007E0878 /* RoundedButton.swift in Sources */,
 				90B0163F26710C490054ED9D /* Database.swift in Sources */,
 				52698D10266DE9D5004F7AD6 /* SceneDelegate.swift in Sources */,
 				522785CE266E5AFA005BF33E /* ChordVoiceViewController.swift in Sources */,
