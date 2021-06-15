@@ -31,6 +31,10 @@
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
+		79C7DC9B2671E8A4006D4104 /* ChordInputModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */; };
+		79C7DC9D2671ED4E006D4104 /* ChordSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */; };
+		79C7DC9F2673B224006D4104 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* Settings.swift */; };
+		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
 		52EE72E226724D5500B3E7EE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72E126724D5500B3E7EE /* Helper.swift */; };
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
@@ -120,6 +124,10 @@
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
+		79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordInputModeViewController.swift; sourceTree = "<group>"; };
+		79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordSpeedViewController.swift; sourceTree = "<group>"; };
+		79C7DC9E2673B224006D4104 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
 		52EE72E126724D5500B3E7EE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
@@ -332,6 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				522785D6266E5B17005BF33E /* SettingViewController.swift */,
+				79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */,
+				79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */,
+				79C7DC9E2673B224006D4104 /* Settings.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -579,6 +590,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				522785A8266E579C005BF33E /* NetworkManager.swift in Sources */,
+				79C7DC9D2671ED4E006D4104 /* ChordSpeedViewController.swift in Sources */,
 				BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */,
 				904DC65E2672EB6A00DD799E /* NotesMapping.swift in Sources */,
 				522785CA266E5AC2005BF33E /* OnBoardingViewController.swift in Sources */,
@@ -586,6 +598,7 @@
 				7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */,
 				D8355D752677925C00F2D718 /* FingerIndicator.swift in Sources */,
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
+				79C7DC9F2673B224006D4104 /* Settings.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
 				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
 				52EE72E226724D5500B3E7EE /* Helper.swift in Sources */,
@@ -599,6 +612,7 @@
 				90B0163F26710C490054ED9D /* Database.swift in Sources */,
 				52698D10266DE9D5004F7AD6 /* SceneDelegate.swift in Sources */,
 				522785CE266E5AFA005BF33E /* ChordVoiceViewController.swift in Sources */,
+				79C7DC9B2671E8A4006D4104 /* ChordInputModeViewController.swift in Sources */,
 				522785D1266E5B04005BF33E /* ChordPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,6 +761,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TM85H5FTHU;
 				DEVELOPMENT_TEAM = S6LU55DTCY;
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -754,6 +769,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gilang.Gitra;
 				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -767,6 +783,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TM85H5FTHU;
 				DEVELOPMENT_TEAM = S6LU55DTCY;
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -774,6 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gilang.Gitra;
 				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
