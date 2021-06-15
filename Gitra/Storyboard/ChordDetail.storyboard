@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRA-ut-wzb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRA-ut-wzb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,9 +24,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Frets" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-JP-5Mp">
-                                <rect key="frame" x="57" y="80" width="300" height="450"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frets" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-JP-5Mp">
+                                <rect key="frame" x="71.5" y="85" width="271" height="411"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="height" multiplier="27:41" id="ey3-Tj-P3c"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
                                 <rect key="frame" x="82" y="580" width="250" height="21"/>
@@ -62,15 +64,40 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <color key="tintColor" name="White Background"/>
                                 <color key="barTintColor" name="Black Background"/>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ood-n9-ZZx">
+                                <rect key="frame" x="71.5" y="55" width="271" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiP-aF-VgG">
+                                <rect key="frame" x="52.5" y="80" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="White Background"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n8M-nl-EB8"/>
                         <color key="backgroundColor" name="Black Background"/>
+                        <constraints>
+                            <constraint firstItem="ood-n9-ZZx" firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="width" id="3Z5-tH-5Fr"/>
+                            <constraint firstItem="zhT-JP-5Mp" firstAttribute="centerX" secondItem="n8M-nl-EB8" secondAttribute="centerX" id="4tZ-1r-V6p"/>
+                            <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="n8M-nl-EB8" secondAttribute="top" constant="85" id="EHi-kp-LMm"/>
+                            <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="GiP-aF-VgG" secondAttribute="bottom" constant="-16" id="FUm-kp-jC8"/>
+                            <constraint firstItem="ood-n9-ZZx" firstAttribute="leading" secondItem="zhT-JP-5Mp" secondAttribute="leading" id="GgQ-tk-cRz"/>
+                            <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="ood-n9-ZZx" secondAttribute="bottom" id="ZtD-dD-chn"/>
+                            <constraint firstItem="zhT-JP-5Mp" firstAttribute="leading" secondItem="GiP-aF-VgG" secondAttribute="trailing" constant="8" symbolic="YES" id="bkj-9d-sTA"/>
+                            <constraint firstItem="ood-n9-ZZx" firstAttribute="height" secondItem="zhT-JP-5Mp" secondAttribute="height" multiplier="0.0731707" id="izM-7Q-mZw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="C Major" id="e8X-cd-SON">
                         <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="6DB-r6-jLx">
                             <color key="tintColor" name="Yellow Accent"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="fretImage" destination="zhT-JP-5Mp" id="oMc-qj-mYn"/>
+                        <outlet property="openCloseIndicators" destination="ood-n9-ZZx" id="JbC-tD-MC5"/>
+                        <outlet property="startFret" destination="GiP-aF-VgG" id="YMp-mg-Ndn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4Z-4c-Iog" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,22 +127,22 @@ Say ‘repeat’ to repeat the instructions.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Frets" width="275" height="423"/>
+        <image name="Frets" width="270" height="411"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="chevron.right.2" catalog="system" width="128" height="105"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <namedColor name="Black Background">
-            <color red="0.050980392156862744" green="0.050980392156862744" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange Accent">
-            <color red="0.9882352941176471" green="0.37647058823529411" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98799997568130493" green="0.37599998712539673" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White Background">
-            <color red="0.93333333333333335" green="0.92941176470588238" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93300002813339233" green="0.92900002002716064" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Yellow Accent">
-            <color red="0.96078431372549022" green="0.62352941176470589" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.62400001287460327" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
