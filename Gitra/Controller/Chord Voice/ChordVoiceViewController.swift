@@ -289,10 +289,10 @@ class ChordVoiceViewController: UIViewController {
                             var thirdString = splitChordInput?[2] ?? ""
                             print(thirdString)
                 
-                let isValid: Bool = Helper().checkSpeelString(firstString: firstString, secondString: secondString, thirdString: thirdString)
+              
                 
                 
-                            print(isValid)
+                       
                 
             } else {
                 var firstString = splitChordInput![0]
@@ -300,10 +300,9 @@ class ChordVoiceViewController: UIViewController {
                 var secondString = splitChordInput![1]
                 print(secondString)
                 
-                let isValid: Bool = Helper().checkSpeelString(firstString: firstString, secondString: secondString, thirdString: "")
+              
                 
-                
-                print(isValid)
+     
             }
             
             
