@@ -20,6 +20,7 @@ class ChordDetailViewController: UIViewController {
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
+    
     let queryChord = ChordResponse(
             strings: "X 3 2 0 1 0",
             fingering: "X 3 2 X 1 X",
@@ -106,6 +107,7 @@ class ChordDetailViewController: UIViewController {
         //>>>:(
     }
     
+    
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
     //it also determine the starting fret and how many indicator(s) are present in the diagram
     func translateToCoordinate(chord:ChordResponse){
@@ -136,6 +138,7 @@ class ChordDetailViewController: UIViewController {
             }
         }
     }
+    
     
     func displayIndicators(){
         let fretWidth = fretImage.frame.width
