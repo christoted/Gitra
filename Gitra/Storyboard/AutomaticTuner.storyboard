@@ -145,6 +145,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wv2-MV-ZH6">
                                 <rect key="frame" x="182" y="483.5" width="50" height="15"/>
                                 <color key="backgroundColor" name="Black Background"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Iw5-oi-Hjg"/>
                                 </constraints>

@@ -212,7 +212,7 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
                 UIAccessibility.post(notification: .announcement, argument: self.statusLabel.text)
             }
         }
-        timer2 = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+        timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if (self.tempKey == self.newKey) && self.tempKey == "Hold" {
                 self.statusLabel.text = self.selectedString + " is tuned in!"
                 self.checkTuneStatus()
