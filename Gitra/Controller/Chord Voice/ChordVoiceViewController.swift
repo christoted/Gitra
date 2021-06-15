@@ -55,7 +55,7 @@ class ChordVoiceViewController: UIViewController {
         requestPermission()
         
         textLogo.isAccessibilityElement = true
-        textLogo.accessibilityHint = "Which Chord, do you want to play? Please tap twice the The Guitar Icon Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
+        textLogo.accessibilityHint = "Which Chord, do you want to play? Please tap twice the The Guitar Image Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
         
         imageTap.isAccessibilityElement = true
         imageTap.accessibilityHint = ""
@@ -102,6 +102,12 @@ class ChordVoiceViewController: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
+           
+            try AVAudioSession.sharedInstance().setMode(AVAudioSession.Mode.default)
+                 //try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            
             let backgroundMusic = NSURL(fileURLWithPath: url)
             
             player = try AVAudioPlayer(contentsOf: backgroundMusic as URL, fileTypeHint: AVFileType.m4a.rawValue)
@@ -120,8 +126,12 @@ class ChordVoiceViewController: UIViewController {
         isStart = !isStart
         
         if (isStart) {
-            self.playSound()
-            lottieAnimation()
+            self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
+                // Do whatever needs to be done when the timer expires
+                self.playSound()
+                self.lottieAnimation()
+            })
+           
             speechRecognitionActive()
             
         } else {
@@ -214,13 +224,28 @@ class ChordVoiceViewController: UIViewController {
         
         if ( task.isFinishing == true) {
             
+            let text = lblResult.text
+            let splitChordInput = text?.split {
+                $0.isWhitespace
+            }.map {
+                String($0)
+            }
+            
+            
+            
         
-            //Sound Feedback On
-            let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
+                    //Sound Feedback On
+//                    let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
+//
+//                    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//                    speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+//                    speechSynthesizer.speak(speechUtterance)
         
-            speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-            speechSynthesizer.speak(speechUtterance)
+            
+       
+          
+            
+        
         }
     }
 
@@ -241,7 +266,49 @@ class ChordVoiceViewController: UIViewController {
             speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
             speechSynthesizer.speak(speechUtterance)
             
+            let text = lblResult.text
+            let splitChordInput = text?.split {
+                $0.isWhitespace
+            }.map {
+                String($0)
+            }
             
+            var count = 0;
+            
+            for i in 0..<splitChordInput!.count{
+                count += 1
+            }
+            
+            print(count)
+            
+            if ( count == 3) {
+                            var firstString = splitChordInput![0]
+                            print(firstString)
+                            var secondString = splitChordInput![1]
+                            print(secondString)
+                            var thirdString = splitChordInput?[2] ?? ""
+                            print(thirdString)
+                
+                let isValid: Bool = Helper().checkSpeelString(firstString: firstString, secondString: secondString, thirdString: thirdString)
+                
+                
+                            print(isValid)
+                
+            } else {
+                var firstString = splitChordInput![0]
+                print(firstString)
+                var secondString = splitChordInput![1]
+                print(secondString)
+                
+                let isValid: Bool = Helper().checkSpeelString(firstString: firstString, secondString: secondString, thirdString: "")
+                
+                
+                print(isValid)
+            }
+            
+            
+          
+
             
             //Call the API
             let chord = self.lblResult.text

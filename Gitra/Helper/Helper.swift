@@ -9,6 +9,7 @@ import Foundation
 
 class Helper {
     func convertStringToParam(chord: String)->String {
+        
 
         let splitChordInput = chord.split {
             $0.isWhitespace
@@ -69,4 +70,55 @@ class Helper {
         
         return chordToParam
     }
+    
+    func checkSpeelString(firstString: String, secondString: String, thirdString: String) -> Bool {
+        
+        let bankChord = ["C", "D", "E", "F", "G", "A", "B"]
+        let bankQuality = ["major", "minor", "add", "sus", "dim", "sus", "aug"]
+        let bankNumber = ["seven", "six", "nine", "eleven", "thirteen"]
+        
+        
+        var isValid = false
+        var isValidChord = false
+        var isValidQuality = false
+        var isValidNumber = false
+        
+        bankChord.forEach { (str) in
+            if ( !firstString.contains(str)) {
+                isValidChord = false
+            } else if (firstString.contains(str)) {
+                isValidChord = true
+            }
+        }
+        
+        bankQuality.forEach { (str) in
+            if ( !secondString.contains(str)) {
+                isValidQuality = false
+            } else if (secondString.contains(str)) {
+                isValidQuality = true
+            }
+        }
+        
+        if ( thirdString.count == 0) {
+            isValidNumber = true
+        } else if ( thirdString.count != 0) {
+            bankNumber.forEach { (str) in
+                if ( !thirdString.contains(str)) {
+                    isValidNumber = false
+                } else if (thirdString.contains(str)) {
+                    isValidNumber = true
+                }
+            }
+            
+        }
+        
+        
+        
+        if ( isValidChord == true && isValidNumber == true && isValidQuality == true) {
+            isValid = true
+        }
+        
+        return isValidChord
+    }
+    
 }
