@@ -23,9 +23,9 @@ class Database {
     }
     
     func seedChord() {
-        chordList.append(ChordQuality(quality: "-", tension: ["-", "7", "7♯5", "7♭5", "7♯9", "7♭9", "9", "11", "13"]))
-        chordList.append(ChordQuality(quality: "Major", tension: ["-", "6", "6/9", "7", "9", "11", "13"]))
-        chordList.append(ChordQuality(quality: "Minor", tension: ["-", "6", "6/9", "7", "9", "11", "13"]))
+        chordList.append(ChordQuality(quality: "-", tension: ["-", "6", "6/9", "7", "7♯5", "7♭5", "7♯9", "7♭9", "11"]))
+        chordList.append(ChordQuality(quality: "Major", tension: ["-", "6", "6/9", "7", "9", "11"]))
+        chordList.append(ChordQuality(quality: "Minor", tension: ["-", "6", "6/9", "7", "9", "11"]))
         chordList.append(ChordQuality(quality: "Add", tension: ["9", "11"]))
         chordList.append(ChordQuality(quality: "Sus", tension: ["2", "4"]))
         chordList.append(ChordQuality(quality: "Dim", tension: ["-", "7"]))

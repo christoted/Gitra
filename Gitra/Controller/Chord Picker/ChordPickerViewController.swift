@@ -33,8 +33,17 @@ class ChordPickerViewController: UIViewController {
     }
     
     @IBAction func chooseChord(_ sender: Any) {
-        let input = root + "_" + quality + tension
-        print(transformChordAPI(input))
+        var input = root + "_" + quality + tension
+        input = transformChordAPI(input)
+       
+        print(input)
+        DispatchQueue.global().async {
+            NetworkManager().getSpecificChord(chord: input) { (chordResponse) in
+                print(chordResponse.chordName)
+                print(chordResponse.fingering)
+                print(chordResponse.strings)
+            }
+        }
     }
     
     func updateUI() {
@@ -71,6 +80,8 @@ class ChordPickerViewController: UIViewController {
         output = output.replacingOccurrences(of: "/", with: "")
         output = output.replacingOccurrences(of: "minor", with: "m")
         output = output.trimmingCharacters(in: .whitespaces)
+        
+        output.capitalizeFirstLetter()
         
         return output
     }

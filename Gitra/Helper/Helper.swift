@@ -9,8 +9,13 @@ import Foundation
 
 class Helper {
     func convertStringToParam(chord: String) -> String {
-        
-        let roots = ["C", "D", "E", "F", "G", "A", "B"]
+        let roots = ["C": ["c", "sea"],
+                     "D": ["d", "the"],
+                     "E": ["e"],
+                     "F": ["f"],
+                     "G": ["g"],
+                     "A": ["a"],
+                     "B": ["b", "bee"]]
         let symbols = ["b": ["flat", "b", "♭"],
                          "#": ["sharp", "#", "♯"]]
         let qualities = ["maj": ["major", "maj"],
@@ -28,18 +33,30 @@ class Helper {
                         11: ["11", "eleven"],
                         13: ["13", "thirteen"]]
 
-        chord = chord.lowercased()
+        var output = chord.lowercased()
 
-        let splitChordInput = chord.split {
+        let splitChordInput = output.split {
             $0.isWhitespace
         }.map {
             String($0)
         }
 
-        var output = splitChordInput[0]
+        output = checkRoot(splitChordInput[0])
 
+        //Determine chord root
+        func checkRoot(_ text: String) -> String {
+            for (notation, root) in roots {
+                for char in root {
+                    if text == char {
+                        return notation
+                    }
+                }
+            }
+            return ""
+        }
+        
         //Determine sharp & flat
-        func checkRoots(_ text: String) -> String {
+        func checkPitch(_ text: String) -> String {
             for (notation, symbol) in symbols {
                 for char in symbol {
                     if text.contains(char) {
@@ -76,21 +93,23 @@ class Helper {
 
         //Merging input
         for (index, text) in splitChordInput.enumerated() where index > 0 {
-            if index == 1 && (checkRoots(text) != "") {
-                output.append(checkRoots(text))
+            
+            //Check if the second word is # or flat
+            if index == 1 && (checkPitch(text) != "") {
+                output.append(checkPitch(text))
                 output.append("_")
                 continue
-            } else if index == 1 && (checkRoots(text) == "") {
+            } else if index == 1 && (checkPitch(text) == "") {
                 output.append("_")
             } else if (index == 1 || index == 2) && checkQuality(text) == "major" {
                 output.append("maj")
             }
             
             output.append(checkQuality(text))
-            output.append(checkRoots(text))
+            output.append(checkPitch(text))
             output.append(checkTension(text))
         }
-
+        
         if output.contains("maj") && !output.contains("maj7") {
             output.removeLast(4)
         }
@@ -99,6 +118,8 @@ class Helper {
         
         return output
     }
+    
+    
 }
 
 extension String {
