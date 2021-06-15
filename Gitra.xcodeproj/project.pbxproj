@@ -92,6 +92,7 @@
 		BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */; };
 		BD9EE8B6266E3D2B0081B951 /* Product Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9EE8B2266E3D2B0081B951 /* Product Sans Bold.ttf */; };
 		BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EE8B9266E46C90081B951 /* GradientView.swift */; };
+		D8355D752677925C00F2D718 /* FingerIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8355D742677925C00F2D718 /* FingerIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,7 @@
 		BD9EE8B1266E3D2B0081B951 /* Product Sans Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold Italic.ttf"; sourceTree = "<group>"; };
 		BD9EE8B2266E3D2B0081B951 /* Product Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold.ttf"; sourceTree = "<group>"; };
 		BD9EE8B9266E46C90081B951 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D8355D742677925C00F2D718 /* FingerIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FingerIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 		522785AC266E57CE005BF33E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D8355D742677925C00F2D718 /* FingerIndicator.swift */,
 				52698D16266DE9D5004F7AD6 /* Gitra.xcdatamodeld */,
 				5293C815266F346E00151BF7 /* ChordModel.swift */,
 				90B0163C2671085A0054ED9D /* ChordQuality.swift */,
@@ -589,6 +592,7 @@
 				522785CA266E5AC2005BF33E /* OnBoardingViewController.swift in Sources */,
 				52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */,
 				7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */,
+				D8355D752677925C00F2D718 /* FingerIndicator.swift in Sources */,
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
 				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
@@ -751,14 +755,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+
 				DEVELOPMENT_TEAM = T4NVTRVW5X;
+
+				DEVELOPMENT_TEAM = S6LU55DTCY;
+
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah;
+				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -771,14 +779,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+
 				DEVELOPMENT_TEAM = T4NVTRVW5X;
+
+				DEVELOPMENT_TEAM = S6LU55DTCY;
+
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah;
+				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
