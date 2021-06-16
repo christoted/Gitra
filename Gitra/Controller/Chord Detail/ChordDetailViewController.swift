@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ChordDetailViewController: UIViewController {
     @IBOutlet var fretImage:UIImageView!
@@ -51,8 +52,8 @@ class ChordDetailViewController: UIViewController {
         translateToCoordinate(chord:queryChord)
         displayIndicators()
         generateStringForLabel()
-        print(strings)
-        print(fingering)
+        
+        repeatz.accessibilityLabel = "Repeat"
     }
     //number of frets juga
     //open or dead
@@ -139,6 +140,18 @@ class ChordDetailViewController: UIViewController {
         }
     }
     
+    func callBabangVoiceOver(message: String){
+        UIAccessibility.post(notification: .announcement, argument: message)
+    }
+    
+    func playAudioAfterVoiceOver(){
+        let currentStrings = currString
+        let currentFret = strings[currentStrings]
+        print(currentStrings)
+        print(currentFret)
+        let nada = Database.shared.getGuitarNote(currentStrings, currentFret)
+        NotesMapping.shared.playSound(nada)
+    }
     
     func displayIndicators(){
         let fretWidth = fretImage.frame.width
@@ -187,12 +200,38 @@ class ChordDetailViewController: UIViewController {
     
     @IBAction func previouszTapped(_ sender: UIBarButtonItem){
         changeString(isNext: false)
+        if (UIAccessibility.isVoiceOverRunning) {
+            let message: NSAttributedString = NSAttributedString(string: instructionLabel.text!, attributes: [.accessibilitySpeechQueueAnnouncement: true])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                UIAccessibility.post(notification: .announcement, argument: message)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.playAudioAfterVoiceOver()
+        }
     }
     @IBAction func nextzTapped(_ sender: UIBarButtonItem){
         changeString(isNext: true)
+        if (UIAccessibility.isVoiceOverRunning) {
+            let message: NSAttributedString = NSAttributedString(string: instructionLabel.text!, attributes: [.accessibilitySpeechQueueAnnouncement: true])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                UIAccessibility.post(notification: .announcement, argument: message)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.playAudioAfterVoiceOver()
+        }
     }
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
-        
+        if (UIAccessibility.isVoiceOverRunning) {
+            let message: NSAttributedString = NSAttributedString(string: instructionLabel.text!, attributes: [.accessibilitySpeechQueueAnnouncement: true])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                UIAccessibility.post(notification: .announcement, argument: message)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.playAudioAfterVoiceOver()
+        }
     }
     
     

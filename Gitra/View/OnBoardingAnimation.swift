@@ -24,10 +24,6 @@ class OnBoardingAnimation: UIViewController{
         
         let speechSynthesizer = AVSpeechSynthesizer()
         let speechUtterance = AVSpeechUtterance(string: welcome.text! + gitra.text! + " " + sentence1.text! + "  " + sentence2.text! + "  " + sentence3.text!)
-        
-        
-        
-    
         speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
         speechSynthesizer.speak(speechUtterance)

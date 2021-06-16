@@ -60,7 +60,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                                             <action selector="nextzTapped:" destination="4gU-dv-6MT" id="Wi4-k2-ugY"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Skip" image="chevron.right.2" catalog="system" id="Tb8-UJ-Y3h">
+                                    <barButtonItem title="Skip" image="repeat" catalog="system" id="Tb8-UJ-Y3h">
                                         <connections>
                                             <action selector="repeatzTapped:" destination="4gU-dv-6MT" id="69Z-nT-u0D"/>
                                         </connections>
@@ -146,8 +146,8 @@ Say ‘repeat’ to repeat the instructions.</string>
         <image name="Frets" width="270" height="411"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="chevron.right.2" catalog="system" width="128" height="105"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="repeat" catalog="system" width="128" height="99"/>
         <namedColor name="Black Background">
             <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
