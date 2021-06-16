@@ -34,6 +34,7 @@
 		52BD6A9626799FB500CB5521 /* siri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9526799FB500CB5521 /* siri.m4a */; };
 		52BD6A9826799FC600CB5521 /* audio.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9726799FC600CB5521 /* audio.json */; };
 		52BD6A9A2679A35600CB5521 /* musicbar.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A992679A35600CB5521 /* musicbar.json */; };
+		52BD6A9C2679B97000CB5521 /* volumen.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9B2679B97000CB5521 /* volumen.json */; };
 		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
 		52EE72E226724D5500B3E7EE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72E126724D5500B3E7EE /* Helper.swift */; };
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
@@ -129,6 +130,7 @@
 		52BD6A9526799FB500CB5521 /* siri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = siri.m4a; path = ../../../../../Downloads/siri.m4a; sourceTree = "<group>"; };
 		52BD6A9726799FC600CB5521 /* audio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = audio.json; path = ../../../../../Downloads/audio.json; sourceTree = "<group>"; };
 		52BD6A992679A35600CB5521 /* musicbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = musicbar.json; path = ../../../../../Downloads/musicbar.json; sourceTree = "<group>"; };
+		52BD6A9B2679B97000CB5521 /* volumen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = volumen.json; path = ../../../../../Downloads/volumen.json; sourceTree = "<group>"; };
 		52EE72E126724D5500B3E7EE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordInputModeViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				52BD6A992679A35600CB5521 /* musicbar.json */,
 				52BD6A9526799FB500CB5521 /* siri.m4a */,
+				52BD6A9B2679B97000CB5521 /* volumen.json */,
 				52BD6A9726799FC600CB5521 /* audio.json */,
 				522785AE266E57EB005BF33E /* Storyboard */,
 				522785AD266E57DF005BF33E /* View */,
@@ -551,6 +554,7 @@
 				904DC634267258DC00DD799E /* E3.mp3 in Resources */,
 				BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */,
 				52698D1A266DE9D8004F7AD6 /* Assets.xcassets in Resources */,
+				52BD6A9C2679B97000CB5521 /* volumen.json in Resources */,
 				904DC63F267258DC00DD799E /* A#5.mp3 in Resources */,
 				904DC62E267258DC00DD799E /* G#2.mp3 in Resources */,
 				904DC62A267258DC00DD799E /* G5.mp3 in Resources */,

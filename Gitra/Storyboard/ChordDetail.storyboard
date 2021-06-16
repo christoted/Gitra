@@ -114,6 +114,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                     <connections>
                         <outlet property="fretImage" destination="zhT-JP-5Mp" id="oMc-qj-mYn"/>
                         <outlet property="instructionLabel" destination="6LP-7f-TxD" id="vTV-uo-i3e"/>
+                        <outlet property="lblCommand" destination="37x-T5-CIC" id="7Yp-Bt-yG9"/>
                         <outlet property="nextz" destination="8hI-nF-EL2" id="a48-d2-3oy"/>
                         <outlet property="openCloseIndicators" destination="ood-n9-ZZx" id="JbC-tD-MC5"/>
                         <outlet property="previousz" destination="dG8-nj-PjR" id="AbC-ez-dIa"/>

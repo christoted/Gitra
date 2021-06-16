@@ -85,9 +85,9 @@ class ChordDetailViewController: UIViewController {
         print(fingering)
         
         
-        lottieAnimation()
+    //    lottieAnimation()
         
-        speechRecognitionActive()
+     //   speechRecognitionActive()
 
         playChord(strings)
         next()
@@ -97,7 +97,9 @@ class ChordDetailViewController: UIViewController {
     //open or dead
     
     var currString = -1
-    func changeString(isNext:Bool){
+    func changeString(isNext: Int){
+        
+        
         var prev = 0
         if currString - 1 >= 0 {
             prev = indicators.count - currString - 1
@@ -107,19 +109,33 @@ class ChordDetailViewController: UIViewController {
         indicators[prev].backgroundColor = UIColor.ColorLibrary.whiteAccent
         indicators[prev].setTitleColor(UIColor.ColorLibrary.blackAccent, for: .normal)
         
-        if isNext{
+        if isNext == 1{
             currString = (currString + 1) % 6
-        }else{
-            currString = (currString - 1)
+            
+            if (currString == 5) {
+                print("lima")
+                
+            }
+            
+        }else if isNext == 2{
+           currString = (currString - 1)
             if currString < 0{
                 currString = 5
             }
+        }else if isNext == 3 {
+            
         }
+        
+       
+        
+        
         instructionLabel.text = labelForAccessibility[currString]
         let imageName = "FretsGlow-" + String(currString + 1)
         fretImage.image = UIImage(named: imageName)
         indicators[indicators.count - 1 - currString].backgroundColor = UIColor.ColorLibrary.orangeAccent
         indicators[indicators.count - 1 - currString].setTitleColor(UIColor.ColorLibrary.whiteAccent, for: .normal)
+        
+       
     }
     
     func generateStringForLabel(){ //Jari, Senar, Fret
@@ -139,6 +155,7 @@ class ChordDetailViewController: UIViewController {
                 }
             }
             j-=1
+            
         }
     }
     
@@ -150,6 +167,8 @@ class ChordDetailViewController: UIViewController {
     private func speechRecognitionActive() {
         
         self.playSound()
+        
+        lottieAnimation()
         
         
         let node = audioEngine.inputNode
@@ -183,32 +202,93 @@ class ChordDetailViewController: UIViewController {
             self.alertView(message: "Recognization is not available")
         }
         
+        var isFinal = false
       
         
         task = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
-                var resultCommand = result.bestTranscription.formattedString
+                let resultCommand = result.bestTranscription.formattedString
                 // Should I compare the result here to see if it changed?
                 self.lblCommand.text = resultCommand
+                isFinal = result.isFinal
+                
             }
             
-            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
-                // Do whatever needs to be done when the timer expires
-                self.cancelSpeechRecognitization(resultCommand: self.lblCommand.text ?? "")
+            if isFinal {
                 
-            })
-            
+            } else if error == nil {
+                self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
+                    // Do whatever needs to be done when the timer expires
+                    self.cancelSpeechRecognitization(resultCommand: self.lblCommand.text ?? "")
+                    
+                   
+                })
+            }
         })
+        
+        if (task.isFinishing == true) {
+            let lowerCased = self.lblCommand.text!.lowercased()
+            
+            if (lowerCased == "next") {
+                print("Next")
+            }
+        }
         
     }
     
+    private func cancelSpeechRecognitization(resultCommand: String) {
+        
+        if ( task != nil) {
+            task.finish()
+            task.cancel()
+            task = nil
+            
+            self.hideAnimation()
+            
+            var lowerCased = resultCommand.lowercased()
+            
+            if (lowerCased == "next") {
+                changeString(isNext: 1)
+                speakInstruction()
+               // print("Next bawah")
+            } else if ( lowerCased == "repeat") {
+                changeString(isNext: 3)
+                speakInstruction()
+            } else if ( lowerCased == "finish") {
+                request.endAudio()
+                audioEngine.stop()
+                audioEngine.inputNode.removeTap(onBus: 0)
+                
+                //Sound Feedback On
+                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(queryChord.chordName)")
+            
+                speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+                speechSynthesizer.speak(speechUtterance)
+                
+            } else if ( lowerCased == "start over") {
+                currString = -1
+                changeString(isNext: 1)
+                speakInstruction()
+            }
+            
+           
+        }
+        
+     
+        
+        request.endAudio()
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
+    }
+    
     private func lottieAnimation(){
-        animationView.animation = Animation.named("musicbar")
+        animationView.animation = Animation.named("volumen")
         animationView.frame = view.bounds
         animationView.isHidden = false
         animationView.loopMode = .loop
         animationView.play()
-        view.insertSubview(animationView, belowSubview: lblCommand)
+        view.insertSubview(animationView, belowSubview: self.fretImage)
        
     }
     
@@ -223,8 +303,13 @@ class ChordDetailViewController: UIViewController {
         }
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+            
+//
+//            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+            
             try AVAudioSession.sharedInstance().setActive(true)
+            
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
             
             let backgroundMusic = NSURL(fileURLWithPath: url)
             
@@ -239,28 +324,7 @@ class ChordDetailViewController: UIViewController {
         }
     }
     
-    private func cancelSpeechRecognitization(resultCommand: String) {
-        
-        if ( task != nil) {
-            task.finish()
-            task.cancel()
-            task = nil
-        }
-        
-        self.hideAnimation()
-        
-        var lowerCased = resultCommand.lowercased()
-        
-        if (lowerCased == "next") {
-            changeString(isNext: true)
-        } else if ( lowerCased == "previous") {
-            changeString(isNext: false)
-        }
-        
-        request.endAudio()
-        audioEngine.stop()
-        audioEngine.inputNode.removeTap(onBus: 0)
-    }
+
     
 
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
@@ -398,7 +462,7 @@ class ChordDetailViewController: UIViewController {
     }
     
     @IBAction func previouszTapped(_ sender: UIBarButtonItem){
-        changeString(isNext: false)
+        changeString(isNext: 2)
         speakInstruction()
     }
     
@@ -407,8 +471,10 @@ class ChordDetailViewController: UIViewController {
     }
     
     func next() {
-        changeString(isNext: true)
+        changeString(isNext: 1)
         speakInstruction()
+       
+        
     }
     
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
@@ -426,7 +492,15 @@ class ChordDetailViewController: UIViewController {
             if self.currString == tempString {
                 self.speaker.speak(self.instructionLabel.text!, playNote: self.currentNote(self.currString))
             }
+            
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: delay + 5) {
+            //Check if user move to the next string before completing the instruction.
+            self.speechRecognitionActive()
+            self.lblCommand.text = ""
+        }
+
     }
 }
 
