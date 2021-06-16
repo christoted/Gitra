@@ -10,10 +10,13 @@ import UIKit
 class SettingViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    var settingsList = Settings.shared.getSettings()
+    var settingsList = SettingsDatabase.shared.getSettings()
+    var sender: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
@@ -22,28 +25,14 @@ class SettingViewController: UIViewController{
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Settings.shared.reloadDatabase()
-        settingsList = Settings.shared.getSettings()
+        SettingsDatabase.shared.reloadDatabase()
+        settingsList = SettingsDatabase.shared.getSettings()
         tableView.reloadData()
     }
     
-
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SettingsToSpeed"{
-            let destination = segue.destination as? ChordSpeedViewController
-            destination?.orangTua = self
-        }
+        let destination = segue.destination as? SettingListViewController
+        destination?.senderPage = self.sender
     }
 }
 
@@ -51,11 +40,11 @@ extension SettingViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch(indexPath.row){
-        case 0: performSegue(withIdentifier: "SettingsToDesc", sender: nil)
-        case 3: performSegue(withIdentifier: "SettingsToSpeed", sender: nil)
-        case 4: performSegue(withIdentifier: "SettingsToInst", sender: nil)
-        default: print("default nih")
+        //Identify the sender
+        sender = indexPath.row
+        
+        if (indexPath.row == 0) || (indexPath.row == 3) || (indexPath.row == 4) {
+            performSegue(withIdentifier: "SettingsListSegue", sender: nil)
         }
     }
 }
@@ -72,6 +61,7 @@ extension SettingViewController: UITableViewDataSource{
         let selected = settingsList[indexPath.row].selected
         
         let switchView = UISwitch(frame: .zero)
+        switchView.onTintColor = .ColorLibrary.yellowAccent
         switchView.setOn(false, animated: true)
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
@@ -94,12 +84,12 @@ extension SettingViewController: UITableViewDataSource{
         return cell
     }
     
-    @objc func switchChanged( sender: UISwitch!){
+    @objc func switchChanged(_ sender: UISwitch!){
         let status = sender.isOn ? 1 : 0
         
         if sender.tag == 1{
             UserDefaults.standard.set(status, forKey: "welcomeScreen")
-        }else{
+        } else {
             UserDefaults.standard.set(status, forKey: "inputCommand")
         }
     }

@@ -6,28 +6,28 @@
 
 import Foundation
 
-enum typeSetting{
+enum TypeSetting {
     case toggle
     case click
     case description
 }
 
-struct settingsType{
+struct SettingsType {
     var titleSettings : String?
-    var type : typeSetting?
+    var type : TypeSetting?
     var selected : Int?
     var menu : [String]?
 }
 
-class Settings{
-    static let shared = Settings()
+class SettingsDatabase{
+    static let shared = SettingsDatabase()
     
     var inputModes: Int?
     var welcomeScreen: Int?
     var inputCommand: Int?
     var chordSpeed: Int?
     
-    private var settings = [settingsType]()
+    private var settings = [SettingsType]()
     
     init() {
         self.inputModes = UserDefaults.standard.integer(forKey: "inputMode")
@@ -47,13 +47,6 @@ class Settings{
         if UserDefaults.standard.object(forKey: "chordSpeed") == nil{
             chordSpeed = 1
         }
-        
-        settings = [settingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
-                    settingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
-                    settingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
-                    settingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
-                    settingsType(titleSettings: "Instructions", type: .click)]
-        
     }
     
     func reloadDatabase(){
@@ -62,14 +55,14 @@ class Settings{
         self.inputCommand = UserDefaults.standard.integer(forKey: "inputCommand")
         self.chordSpeed = UserDefaults.standard.integer(forKey: "chordSpeed")
         
-        settings = [settingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
-                    settingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
-                    settingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
-                    settingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
-                    settingsType(titleSettings: "Instructions", type: .click)]
+        settings = [SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
+                    SettingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
+                    SettingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
+                    SettingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
+                    SettingsType(titleSettings: "Instructions", type: .click, menu: ["Voice Command Mode", "Picker Mode", "Automatic Tuner"])]
     }
     
-    func getSettings() -> [settingsType] {
+    func getSettings() -> [SettingsType] {
         return settings
     }
 }
