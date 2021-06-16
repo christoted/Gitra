@@ -37,7 +37,7 @@ class NetworkManager {
                         
                         var chordModel = ChordModel()
                         
-                        chordResponse.map { (response)  in
+                        chordResponse.forEach { (response)  in
                             chordModel.chordName = response.chordName
                             chordModel.enharmonicChordName = response.enharmonicChordName
                             chordModel.fingering = response.fingering
