@@ -88,6 +88,12 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
         stopAll()
     }
     
+    @IBAction func goToSetting(_ sender: Any) {
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
     @IBAction func startTuner(_ sender: Any) {
         if !start {
             self.conductor.start()

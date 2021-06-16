@@ -24,6 +24,7 @@ class ChordVoiceViewController: UIViewController {
     var task: SFSpeechRecognitionTask!
     var isStart: Bool = false
     let animationView = AnimationView()
+    let defaults = UserDefaults.standard
     
     //Audio
     var player: AVAudioPlayer?
@@ -39,7 +40,8 @@ class ChordVoiceViewController: UIViewController {
         UINavigationBar.appearance().isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
         self.extendedLayoutIncludesOpaqueBars = false
-       
+        checkDefault()
+                
 //        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
 //
 //        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
@@ -76,6 +78,15 @@ class ChordVoiceViewController: UIViewController {
         let pvc = UIStoryboard(name: "Setting", bundle: nil)
         let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
         self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
+    func checkDefault() {
+        let value = defaults.object(forKey: "inputMode")
+        if (value as? Int == 0) && (value != nil){
+            tabBarController?.viewControllers?.remove(at: 1)
+        } else {
+            tabBarController?.viewControllers?.remove(at: 0)
+        }
     }
     
     private func lottieAnimation(){

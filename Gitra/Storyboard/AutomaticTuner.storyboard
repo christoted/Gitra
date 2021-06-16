@@ -183,7 +183,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JXA-G4-is6">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="4Qk-3v-p7H"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="4Qk-3v-p7H">
+                            <connections>
+                                <action selector="goToSetting:" destination="Y6W-OH-hqX" id="Buf-8D-DhF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

@@ -312,6 +312,7 @@
 				90B0163E26710C490054ED9D /* Database.swift */,
 				90CD99A0267611C600464E25 /* TunerData.swift */,
 				90CD99A42676931100464E25 /* NoteFrequency.swift */,
+				79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -385,7 +386,6 @@
 				90BA3CD1267A2EA4004F1804 /* SettingsDatabase.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
 				90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */,
-				79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";

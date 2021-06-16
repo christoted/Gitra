@@ -21,7 +21,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="5Lq-fh-BI9" kind="relationship" relationship="viewControllers" id="A9a-fD-4UH"/>
-                        <segue destination="bTe-2b-nQt" kind="relationship" relationship="viewControllers" id="vb2-37-386"/>
+                        <segue destination="slS-M0-zf1" kind="relationship" relationship="viewControllers" id="ZHL-M4-Xlq"/>
+                        <segue destination="bTe-2b-nQt" kind="relationship" relationship="viewControllers" id="IUw-Ft-r4D"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mqm-di-bfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -36,7 +37,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1K-Xx-apQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="-208"/>
+            <point key="canvasLocation" x="537" y="-140"/>
+        </scene>
+        <!--ChordPickerChord-->
+        <scene sceneID="1e9-6G-WfW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChordPickerChord" id="slS-M0-zf1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="vsW-yA-TpE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="38Q-Mf-Xs0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="541" y="-33"/>
         </scene>
         <!--AutomaticTuner-->
         <scene sceneID="Vsx-aE-HfN">
@@ -46,7 +57,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7KG-BL-0oX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="530" y="86"/>
+            <point key="canvasLocation" x="529" y="84"/>
         </scene>
     </scenes>
     <resources>

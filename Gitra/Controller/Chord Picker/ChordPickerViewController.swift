@@ -23,8 +23,7 @@ class ChordPickerViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        chooseButton.layer.cornerRadius = chooseButton.frame.height / 2
-        
+
         chordPicker.dataSource = self
         chordPicker.delegate = self
         
@@ -47,6 +46,12 @@ class ChordPickerViewController: UIViewController {
             }
 
         }
+    }
+    
+    @IBAction func goToSetting(_ sender: Any) {
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     func updateUI() {
