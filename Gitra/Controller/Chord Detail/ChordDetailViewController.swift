@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Speech
+import AVFoundation
+import Lottie
 
 class ChordDetailViewController: UIViewController {
     @IBOutlet var fretImage:UIImageView!
@@ -19,7 +22,24 @@ class ChordDetailViewController: UIViewController {
     
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
+    
+    let animationView = AnimationView()
+    
+    let audioEngine = AVAudioEngine()
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    var request = SFSpeechAudioBufferRecognitionRequest()
+    var task: SFSpeechRecognitionTask!
 
+    @IBOutlet weak var lblCommand: UILabel!
+    
+    //Audio
+    var player: AVAudioPlayer?
+    
+    
+    //Timer
+    var timer: Timer?
+    
+    let speechSynthesizer = AVSpeechSynthesizer()
     
     let queryChord = ChordResponse(
             strings: "X 3 2 0 1 0",
@@ -53,6 +73,11 @@ class ChordDetailViewController: UIViewController {
         generateStringForLabel()
         print(strings)
         print(fingering)
+        
+        
+        lottieAnimation()
+        
+        speechRecognitionActive()
     }
     //number of frets juga
     //open or dead
@@ -107,6 +132,120 @@ class ChordDetailViewController: UIViewController {
         //>>>:(
     }
     
+    private func speechRecognitionActive() {
+        
+        self.playSound()
+        
+        
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus: 0)
+        
+        request = SFSpeechAudioBufferRecognitionRequest()
+        guard request != nil else {
+            fatalError("Unable to Create SFSpeech Object")
+        }
+        
+        
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
+            self.request.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch let error {
+            alertView(message: "Error Start Audio Listener")
+        }
+        
+        guard let myRecognization = SFSpeechRecognizer() else {
+            self.alertView(message: "Recognization is now allow on your local")
+            
+            return
+        }
+        
+        if !myRecognization.isAvailable {
+            self.alertView(message: "Recognization is not available")
+        }
+        
+      
+        
+        task = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
+            if let result = result {
+                var resultCommand = result.bestTranscription.formattedString
+                // Should I compare the result here to see if it changed?
+                self.lblCommand.text = resultCommand
+            }
+            
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
+                // Do whatever needs to be done when the timer expires
+                self.cancelSpeechRecognitization(resultCommand: self.lblCommand.text ?? "")
+                
+            })
+            
+        })
+        
+    }
+    
+    private func lottieAnimation(){
+        animationView.animation = Animation.named("musicbar")
+        animationView.frame = view.bounds
+        animationView.isHidden = false
+        animationView.loopMode = .loop
+        animationView.play()
+        view.insertSubview(animationView, belowSubview: lblCommand)
+       
+    }
+    
+    private func hideAnimation() {
+        animationView.isHidden = true
+    }
+    
+    private func playSound() {
+        guard let url = Bundle.main.path(forResource: "siri", ofType: "m4a") else {
+            print("URL not found")
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            let backgroundMusic = NSURL(fileURLWithPath: url)
+            
+            player = try AVAudioPlayer(contentsOf: backgroundMusic as URL, fileTypeHint: AVFileType.m4a.rawValue)
+            
+            guard let player = player else {return}
+            
+            player.play()
+            
+        } catch let error {
+            print("Error ", error.localizedDescription)
+        }
+    }
+    
+    private func cancelSpeechRecognitization(resultCommand: String) {
+        
+        if ( task != nil) {
+            task.finish()
+            task.cancel()
+            task = nil
+        }
+        
+        self.hideAnimation()
+        
+        var lowerCased = resultCommand.lowercased()
+        
+        if (lowerCased == "next") {
+            changeString(isNext: true)
+        } else if ( lowerCased == "previous") {
+            changeString(isNext: false)
+        }
+        
+        request.endAudio()
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
+    }
     
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
     //it also determine the starting fret and how many indicator(s) are present in the diagram
@@ -193,6 +332,16 @@ class ChordDetailViewController: UIViewController {
     }
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
         
+    }
+    
+    private func alertView(message: String) {
+        let controller = UIAlertController.init(title: "Error ocured...!", message: message, preferredStyle: .alert)
+        
+        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            controller.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(controller, animated: true, completion: nil)
     }
     
     
