@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+import AVFoundation
 
 class ChordDetailViewController: UIViewController {
     @IBOutlet var fretImage:UIImageView!
@@ -19,7 +21,7 @@ class ChordDetailViewController: UIViewController {
     
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
-
+    let speaker = Speaker()
     
     let queryChord = ChordResponse(
             strings: "X 3 2 0 1 0",
@@ -51,8 +53,8 @@ class ChordDetailViewController: UIViewController {
         translateToCoordinate(chord:queryChord)
         displayIndicators()
         generateStringForLabel()
-        print(strings)
-        print(fingering)
+        playChord(strings)
+        next()
     }
     //number of frets juga
     //open or dead
@@ -86,17 +88,17 @@ class ChordDetailViewController: UIViewController {
     func generateStringForLabel(){ //Jari, Senar, Fret
         var j = 5
         for i in (0...5){
-            labelForAccessibility[i] = "String " + String(i+1) + ", "
+            labelForAccessibility[i] = guitarString((i+1)) + " String, "
             if strings[j] == -1{
-                labelForAccessibility[i] += "Mute. "
+                labelForAccessibility[i] += "muted."
             }
             else{
                 if strings[j] == 0{
-                    labelForAccessibility[i] += "Open String. "
+                    labelForAccessibility[i] += "open string. "
                 }
                 else if strings[j] > 0{
-                    labelForAccessibility[i] += "Finger " + String(fingering[j]) + ", "
-                    labelForAccessibility[i] += "Fret " + String(strings[j]) + ". "
+                    labelForAccessibility[i] += guitarFingering((fingering[j])) + " on "
+                    labelForAccessibility[i] += "fret " + String(strings[j]) + ". "
                 }
             }
             j-=1
@@ -106,7 +108,6 @@ class ChordDetailViewController: UIViewController {
     func navigationSetup(){
         //>>>:(
     }
-    
     
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
     //it also determine the starting fret and how many indicator(s) are present in the diagram
@@ -138,7 +139,6 @@ class ChordDetailViewController: UIViewController {
             }
         }
     }
-    
     
     func displayIndicators(){
         let fretWidth = fretImage.frame.width
@@ -185,15 +185,112 @@ class ChordDetailViewController: UIViewController {
         }
     }
     
+    func playChord(_ stringsArray: [Int]) {
+        var note = [String]()
+        
+        for (index, frets) in stringsArray.enumerated() {
+            if frets >= 0 {
+                note.append(Database.shared.getGuitarNote((5 - index), frets))
+            }
+        }
+        NotesMapping.shared.playSounds(note)
+    }
+    
+    func currentNote(_ senar: Int) -> String {
+        let fret = strings[5-senar]
+        if fret >= 0 {
+            return Database.shared.getGuitarNote(senar, strings[(5 - senar)])
+        }
+        return ""
+    }
+    
+    func guitarFingering(_ finger: Int) -> String {
+        switch finger {
+        case 1 :
+            return "index finger"
+        case 2 :
+            return "middle finger"
+        case 3 :
+            return "ring finger"
+        case 4 :
+            return "pinky finger"
+        default:
+            return ""
+        }
+    }
+    
+    func guitarString(_ index: Int) -> String {
+        switch index {
+        case 1 :
+            return "1st"
+        case 2 :
+            return "2nd"
+        case 3 :
+            return "3rd"
+        default :
+            return "\(index)th"
+        }
+    }
+    
     @IBAction func previouszTapped(_ sender: UIBarButtonItem){
         changeString(isNext: false)
+        speakInstruction()
     }
+    
     @IBAction func nextzTapped(_ sender: UIBarButtonItem){
+        next()
+    }
+    
+    func next() {
         changeString(isNext: true)
+        speakInstruction()
     }
+    
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
-        
+        speakInstruction()
     }
     
+    func speakInstruction() {
+        let tempString = currString
+        speaker.stop()
+        speaker.speak(instructionLabel.text!, playNote: currentNote(currString))
+        
+        let delay: DispatchTime = (currentNote(currString) == "") ? (.now() + 0) : (.now() + 3)
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            //Check if user move to the next string before completing the instruction.
+            if self.currString == tempString {
+                self.speaker.speak(self.instructionLabel.text!, playNote: self.currentNote(self.currString))
+            }
+        }
+    }
+}
+
+class Speaker: NSObject {
+    let synth = AVSpeechSynthesizer()
+    var note = ""
     
+    override init() {
+        super.init()
+        synth.delegate = self
+    }
+    
+    func speak(_ str: String, playNote: String){
+        let utterance = AVSpeechUtterance(string: str)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+        synth.speak(utterance)
+        note = playNote
+    }
+    
+    func stop() {
+        synth.stopSpeaking(at: .immediate)
+    }
+}
+
+extension Speaker: AVSpeechSynthesizerDelegate {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        if note != "" {
+            NotesMapping.shared.playSound(note)
+        }
+    }
 }

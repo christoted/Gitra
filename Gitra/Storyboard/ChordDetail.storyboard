@@ -30,18 +30,16 @@
                                     <constraint firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="height" multiplier="27:41" id="ey3-Tj-P3c"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTD-9k-G5f">
-                                <rect key="frame" x="82" y="609" width="250" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTD-9k-G5f">
+                                <rect key="frame" x="20" y="543" width="374" height="33"/>
                                 <string key="text">Say 'next' to move to the next string.
 Say ‘repeat’ to repeat the instructions.</string>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Listening ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37x-T5-CIC">
-                                <rect key="frame" x="82" y="695" width="250" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37x-T5-CIC">
+                                <rect key="frame" x="20" y="626" width="374" height="17"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Italic" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="Orange Accent"/>
                                 <nil key="highlightedColor"/>
@@ -79,9 +77,8 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
-                                <rect key="frame" x="20" y="562" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
+                                <rect key="frame" x="20" y="516" width="374" height="17"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
@@ -90,14 +87,23 @@ Say ‘repeat’ to repeat the instructions.</string>
                         <viewLayoutGuide key="safeArea" id="n8M-nl-EB8"/>
                         <color key="backgroundColor" name="Black Background"/>
                         <constraints>
+                            <constraint firstItem="6LP-7f-TxD" firstAttribute="leading" secondItem="n8M-nl-EB8" secondAttribute="leading" constant="20" id="2TD-zP-zb5"/>
                             <constraint firstItem="ood-n9-ZZx" firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="width" id="3Z5-tH-5Fr"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="centerX" secondItem="n8M-nl-EB8" secondAttribute="centerX" id="4tZ-1r-V6p"/>
+                            <constraint firstItem="uTD-9k-G5f" firstAttribute="top" secondItem="6LP-7f-TxD" secondAttribute="bottom" constant="10" id="5jc-n0-b5u"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="n8M-nl-EB8" secondAttribute="top" constant="85" id="EHi-kp-LMm"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="GiP-aF-VgG" secondAttribute="bottom" constant="-16" id="FUm-kp-jC8"/>
                             <constraint firstItem="ood-n9-ZZx" firstAttribute="leading" secondItem="zhT-JP-5Mp" secondAttribute="leading" id="GgQ-tk-cRz"/>
+                            <constraint firstItem="37x-T5-CIC" firstAttribute="leading" secondItem="6LP-7f-TxD" secondAttribute="leading" id="KPZ-PP-rcI"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="ood-n9-ZZx" secondAttribute="bottom" id="ZtD-dD-chn"/>
+                            <constraint firstItem="uTD-9k-G5f" firstAttribute="trailing" secondItem="6LP-7f-TxD" secondAttribute="trailing" id="aHS-9v-JFH"/>
+                            <constraint firstItem="n8M-nl-EB8" firstAttribute="trailing" secondItem="6LP-7f-TxD" secondAttribute="trailing" constant="20" id="aMm-xy-gya"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="leading" secondItem="GiP-aF-VgG" secondAttribute="trailing" constant="8" symbolic="YES" id="bkj-9d-sTA"/>
+                            <constraint firstItem="uTD-9k-G5f" firstAttribute="leading" secondItem="6LP-7f-TxD" secondAttribute="leading" id="fLr-NW-bsK"/>
                             <constraint firstItem="ood-n9-ZZx" firstAttribute="height" secondItem="zhT-JP-5Mp" secondAttribute="height" multiplier="0.0731707" id="izM-7Q-mZw"/>
+                            <constraint firstItem="6LP-7f-TxD" firstAttribute="top" secondItem="zhT-JP-5Mp" secondAttribute="bottom" constant="20" id="orT-we-KZ2"/>
+                            <constraint firstItem="37x-T5-CIC" firstAttribute="top" secondItem="uTD-9k-G5f" secondAttribute="bottom" constant="50" id="qDf-FN-bGQ"/>
+                            <constraint firstItem="37x-T5-CIC" firstAttribute="trailing" secondItem="6LP-7f-TxD" secondAttribute="trailing" id="tKU-wR-dPf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="C Major" id="e8X-cd-SON">
