@@ -47,6 +47,12 @@ class SettingsDatabase{
         if UserDefaults.standard.object(forKey: "chordSpeed") == nil{
             chordSpeed = 1
         }
+        
+        settings = [SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
+                    SettingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
+                    SettingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
+                    SettingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
+                    SettingsType(titleSettings: "Instructions", type: .click, menu: ["Voice Command Mode", "Picker Mode", "Automatic Tuner"])]
     }
     
     func reloadDatabase(){

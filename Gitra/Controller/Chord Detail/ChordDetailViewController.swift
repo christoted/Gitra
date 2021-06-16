@@ -10,10 +10,7 @@ import UIKit
 import Speech
 import AVFoundation
 import Lottie
-
 import Foundation
-import AVFoundation
-
 
 class ChordDetailViewController: UIViewController {
     @IBOutlet var fretImage:UIImageView!
@@ -28,7 +25,6 @@ class ChordDetailViewController: UIViewController {
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
-    
     let animationView = AnimationView()
     
     let audioEngine = AVAudioEngine()
@@ -41,7 +37,6 @@ class ChordDetailViewController: UIViewController {
     //Audio
     var player: AVAudioPlayer?
     
-    
     //Timer
     var timer: Timer?
     
@@ -49,7 +44,6 @@ class ChordDetailViewController: UIViewController {
 
     let speaker = Speaker()
 
-    
     let queryChord = ChordResponse(
             strings: "X 3 2 0 1 0",
             fingering: "X 3 2 X 1 X",
@@ -58,14 +52,6 @@ class ChordDetailViewController: UIViewController {
             voicingID: "9223372036855826559",
             tones: "C,E,G"
         )
-//    let queryChord = ChordResponse(
-//            strings: "7 9 9 8 7 7",
-//            fingering: "1 3 4 2 1 1",
-//            chordName: "C,,,",
-//            enharmonicChordName: "C,,,",
-//            voicingID: "9223372036855826559",
-//            tones: "C,E,G"
-//        )
     
     var countFinger = 0
     var strings = [0,0,0,0,0,0] //0 is open and -1 is dead
@@ -80,10 +66,6 @@ class ChordDetailViewController: UIViewController {
         translateToCoordinate(chord:queryChord)
         displayIndicators()
         generateStringForLabel()
-
-        print(strings)
-        print(fingering)
-        
         
     //    lottieAnimation()
         
@@ -93,13 +75,11 @@ class ChordDetailViewController: UIViewController {
         next()
 
     }
+    
     //number of frets juga
     //open or dead
-    
     var currString = -1
     func changeString(isNext: Int){
-        
-        
         var prev = 0
         if currString - 1 >= 0 {
             prev = indicators.count - currString - 1
@@ -126,16 +106,12 @@ class ChordDetailViewController: UIViewController {
             
         }
         
-       
-        
-        
         instructionLabel.text = labelForAccessibility[currString]
         let imageName = "FretsGlow-" + String(currString + 1)
         fretImage.image = UIImage(named: imageName)
         indicators[indicators.count - 1 - currString].backgroundColor = UIColor.ColorLibrary.orangeAccent
         indicators[indicators.count - 1 - currString].setTitleColor(UIColor.ColorLibrary.whiteAccent, for: .normal)
         
-       
     }
     
     func generateStringForLabel(){ //Jari, Senar, Fret
@@ -162,14 +138,11 @@ class ChordDetailViewController: UIViewController {
     func navigationSetup(){
         //>>>:(
     }
-    
 
     private func speechRecognitionActive() {
         
         self.playSound()
-        
         lottieAnimation()
-        
         
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
@@ -179,7 +152,6 @@ class ChordDetailViewController: UIViewController {
             fatalError("Unable to Create SFSpeech Object")
         }
         
-        
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
             self.request.append(buffer)
         }
@@ -188,7 +160,7 @@ class ChordDetailViewController: UIViewController {
         
         do {
             try audioEngine.start()
-        } catch let error {
+        } catch {
             alertView(message: "Error Start Audio Listener")
         }
         
@@ -203,7 +175,6 @@ class ChordDetailViewController: UIViewController {
         }
         
         var isFinal = false
-      
         
         task = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
@@ -221,7 +192,6 @@ class ChordDetailViewController: UIViewController {
                     // Do whatever needs to be done when the timer expires
                     self.cancelSpeechRecognitization(resultCommand: self.lblCommand.text ?? "")
                     
-                   
                 })
             }
         })
@@ -233,7 +203,6 @@ class ChordDetailViewController: UIViewController {
                 print("Next")
             }
         }
-        
     }
     
     private func cancelSpeechRecognitization(resultCommand: String) {
@@ -245,7 +214,7 @@ class ChordDetailViewController: UIViewController {
             
             self.hideAnimation()
             
-            var lowerCased = resultCommand.lowercased()
+            let lowerCased = resultCommand.lowercased()
             
             if (lowerCased == "next") {
                 changeString(isNext: 1)
@@ -260,7 +229,7 @@ class ChordDetailViewController: UIViewController {
                 audioEngine.inputNode.removeTap(onBus: 0)
                 
                 //Sound Feedback On
-                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(queryChord.chordName)")
+                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(String(describing: self.title))")
             
                 speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                 speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
@@ -271,11 +240,7 @@ class ChordDetailViewController: UIViewController {
                 changeString(isNext: 1)
                 speakInstruction()
             }
-            
-           
         }
-        
-     
         
         request.endAudio()
         audioEngine.stop()
@@ -304,9 +269,6 @@ class ChordDetailViewController: UIViewController {
         
         do {
             
-//
-//            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
-            
             try AVAudioSession.sharedInstance().setActive(true)
             
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
@@ -323,9 +285,6 @@ class ChordDetailViewController: UIViewController {
             print("Error ", error.localizedDescription)
         }
     }
-    
-
-    
 
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
     //it also determine the starting fret and how many indicator(s) are present in the diagram
@@ -411,10 +370,7 @@ class ChordDetailViewController: UIViewController {
                 note.append(Database.shared.getGuitarNote((5 - index), frets))
             }
         }
-    //    print("Note", note)
        NotesMapping.shared.playSounds(note)
-       
-        
     }
     
     func currentNote(_ senar: Int) -> String {
@@ -424,7 +380,6 @@ class ChordDetailViewController: UIViewController {
         }
         return ""
     }
-    
     
     private func alertView(message: String) {
         let controller = UIAlertController.init(title: "Error ocured...!", message: message, preferredStyle: .alert)
@@ -476,8 +431,6 @@ class ChordDetailViewController: UIViewController {
     func next() {
         changeString(isNext: 1)
         speakInstruction()
-       
-        
     }
     
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
@@ -496,7 +449,6 @@ class ChordDetailViewController: UIViewController {
             if self.currString == tempString {
                 self.speaker.speak(self.instructionLabel.text!, playNote: self.currentNote(self.currString))
             }
-            
         }
         
         DispatchQueue.main.asyncAfter(deadline: delay + 5) {
@@ -504,16 +456,12 @@ class ChordDetailViewController: UIViewController {
             self.speechRecognitionActive()
             self.lblCommand.text = ""
         }
-
     }
 }
 
 class Speaker: NSObject {
     let synth = AVSpeechSynthesizer()
     var note = ""
-    
-
-    
 
     override init() {
         super.init()
@@ -527,7 +475,6 @@ class Speaker: NSObject {
         synth.speak(utterance)
         note = playNote
     }
-
     
     func stop() {
         synth.stopSpeaking(at: .immediate)

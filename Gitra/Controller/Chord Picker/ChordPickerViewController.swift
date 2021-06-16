@@ -39,9 +39,9 @@ class ChordPickerViewController: UIViewController {
         print(input)
         DispatchQueue.global().async {
             NetworkManager().getSpecificChord(chord: input) { (chordResponse) in
-                print(chordResponse.chordName)
-                print(chordResponse.fingering)
-                print(chordResponse.strings)
+                print(chordResponse.chordName as Any)
+                print(chordResponse.fingering as Any)
+                print(chordResponse.strings as Any)
             } completionFailed: { Bool in
                 print(Bool)
             }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CEr-JA-nyW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CEr-JA-nyW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,12 +36,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1K-Xx-apQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="-211"/>
+            <point key="canvasLocation" x="537" y="-208"/>
         </scene>
-        <!--ChordVoiceTuner-->
+        <!--AutomaticTuner-->
         <scene sceneID="Vsx-aE-HfN">
             <objects>
-                <viewControllerPlaceholder storyboardName="ChordVoiceTuner" id="bTe-2b-nQt" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="AutomaticTuner" id="bTe-2b-nQt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="y3w-yU-zrg"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7KG-BL-0oX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -51,10 +51,10 @@
     </scenes>
     <resources>
         <namedColor name="Black Background">
-            <color red="0.050980392156862744" green="0.050980392156862744" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange Accent">
-            <color red="0.9882352941176471" green="0.37647058823529411" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98799997568130493" green="0.37599998712539673" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
