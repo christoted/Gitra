@@ -42,10 +42,7 @@ class ChordPickerViewController: UIViewController {
                 print(chordResponse.chordName)
                 print(chordResponse.fingering)
                 print(chordResponse.strings)
-            } completionFailed: { Bool in
-                print(Bool)
             }
-
         }
     }
     

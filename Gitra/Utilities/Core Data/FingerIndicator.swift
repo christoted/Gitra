@@ -15,14 +15,13 @@ class FingerIndicator: UIButton {
         
     init(title: Int) {
         super.init(frame: .zero)
-        backgroundColor = .white
+        backgroundColor = UIColor.ColorLibrary.whiteAccent
         setTitle(String(title), for: .normal)
-        setTitleColor(.black, for: .normal)
+        setTitleColor(UIColor.ColorLibrary.blackAccent, for: .normal)
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         layer.masksToBounds = true
         
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

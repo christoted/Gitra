@@ -65,7 +65,6 @@
                         <outlet property="imageTap" destination="nrT-Ca-mz8" id="GFO-Ea-haC"/>
                         <outlet property="lblResult" destination="HhI-d4-hGB" id="388-fI-HVa"/>
                         <outlet property="lblWhich" destination="lvd-Cg-78v" id="e6P-Cg-8Ig"/>
-                        <outlet property="textLogo" destination="RHl-43-aw8" id="dAm-rY-w0W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27Z-cm-FVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
