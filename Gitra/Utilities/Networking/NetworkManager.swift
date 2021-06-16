@@ -15,7 +15,7 @@ class NetworkManager {
     
     let BASE_URL = "https://api.uberchord.com/v1/chords/"
     
-    func getSpecificChord(chord: String, completion: @escaping (ChordModel)->()) {
+    func getSpecificChord(chord: String, completion: @escaping (ChordModel)->(), completionFailed: @escaping (Bool)->()) {
         
         let queryURL = BASE_URL + "\(chord)"
         let url = URL(string: queryURL)
@@ -47,14 +47,17 @@ class NetworkManager {
                             completion(chordModel)
                         }
                         
-                        
+                        completion(chordModel)
                         
                     } else {
                         print("ERROR CAN'T DECODE JSON")
                     }
                     
                 } else {
+                
                     print("Error \(response.statusCode)")
+                    completionFailed(true)
+                   
                 }
             }
         
