@@ -31,18 +31,16 @@
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
-
 		52BD6A9626799FB500CB5521 /* siri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9526799FB500CB5521 /* siri.m4a */; };
 		52BD6A9826799FC600CB5521 /* audio.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9726799FC600CB5521 /* audio.json */; };
 		52BD6A9A2679A35600CB5521 /* musicbar.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A992679A35600CB5521 /* musicbar.json */; };
 		52BD6A9C2679B97000CB5521 /* volumen.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9B2679B97000CB5521 /* volumen.json */; };
-
 		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
 		52EE72E226724D5500B3E7EE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72E126724D5500B3E7EE /* Helper.swift */; };
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
 		79C7DC9B2671E8A4006D4104 /* ChordInputModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */; };
 		79C7DC9D2671ED4E006D4104 /* ChordSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */; };
-		79C7DC9F2673B224006D4104 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* Settings.swift */; };
+		79C7DC9F2673B224006D4104 /* SettingsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		904DC629267258DC00DD799E /* E5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FB267258D900DD799E /* E5.mp3 */; };
 		904DC62A267258DC00DD799E /* G5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FC267258D900DD799E /* G5.mp3 */; };
@@ -137,17 +135,15 @@
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
-
 		52BD6A9526799FB500CB5521 /* siri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = siri.m4a; path = ../../../../../Downloads/siri.m4a; sourceTree = "<group>"; };
 		52BD6A9726799FC600CB5521 /* audio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = audio.json; path = ../../../../../Downloads/audio.json; sourceTree = "<group>"; };
 		52BD6A992679A35600CB5521 /* musicbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = musicbar.json; path = ../../../../../Downloads/musicbar.json; sourceTree = "<group>"; };
 		52BD6A9B2679B97000CB5521 /* volumen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = volumen.json; path = ../../../../../Downloads/volumen.json; sourceTree = "<group>"; };
-
 		52EE72E126724D5500B3E7EE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordInputModeViewController.swift; sourceTree = "<group>"; };
 		79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordSpeedViewController.swift; sourceTree = "<group>"; };
-		79C7DC9E2673B224006D4104 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabase.swift; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
 		904DC5FB267258D900DD799E /* E5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E5.mp3; sourceTree = "<group>"; };
 		904DC5FC267258D900DD799E /* G5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G5.mp3; sourceTree = "<group>"; };
@@ -374,7 +370,7 @@
 				522785D6266E5B17005BF33E /* SettingViewController.swift */,
 				79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */,
 				79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */,
-				79C7DC9E2673B224006D4104 /* Settings.swift */,
+				79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -655,7 +651,7 @@
 				7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */,
 				D8355D752677925C00F2D718 /* FingerIndicator.swift in Sources */,
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
-				79C7DC9F2673B224006D4104 /* Settings.swift in Sources */,
+				79C7DC9F2673B224006D4104 /* SettingsDatabase.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,
 				522785D7266E5B17005BF33E /* SettingViewController.swift in Sources */,
 				52EE72E226724D5500B3E7EE /* Helper.swift in Sources */,
@@ -819,10 +815,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = T4NVTRVW5X;
-				DEVELOPMENT_TEAM = S6LU55DTCY;
-
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -842,11 +835,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = T4NVTRVW5X;
-
-				DEVELOPMENT_TEAM = S6LU55DTCY;
-
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (

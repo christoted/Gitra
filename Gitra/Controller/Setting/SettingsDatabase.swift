@@ -19,8 +19,8 @@ struct settingsType{
     var menu : [String]?
 }
 
-class Settings{
-    static let shared = Settings()
+class SettingsDatabase{
+    static let shared = SettingsDatabase()
     
     var inputModes: Int?
     var welcomeScreen: Int?

@@ -10,7 +10,7 @@ import UIKit
 class SettingViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    var settingsList = Settings.shared.getSettings()
+    var settingsList = SettingsDatabase.shared.getSettings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,8 @@ class SettingViewController: UIViewController{
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Settings.shared.reloadDatabase()
-        settingsList = Settings.shared.getSettings()
+        SettingsDatabase.shared.reloadDatabase()
+        settingsList = SettingsDatabase.shared.getSettings()
         tableView.reloadData()
     }
     

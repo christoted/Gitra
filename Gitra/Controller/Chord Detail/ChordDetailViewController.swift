@@ -411,7 +411,10 @@ class ChordDetailViewController: UIViewController {
                 note.append(Database.shared.getGuitarNote((5 - index), frets))
             }
         }
-        NotesMapping.shared.playSounds(note)
+    //    print("Note", note)
+       NotesMapping.shared.playSounds(note)
+       
+        
     }
     
     func currentNote(_ senar: Int) -> String {
@@ -478,7 +481,8 @@ class ChordDetailViewController: UIViewController {
     }
     
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
-        speakInstruction()
+     //   speakInstruction()
+        NotesMapping.shared.playSounds(["C3", "E3", "G3", "C4", "E4"])
     }
     
     func speakInstruction() {
