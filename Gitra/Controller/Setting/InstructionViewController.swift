@@ -34,6 +34,12 @@ class InstructionViewController: UIViewController {
                                 "3. On the chord detail page, say 'Next' if you want to go to the next string, and 'Repeat' if you want to repeat the note sound.\n",
                                 "4. There is a toolbar with 'Previous', 'Next', and 'Repeat' button on the bottom of the screen."
                ]
+        case 1 :
+            titleText = "Picker Mode"
+            instructionArray = ["1. If you are using picker mode, on the main page there will be a picker which you can adjust to find the chord you are looking for.\n",
+                                "2. There are 3 section that you can adjust, roots, quality, and tension.\n",
+                                "3. You can adjust the picker by swiping up or down on each section.",
+               ]
         case 2 :
             titleText = "Automatic Tuner"
             instructionArray = ["1. Press the start button in the middle of the screen to start the tuner.\n",
