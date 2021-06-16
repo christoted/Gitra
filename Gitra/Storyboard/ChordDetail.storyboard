@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRA-ut-wzb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRA-ut-wzb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,6 +30,13 @@
                                     <constraint firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="height" multiplier="27:41" id="ey3-Tj-P3c"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
+                                <rect key="frame" x="82" y="580" width="250" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                                <color key="textColor" name="White Background"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTD-9k-G5f">
                                 <rect key="frame" x="82" y="609" width="250" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,21 +57,9 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <rect key="frame" x="20" y="818" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Previous" image="chevron.left" catalog="system" id="dG8-nj-PjR">
-                                        <connections>
-                                            <action selector="previouszTapped:" destination="4gU-dv-6MT" id="OZ5-mC-8r8"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Next" image="chevron.right" catalog="system" width="305.5" id="8hI-nF-EL2">
-                                        <connections>
-                                            <action selector="nextzTapped:" destination="4gU-dv-6MT" id="Wi4-k2-ugY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Skip" image="chevron.right.2" catalog="system" id="Tb8-UJ-Y3h">
-                                        <connections>
-                                            <action selector="repeatzTapped:" destination="4gU-dv-6MT" id="69Z-nT-u0D"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem title="Previous" image="chevron.left" catalog="system" id="dG8-nj-PjR"/>
+                                    <barButtonItem title="Next" image="chevron.right" catalog="system" width="361.5" id="8hI-nF-EL2"/>
+                                    <barButtonItem title="Skip" image="chevron.right.2" catalog="system" id="Tb8-UJ-Y3h"/>
                                 </items>
                                 <color key="tintColor" name="White Background"/>
                                 <color key="barTintColor" name="Black Background"/>
@@ -76,13 +71,6 @@ Say ‘repeat’ to repeat the instructions.</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiP-aF-VgG">
                                 <rect key="frame" x="52.5" y="80" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="White Background"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
-                                <rect key="frame" x="20" y="562" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -107,11 +95,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="fretImage" destination="zhT-JP-5Mp" id="oMc-qj-mYn"/>
-                        <outlet property="instructionLabel" destination="6LP-7f-TxD" id="vTV-uo-i3e"/>
-                        <outlet property="nextz" destination="8hI-nF-EL2" id="a48-d2-3oy"/>
                         <outlet property="openCloseIndicators" destination="ood-n9-ZZx" id="JbC-tD-MC5"/>
-                        <outlet property="previousz" destination="dG8-nj-PjR" id="AbC-ez-dIa"/>
-                        <outlet property="repeatz" destination="Tb8-UJ-Y3h" id="oFV-By-fam"/>
                         <outlet property="startFret" destination="GiP-aF-VgG" id="YMp-mg-Ndn"/>
                     </connections>
                 </viewController>
