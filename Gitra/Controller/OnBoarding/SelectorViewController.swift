@@ -16,8 +16,17 @@ class SelectorViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let value = defaults.object(forKey: "welcomeScreen")
-        if (value as? Int == 0) && (value != nil){
+        
+        if OnboardingHandler.shared.isFirstLaunch {
+            defaults.set(0, forKey: "inputMode")
+            defaults.set(1, forKey: "welcomeScreen")
+            defaults.set(1, forKey: "inputCommand")
+            defaults.set(1, forKey: "chordSpeed")
+            OnboardingHandler.shared.isFirstLaunch = true
+        }
+        
+        let value = defaults.integer(forKey: "welcomeScreen")
+        if (value == 0) {
             performSegue(withIdentifier: "skipOnboarding", sender: nil)
         } else {
             performSegue(withIdentifier: "toOnboarding", sender: nil)

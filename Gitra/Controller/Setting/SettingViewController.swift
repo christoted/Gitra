@@ -75,10 +75,9 @@ extension SettingViewController: UITableViewDataSource{
             } else {
                 switchView.setOn(false, animated: true)
             }
-            
         } else if settingsList[indexPath.row].type == .description{
             cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = settingsList[indexPath.row].menu?[selected ?? 0]
+            cell.detailTextLabel?.text = settingsList[indexPath.row].menu?[selected!]
         }
         
         return cell

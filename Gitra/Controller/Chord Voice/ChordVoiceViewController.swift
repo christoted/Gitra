@@ -81,8 +81,8 @@ class ChordVoiceViewController: UIViewController {
     }
     
     func checkDefault() {
-        let value = defaults.object(forKey: "inputMode")
-        if (value as? Int == 0) && (value != nil){
+        let value = defaults.integer(forKey: "inputMode")
+        if (value == 0) {
             tabBarController?.viewControllers?.remove(at: 1)
         } else {
             tabBarController?.viewControllers?.remove(at: 0)

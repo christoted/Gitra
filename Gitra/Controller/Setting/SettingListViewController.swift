@@ -25,6 +25,7 @@ class SettingListViewController: UIViewController{
         tableView.dataSource = self
         tableView.reloadData()
         checkSourcePage()
+        
     }
     
     func checkSourcePage() {

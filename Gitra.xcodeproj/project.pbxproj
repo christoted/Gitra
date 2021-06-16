@@ -90,6 +90,7 @@
 		90766B01267A629F00FFA576 /* circle-grow.json in Resources */ = {isa = PBXBuildFile; fileRef = 90766B00267A629F00FFA576 /* circle-grow.json */; };
 		90766B03267A637C00FFA576 /* circle-grow-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 90766B02267A637C00FFA576 /* circle-grow-2.json */; };
 		90766B05267A67D000FFA576 /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90766B04267A67D000FFA576 /* SelectorViewController.swift */; };
+		90799B65267A7D3D0050B25C /* OnboardingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90799B64267A7D3D0050B25C /* OnboardingHandler.swift */; };
 		90B0163D2671085A0054ED9D /* ChordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163C2671085A0054ED9D /* ChordQuality.swift */; };
 		90B0163F26710C490054ED9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0163E26710C490054ED9D /* Database.swift */; };
 		90BA3CD3267A2EA4004F1804 /* InstructionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */; };
@@ -197,13 +198,13 @@
 		90766B00267A629F00FFA576 /* circle-grow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "circle-grow.json"; sourceTree = "<group>"; };
 		90766B02267A637C00FFA576 /* circle-grow-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "circle-grow-2.json"; sourceTree = "<group>"; };
 		90766B04267A67D000FFA576 /* SelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
+		90799B64267A7D3D0050B25C /* OnboardingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHandler.swift; sourceTree = "<group>"; };
 		90B0163C2671085A0054ED9D /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
 		90B0163E26710C490054ED9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionListTableViewCell.swift; sourceTree = "<group>"; };
 		90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingListViewController.swift; sourceTree = "<group>"; };
-		90BA3CD1267A2EA4004F1804 /* SettingsDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDatabase.swift; sourceTree = "<group>"; };
 		90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		90CD999E267610F000464E25 /* AutomaticTunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticTunerViewController.swift; sourceTree = "<group>"; };
 		90CD99A0267611C600464E25 /* TunerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerData.swift; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 				52EE72E126724D5500B3E7EE /* Helper.swift */,
 				52EE72EC26726B2100B3E7EE /* SoundHelper.swift */,
 				90CD99A2267689D700464E25 /* TunerConductor.swift */,
+				90799B64267A7D3D0050B25C /* OnboardingHandler.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -383,7 +385,6 @@
 				90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */,
 				90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */,
 				90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */,
-				90BA3CD1267A2EA4004F1804 /* SettingsDatabase.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
 				90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */,
 			);
@@ -675,6 +676,7 @@
 				52698D18266DE9D5004F7AD6 /* Gitra.xcdatamodeld in Sources */,
 				7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */,
 				D8355D752677925C00F2D718 /* FingerIndicator.swift in Sources */,
+				90799B65267A7D3D0050B25C /* OnboardingHandler.swift in Sources */,
 				522785D4266E5B0D005BF33E /* ChordDetailViewController.swift in Sources */,
 				79C7DC9F2673B224006D4104 /* SettingsDatabase.swift in Sources */,
 				BD9EE8BA266E46C90081B951 /* GradientView.swift in Sources */,

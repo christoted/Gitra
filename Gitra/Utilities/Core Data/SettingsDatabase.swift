@@ -35,19 +35,6 @@ class SettingsDatabase{
         self.inputCommand = UserDefaults.standard.integer(forKey: "inputCommand")
         self.chordSpeed = UserDefaults.standard.integer(forKey: "chordSpeed")
         
-        if UserDefaults.standard.object(forKey: "inputModes") == nil{
-            inputModes = 0
-        }
-        if UserDefaults.standard.object(forKey: "welcomeScreen") == nil{
-            welcomeScreen = 1
-        }
-        if UserDefaults.standard.object(forKey: "inputCommand") == nil{
-            inputCommand = 1
-        }
-        if UserDefaults.standard.object(forKey: "chordSpeed") == nil{
-            chordSpeed = 1
-        }
-        
         settings = [SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
                     SettingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
                     SettingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
