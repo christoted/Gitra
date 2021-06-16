@@ -15,9 +15,27 @@
                     <view key="view" contentMode="scaleToFill" id="aaQ-mH-JaK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-IL-D5T">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" id="DXA-lq-Z6I"/>
+                                    <barButtonItem title="Item" id="b4n-rg-We2"/>
+                                    <barButtonItem title="Item" id="E2i-gW-BjD"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7yg-5h-lNg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7yg-5h-lNg" firstAttribute="bottom" secondItem="wbn-IL-D5T" secondAttribute="bottom" id="AXv-y9-MCw"/>
+                            <constraint firstItem="wbn-IL-D5T" firstAttribute="leading" secondItem="7yg-5h-lNg" secondAttribute="leading" id="Fs9-Vx-LES"/>
+                            <constraint firstItem="wbn-IL-D5T" firstAttribute="trailing" secondItem="7yg-5h-lNg" secondAttribute="trailing" id="RDY-Df-4Sn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="toolbarView" destination="wbn-IL-D5T" id="XCJ-mL-d8q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7y-Yn-qaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
