@@ -31,13 +31,12 @@
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
-		79C7DC9B2671E8A4006D4104 /* ChordInputModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */; };
-		79C7DC9D2671ED4E006D4104 /* ChordSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */; };
-		79C7DC9F2673B224006D4104 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* Settings.swift */; };
-		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
 		52EE72E226724D5500B3E7EE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72E126724D5500B3E7EE /* Helper.swift */; };
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
+		79C7DC9B2671E8A4006D4104 /* ChordInputModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */; };
+		79C7DC9D2671ED4E006D4104 /* ChordSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */; };
+		79C7DC9F2673B224006D4104 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* Settings.swift */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		904DC629267258DC00DD799E /* E5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FB267258D900DD799E /* E5.mp3 */; };
 		904DC62A267258DC00DD799E /* G5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FC267258D900DD799E /* G5.mp3 */; };
@@ -124,6 +123,8 @@
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
+		52EE72E126724D5500B3E7EE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordInputModeViewController.swift; sourceTree = "<group>"; };
 		79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordSpeedViewController.swift; sourceTree = "<group>"; };
 		79C7DC9E2673B224006D4104 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -769,7 +770,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gilang.Gitra;
 				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -791,7 +791,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gilang.Gitra;
 				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
