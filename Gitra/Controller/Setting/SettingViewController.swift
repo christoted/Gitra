@@ -17,7 +17,6 @@ class SettingViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +62,7 @@ extension SettingViewController: UITableViewDataSource{
         switchView.setOn(false, animated: true)
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        switchView.onTintColor = .orange
         
         if settingsList[indexPath.row].type == .click{
             cell.accessoryType = .disclosureIndicator

@@ -43,20 +43,9 @@ extension ChordInputModeViewController: UITableViewDelegate{
         //tableView.deselectRow(at: indexPath, animated: false)
         cell?.accessoryType = .checkmark
         UserDefaults.standard.setValue(indexPath.row, forKey: "inputMode")
+        cell?.layer.borderColor = UIColor.gray.cgColor
         
     }
-    //    //baru
-    //    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    //        let cell = tableView.cellForRow(at: indexPath)
-    //        cell?.accessoryType = .checkmark
-    //        return indexPath
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-    //        let cell = tableView.cellForRow(at: indexPath)
-    //        cell?.accessoryType = .none
-    //        return indexPath
-    //    }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -77,8 +66,10 @@ extension ChordInputModeViewController: UITableViewDataSource{
         //            cell.setSelected(true, animated: true   )
         //        }
         if (indexPath.row) == UserDefaults.standard.integer(forKey: "inputMode"){
-            //  buat nyala2          tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+            //buat nyala2 tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+            //cell.setSelected(true, animated: true)
             cell.accessoryType = .checkmark
+           // highlight cell.selectionStyle = .gray
         }
         
         return cell
