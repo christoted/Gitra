@@ -41,12 +41,6 @@ class ChordVoiceViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         self.extendedLayoutIncludesOpaqueBars = false
         checkDefault()
-                
-//        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
-//
-//        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//        speechUtterance.rate = 0.5
-//        speechSynthesizer.speak(speechUtterance)
         
         // Do any additional setup after loading the view.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -64,14 +58,6 @@ class ChordVoiceViewController: UIViewController {
         lblWhich.isAccessibilityElement = true
         lblWhich.accessibilityLabel = "Tap Twice"
         
-      //  hideAnimation()
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-//            self.playSound()
-//            self.lottieAnimation()
-//            self.isStart = true
-//            self.speechRecognitionActive()
-//        }
     }
     
     @IBAction func goToSetting(_ sender: Any) {
@@ -212,9 +198,8 @@ class ChordVoiceViewController: UIViewController {
         })
         
         if ( task.isFinishing == true) {
-            
             let text = lblResult.text
-            _ = text?.split {
+            let _ = text?.split {
                 $0.isWhitespace
             }.map {
                 String($0)
