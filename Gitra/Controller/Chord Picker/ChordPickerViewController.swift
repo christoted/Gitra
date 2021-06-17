@@ -31,23 +31,52 @@ class ChordPickerViewController: UIViewController {
         updateUI()
     }
     
+    var result = ""
+    
     @IBAction func chooseChord(_ sender: Any) {
         var input = root + "_" + quality + tension
         input = transformChordAPI(input)
+        result = input
+        
+        performSegue(withIdentifier: "todetail", sender: self)
        
         print(input)
-        DispatchQueue.global().async {
-            NetworkManager().getSpecificChord(chord: input) { (chordResponse) in
-                print(chordResponse.chordName as Any)
-                print(chordResponse.fingering as Any)
-                print(chordResponse.strings as Any)
-            } completionFailed: { Bool in
-                print(Bool)
-            }
-
-        }
+//        DispatchQueue.global().async {
+//            NetworkManager().getSpecificChord(chord: input) { (chordResponse) in
+//                print(chordResponse.chordName as Any)
+//                print(chordResponse.fingering as Any)
+//                print(chordResponse.strings as Any)
+//            } completionFailed: { Bool in
+//                print(Bool)
+//            }
+//
+//        }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if segue.identifier == "todetail" {
+            DispatchQueue.global().async {
+                NetworkManager().getSpecificChord(chord:self.result) { model in
+                    
+                    let destination = segue.destination as? ChordDetailViewController
+                    
+                    print("OY", model)
+                    
+                    destination?.chordModel = model
+                } completionFailed: { failed in
+                    print(failed)
+                }
+            }
+         
+        }
+        
+  
+        
+    }
+    
+    
+ 
     @IBAction func goToSetting(_ sender: Any) {
         let pvc = UIStoryboard(name: "Setting", bundle: nil)
         let settingVC = pvc.instantiateViewController(withIdentifier: "setting")

@@ -17,11 +17,21 @@ class ChordDetailViewController: UIViewController {
     @IBOutlet var startFret:UILabel!
     @IBOutlet var instructionLabel : UILabel!
     @IBOutlet var openCloseIndicators:UIView!
-        
+    @IBOutlet weak var commandLabel: UILabel!
+    
+    
     @IBOutlet weak var previousz: UIBarButtonItem!
     @IBOutlet weak var nextz: UIBarButtonItem!
     @IBOutlet weak var repeatz: UIBarButtonItem!
     
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
+    //Chord Model for param
+    var chordModel:ChordModel?
+    var resultTest: String?
+    var senderPage: ChordPickerViewController?
+    
+
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
@@ -60,21 +70,76 @@ class ChordDetailViewController: UIViewController {
     var startingFret = 100 //initialize max value to compare
     var indicators:[FingerIndicator] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        setAlpha(isHide: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
+                
+            self.navigationSetup()
+            
+            guard let chordModelSave = chordModel else {
+                return
+            }
+            
+            self.translateToCoordinate(chord: chordModelSave)
+            self.displayIndicators()
+            self.generateStringForLabel()
+            self.title = chordModelSave.chordName
+          
+            indicatorView.stopAnimating()
+            indicatorView.hidesWhenStopped = true
+
+            UIView.animate(withDuration: 0.5) {
+                self.setAlpha(isHide: false)
+            }
+            
+            playChord(strings)
+            next()
+            
+        })
+        
+        
+    }
+    
+    private func setAlpha(isHide: Bool){
+        if (isHide) {
+            fretImage.alpha = 0
+            startFret.alpha = 0
+            instructionLabel.alpha = 0
+            openCloseIndicators.alpha = 0
+            commandLabel.alpha = 0
+            lblCommand.alpha = 0
+        } else {
+            fretImage.alpha = 1
+            startFret.alpha = 1
+            instructionLabel.alpha = 1
+            openCloseIndicators.alpha = 1
+            commandLabel.alpha = 1
+            lblCommand.alpha = 1
+            
+            
+            
+        }
+      
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationSetup()
-        translateToCoordinate(chord:queryChord)
-        displayIndicators()
-        generateStringForLabel()
+        self.title = ""
+//        navigationSetup()
+//        translateToCoordinate(chord:queryChord)
+//        displayIndicators()
+//        generateStringForLabel()
+      
         
-    //    lottieAnimation()
+      
+      
+        indicatorView.startAnimating()
         
-     //   speechRecognitionActive()
-
-        playChord(strings)
-        next()
-
+        
     }
+    
+    
     
     //number of frets juga
     //open or dead
@@ -288,7 +353,7 @@ class ChordDetailViewController: UIViewController {
 
     //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
     //it also determine the starting fret and how many indicator(s) are present in the diagram
-    func translateToCoordinate(chord:ChordResponse){
+    func translateToCoordinate(chord:ChordModel){
         guard let s = chord.strings else {return}
         let stringsComponents = s.split{ $0.isWhitespace }.map { String($0) }
         guard let f = chord.fingering else {return}

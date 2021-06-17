@@ -82,11 +82,22 @@
                     <connections>
                         <outlet property="chooseButton" destination="ozQ-Eo-Z0E" id="bPD-7D-RVL"/>
                         <outlet property="chordPicker" destination="9xL-au-uMG" id="fuu-Z5-tmf"/>
+                        <segue destination="vog-ep-oNE" kind="show" identifier="todetail" id="1Jz-y5-QyO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWc-rz-OjZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1231.8840579710145" y="123.88392857142857"/>
+        </scene>
+        <!--ChordDetail-->
+        <scene sceneID="S7Z-wQ-RxG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChordDetail" id="vog-ep-oNE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qfy-DA-CPK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zt-rZ-H6E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2003" y="69"/>
         </scene>
         <!--Chord-->
         <scene sceneID="mv2-Ut-HMS">
