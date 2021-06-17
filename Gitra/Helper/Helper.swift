@@ -11,14 +11,14 @@ class Helper {
 
     func convertStringToParam(chord: String) -> String {
         let roots = ["C": ["c", "sea"],
-                     "D": ["d", "the"],
+                     "D": ["d", "the", "t"],
                      "E": ["e"],
                      "F": ["f"],
                      "G": ["g"],
                      "A": ["a"],
                      "B": ["b", "bee"]]
         let symbols = ["b": ["flat", "b", "♭"],
-                         "#": ["sharp", "#", "♯"]]
+                         "#": ["sharp", "#", "♯", "shark"]]
         let qualities = ["maj": ["major", "maj"],
                          "m": ["minor", "min"],
                          "add": ["add"],
@@ -33,7 +33,6 @@ class Helper {
                         9: ["9", "nine", "ninth"],
                         11: ["11", "eleven"],
                         13: ["13", "thirteen"]]
-
 
         var output = chord.lowercased()
         
@@ -118,6 +117,7 @@ class Helper {
             //Check if the second word is # or flat
             if index == 1 && (checkPitch(text) != "") {
                 output.append(checkPitch(text))
+                output = swappingSharp(output)
                 output.append("_")
                 continue
             } else if index == 1 && (checkPitch(text) == "") {
@@ -126,7 +126,6 @@ class Helper {
                 output.append("maj")
             }
             
-            output = swappingSharp(output)
             output.append(checkQuality(text))
             output.append(checkPitch(text))
             output.append(checkTension(text))

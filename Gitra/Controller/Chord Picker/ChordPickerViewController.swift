@@ -19,6 +19,10 @@ class ChordPickerViewController: UIViewController {
     var quality = ""
     var tension = ""
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
