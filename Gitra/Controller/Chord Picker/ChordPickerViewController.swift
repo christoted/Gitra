@@ -39,18 +39,7 @@ class ChordPickerViewController: UIViewController {
         result = input
         
         performSegue(withIdentifier: "todetail", sender: self)
-       
         print(input)
-//        DispatchQueue.global().async {
-//            NetworkManager().getSpecificChord(chord: input) { (chordResponse) in
-//                print(chordResponse.chordName as Any)
-//                print(chordResponse.fingering as Any)
-//                print(chordResponse.strings as Any)
-//            } completionFailed: { Bool in
-//                print(Bool)
-//            }
-//
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,12 +59,7 @@ class ChordPickerViewController: UIViewController {
             }
          
         }
-        
-  
-        
     }
-    
-    
  
     @IBAction func goToSetting(_ sender: Any) {
         let pvc = UIStoryboard(name: "Setting", bundle: nil)

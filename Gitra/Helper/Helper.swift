@@ -94,7 +94,24 @@ class Helper {
             }
             return ""
         }
-    
+        
+        func swappingSharp(_ text: String) -> String {
+            switch text {
+            case "C#" :
+                return "Db"
+            case "D#" :
+                return "Eb"
+            case "F#" :
+                return "Gb"
+            case "G#" :
+                return "Ab"
+            case "A#" :
+                return "Bb"
+            default :
+                return text
+            }
+        }
+        
         //Merging input
         for (index, text) in splitChordInput.enumerated() where index > 0 {
             
@@ -109,6 +126,7 @@ class Helper {
                 output.append("maj")
             }
             
+            output = swappingSharp(output)
             output.append(checkQuality(text))
             output.append(checkPitch(text))
             output.append(checkTension(text))
@@ -122,7 +140,6 @@ class Helper {
         
         return output
     }
-    
 }
 
 extension String {
