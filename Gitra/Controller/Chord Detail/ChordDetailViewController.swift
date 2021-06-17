@@ -380,6 +380,10 @@ class ChordDetailViewController: UIViewController {
                 fingering[i] = -1
             }
         }
+        
+        if startingFret <= 2{
+            startingFret = 1
+        }
     }
     
     func displayIndicators(){
@@ -393,17 +397,17 @@ class ChordDetailViewController: UIViewController {
         let betweenFret = CGFloat((fretHeight - top) / 5)
         
         for i in 0..<strings.count{
-                    let indicator: FingerIndicator = {
-                        let button = FingerIndicator(title: fingering[i])
-                        return button
-                    }()
-                    if fingering[i]>0{ //check if there's an indicator or not
-                        fretImage.addSubview(indicator)
-                        indicator.layer.cornerRadius = size/2
-                        indicator.frame = CGRect(x: CGFloat((CGFloat(i) * betweenString)), y:  CGFloat(4 * top + (CGFloat(strings[i]-startingFret) * betweenFret)), width: size, height: size)
-                    }
-                    indicators.append(indicator)
-                }
+            let indicator: FingerIndicator = {
+                let button = FingerIndicator(title: fingering[i])
+                return button
+            }()
+            if fingering[i]>0{ //check if there's an indicator or not
+                fretImage.addSubview(indicator)
+                indicator.layer.cornerRadius = size/2
+                indicator.frame = CGRect(x: CGFloat((CGFloat(i) * betweenString)), y:  CGFloat(4 * top + (CGFloat(strings[i]-startingFret) * betweenFret)), width: size, height: size)
+            }
+            indicators.append(indicator)
+        }
         startFret.text = String(startingFret - 1)
         
         for i in 0..<strings.count{
