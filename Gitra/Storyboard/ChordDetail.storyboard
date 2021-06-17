@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRA-ut-wzb">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4gU-dv-6MT">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -21,17 +21,17 @@
             <objects>
                 <viewController storyboardIdentifier="chorddetail" id="4gU-dv-6MT" customClass="ChordDetailViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ZE-hZ-2KM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frets" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-JP-5Mp">
-                                <rect key="frame" x="71.5" y="85" width="271" height="411"/>
+                                <rect key="frame" x="59.666666666666657" y="129" width="270.66666666666674" height="411"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="height" multiplier="27:41" id="ey3-Tj-P3c"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTD-9k-G5f">
-                                <rect key="frame" x="20" y="543" width="374" height="33"/>
+                                <rect key="frame" x="20" y="587" width="350" height="32.666666666666629"/>
                                 <string key="text">Say 'next' to move to the next string.
 Say ‘repeat’ to repeat the instructions.</string>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
@@ -39,13 +39,13 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37x-T5-CIC">
-                                <rect key="frame" x="20" y="626" width="374" height="17"/>
+                                <rect key="frame" x="20" y="669.66666666666663" width="350" height="17"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Italic" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="Orange Accent"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wc-26-Ulr">
-                                <rect key="frame" x="20" y="818" width="374" height="44"/>
+                                <rect key="frame" x="20" y="766" width="350" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Previous" image="chevron.left" catalog="system" id="dG8-nj-PjR">
@@ -68,21 +68,26 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <color key="barTintColor" name="Black Background"/>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ood-n9-ZZx">
-                                <rect key="frame" x="71.5" y="55" width="271" height="30"/>
+                                <rect key="frame" x="59.666666666666657" y="99" width="270.66666666666674" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiP-aF-VgG">
-                                <rect key="frame" x="52.5" y="80" width="11" height="21"/>
+                                <rect key="frame" x="40.666666666666664" y="124" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
-                                <rect key="frame" x="20" y="516" width="374" height="17"/>
+                                <rect key="frame" x="20" y="560" width="350" height="17"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-xE-DBY">
+                                <rect key="frame" x="186" y="360" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1882379458" green="0.99966400860000004" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n8M-nl-EB8"/>
                         <color key="backgroundColor" name="Black Background"/>
@@ -112,7 +117,9 @@ Say ‘repeat’ to repeat the instructions.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="commandLabel" destination="uTD-9k-G5f" id="IFA-vE-XtK"/>
                         <outlet property="fretImage" destination="zhT-JP-5Mp" id="oMc-qj-mYn"/>
+                        <outlet property="indicatorView" destination="CZz-xE-DBY" id="yZO-iD-qGw"/>
                         <outlet property="instructionLabel" destination="6LP-7f-TxD" id="vTV-uo-i3e"/>
                         <outlet property="lblCommand" destination="37x-T5-CIC" id="7Yp-Bt-yG9"/>
                         <outlet property="nextz" destination="8hI-nF-EL2" id="a48-d2-3oy"/>
@@ -125,28 +132,6 @@ Say ‘repeat’ to repeat the instructions.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4Z-4c-Iog" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1181.1594202898552" y="89.732142857142847"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="kXt-hd-SI9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zRA-ut-wzb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qMb-Xm-G07">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Black Background"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="White Background"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4gU-dv-6MT" kind="relationship" relationship="rootViewController" id="Nzk-pc-iKc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0wK-qE-jOz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="271.01449275362319" y="89.732142857142847"/>
         </scene>
     </scenes>
     <resources>

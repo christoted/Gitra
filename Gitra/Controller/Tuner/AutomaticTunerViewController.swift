@@ -27,6 +27,11 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
     var newKey = ""
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        UINavigationBar.appearance().isTranslucent = false
+        navigationController?.navigationBar.shadowImage = UIImage()
+        self.extendedLayoutIncludesOpaqueBars = true
+        
         do {
             try Settings.setSession(category: .playAndRecord, with: [.defaultToSpeaker, .allowBluetooth])
         } catch {
@@ -47,6 +52,7 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            
         conductor.delegate = self
         
         statusLabel.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
@@ -79,7 +85,13 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.conductor.stop()
+        stopAll()
+    }
+    
+    @IBAction func goToSetting(_ sender: Any) {
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     @IBAction func startTuner(_ sender: Any) {
@@ -95,19 +107,23 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
             startTimer()
             
         } else {
-            self.conductor.stop()
-            
-            //Reset all elements to inital state
-            timer1?.invalidate()
-            timer2?.invalidate()
-            setDefaultButton()
-            selectedString = ""
-            statusLabel.text = "Tap the start button to start tuning"
-            indicatorCircle?.position = CGPoint(x: 0, y: 0)
-            startButton.setTitle("Start", for: .normal)
-            start = false
-            differenceLabel.isHidden = true
+            stopAll()
         }
+    }
+    
+    func stopAll() {
+        self.conductor.stop()
+        
+        //Reset all elements to inital state
+        timer1?.invalidate()
+        timer2?.invalidate()
+        setDefaultButton()
+        selectedString = ""
+        statusLabel.text = "Tap the start button to start tuning"
+        indicatorCircle?.position = CGPoint(x: 0, y: 0)
+        startButton.setTitle("Start", for: .normal)
+        start = false
+        differenceLabel.isHidden = true
     }
     
     @IBAction func buttonSelected(_ sender: UIButton) {

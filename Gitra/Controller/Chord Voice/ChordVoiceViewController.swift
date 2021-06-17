@@ -15,7 +15,6 @@ class ChordVoiceViewController: UIViewController {
     @IBOutlet weak var textLogo: UIImageView!
     @IBOutlet weak var imageTap: UIImageView!
     @IBOutlet weak var lblResult: UILabel!
-    
     @IBOutlet weak var lblWhich: UILabel!
     
     //MARK: - Local Properties
@@ -24,12 +23,11 @@ class ChordVoiceViewController: UIViewController {
     var request = SFSpeechAudioBufferRecognitionRequest()
     var task: SFSpeechRecognitionTask!
     var isStart: Bool = false
-    
     let animationView = AnimationView()
+    let defaults = UserDefaults.standard
     
     //Audio
     var player: AVAudioPlayer?
-    
     
     //Timer
     var timer: Timer?
@@ -39,13 +37,10 @@ class ChordVoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-//        let speechUtterance = AVSpeechUtterance(string: lblWhich.text!)
-//
-//        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//        speechUtterance.rate = 0.5
-//        speechSynthesizer.speak(speechUtterance)
-        
+        UINavigationBar.appearance().isTranslucent = false
+        navigationController?.navigationBar.shadowImage = UIImage()
+        self.extendedLayoutIncludesOpaqueBars = false
+        checkDefault()
         
         // Do any additional setup after loading the view.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -60,36 +55,44 @@ class ChordVoiceViewController: UIViewController {
         imageTap.isAccessibilityElement = true
         imageTap.accessibilityHint = ""
         
-        
         lblWhich.isAccessibilityElement = true
         lblWhich.accessibilityLabel = "Tap Twice"
- 
-      
-        
-      //  hideAnimation()
-        
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-//            self.playSound()
-//            self.lottieAnimation()
-//            self.isStart = true
-//            self.speechRecognitionActive()
-//        }
         
     }
     
+    @IBAction func goToSetting(_ sender: Any) {
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
+    func checkDefault() {
+        let value = defaults.integer(forKey: "inputMode")
+        if (value == 0) {
+            tabBarController?.viewControllers?.remove(at: 1)
+        } else {
+            tabBarController?.viewControllers?.remove(at: 0)
+        }
+    }
+    
     private func lottieAnimation(){
-        animationView.animation = Animation.named("audio")
-        animationView.frame = view.bounds
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = 1
+        }
+        
+        animationView.animation = Animation.named("circle-grow-2")
+        animationView.frame = imageTap.frame
+        animationView.contentMode = .scaleAspectFit
         animationView.isHidden = false
         animationView.loopMode = .loop
         animationView.play()
-      //  view.addSubview(animationView)
         view.insertSubview(animationView, belowSubview: imageTap)
     }
     
     private func hideAnimation() {
-        animationView.isHidden = true
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = 0
+        }
     }
     
     private func playSound() {
@@ -102,7 +105,6 @@ class ChordVoiceViewController: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
-           
             try AVAudioSession.sharedInstance().setMode(AVAudioSession.Mode.default)
                  //try audioSession.setMode(AVAudioSessionModeMeasurement)
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
@@ -138,7 +140,6 @@ class ChordVoiceViewController: UIViewController {
             cancelSpeechRecognitization()
             hideAnimation()
         }
-    
     }
     
     private func speechRecognitionActive() {
@@ -150,7 +151,6 @@ class ChordVoiceViewController: UIViewController {
             fatalError("Unable to Create SFSpeech Object")
         }
         
-        
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
             self.request.append(buffer)
         }
@@ -159,7 +159,7 @@ class ChordVoiceViewController: UIViewController {
         
         do {
             try audioEngine.start()
-        } catch let error {
+        } catch {
             alertView(message: "Error Start Audio Listener")
         }
         
@@ -192,36 +192,23 @@ class ChordVoiceViewController: UIViewController {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
                     // Do whatever needs to be done when the timer expires
                     self.cancelSpeechRecognitization()
-                    self.animationView.isHidden = true
+                    self.hideAnimation()
                 })
-                
-
-                
             }
-
-           
-            
         })
         
-        
         if ( task.isFinishing == true) {
-            
             let text = lblResult.text
-            let splitChordInput = text?.split {
+            let _ = text?.split {
                 $0.isWhitespace
             }.map {
                 String($0)
             }
-            
-            
-        
         }
     }
+    
+    var chordToResponse = ""
 
-    
-   
-    
-    
     private func cancelSpeechRecognitization() {
         
         if ( task != nil) {
@@ -240,14 +227,27 @@ class ChordVoiceViewController: UIViewController {
             
             guard let chordSave = chord else {return}
 
-            let chordToResponse = Helper().convertStringToParam(chord: chordSave)
+            chordToResponse = Helper().convertStringToParam(chord: chordSave)
             
             print(chordToResponse)
-        
-            DispatchQueue.global().async {
+            
+           performSegue(withIdentifier: "toChordDetail", sender: self)
+            
+            //For Checking But Duplicate
+         /*
+            DispatchQueue.global(qos: .background).async {
                 
-                NetworkManager().getSpecificChord(chord: chordToResponse) { chordResult in
-                    print(chordResult.chordName)
+                self.task = nil
+                
+                print("HELLO")
+                
+                NetworkManager().getSpecificChord(chord: self.chordToResponse) { chordResult in
+                    print(chordResult.chordName!)
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "toChordDetail", sender: self)
+                    }
+                   
                 } completionFailed: { isFailed in
                     
                     let textFailed = "Chord not found, please input again"
@@ -270,24 +270,31 @@ class ChordVoiceViewController: UIViewController {
 
                             })
                         }
-                     
-                       
                     }
-                    
                 }
-
             }
-            
-            
-         
-            
-            
+ */
         }
-        
-        
+ 
+            
         request.endAudio()
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toChordDetail" {
+            DispatchQueue.global().async {
+                NetworkManager().getSpecificChord(chord:self.chordToResponse) { model in
+                    
+                    let destination = segue.destination as? ChordDetailViewController
+                    
+                    destination?.chordModel = model
+                } completionFailed: { failed in
+                    print(failed)
+                }
+            }
+        }
     }
     
     private func requestPermission() {
@@ -315,16 +322,4 @@ class ChordVoiceViewController: UIViewController {
         
         self.present(controller, animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

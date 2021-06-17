@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Xz-YX-bZE">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -21,15 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="lDf-h3-zBu">
+                                <rect key="frame" x="130" y="0.0" width="154" height="50"/>
+                                <accessibility key="accessibilityConfiguration" label="Gitra Logo"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="NG5-mR-hT9"/>
+                                    <constraint firstAttribute="height" constant="50" id="hoV-Hm-yMx"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e34-0l-ivg">
-                                <rect key="frame" x="97" y="338" width="220" height="220"/>
+                                <rect key="frame" x="97" y="294" width="220" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="Jjq-LI-D7g"/>
                                     <constraint firstAttribute="width" secondItem="e34-0l-ivg" secondAttribute="height" multiplier="1:1" id="v3f-zb-fV5"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eUK-x2-TKa">
-                                <rect key="frame" x="32" y="662" width="350" height="50"/>
+                                <rect key="frame" x="32" y="564" width="350" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4A-EG-WYp">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -127,13 +135,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the start button to start tuning" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOY-zg-aMK">
-                                <rect key="frame" x="48" y="273.5" width="318.5" height="24.5"/>
+                                <rect key="frame" x="54.5" y="220.5" width="305" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="20"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrA-6c-ec9">
-                                <rect key="frame" x="152" y="412.5" width="110" height="71"/>
+                                <rect key="frame" x="155" y="370" width="104" height="68"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="48"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" name="White Background"/>
@@ -143,7 +151,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wv2-MV-ZH6">
-                                <rect key="frame" x="182" y="483.5" width="50" height="15"/>
+                                <rect key="frame" x="182" y="438" width="50" height="14"/>
                                 <color key="backgroundColor" name="Black Background"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
@@ -160,17 +168,28 @@
                         <color key="backgroundColor" name="Black Background"/>
                         <constraints>
                             <constraint firstItem="mrA-6c-ec9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4EX-DA-6pj"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="eUK-x2-TKa" secondAttribute="bottom" constant="150" id="6O1-dP-fRb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lDf-h3-zBu" secondAttribute="trailing" constant="130" id="7xd-Aq-0ZF"/>
                             <constraint firstItem="Wv2-MV-ZH6" firstAttribute="top" secondItem="mrA-6c-ec9" secondAttribute="bottom" id="CGS-I7-KUD"/>
+                            <constraint firstItem="lDf-h3-zBu" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="EC2-7n-5UD"/>
+                            <constraint firstItem="eUK-x2-TKa" firstAttribute="top" secondItem="e34-0l-ivg" secondAttribute="bottom" constant="50" id="J9X-tH-t9k"/>
                             <constraint firstItem="Wv2-MV-ZH6" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Ncv-Xr-uTs"/>
                             <constraint firstItem="e34-0l-ivg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="QpE-21-ofJ"/>
-                            <constraint firstItem="e34-0l-ivg" firstAttribute="top" secondItem="QOY-zg-aMK" secondAttribute="bottom" constant="40" id="hO4-Ah-uzk"/>
+                            <constraint firstItem="e34-0l-ivg" firstAttribute="top" secondItem="QOY-zg-aMK" secondAttribute="bottom" constant="50" id="hO4-Ah-uzk"/>
                             <constraint firstItem="eUK-x2-TKa" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="mcN-wg-qPT"/>
+                            <constraint firstItem="lDf-h3-zBu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="130" id="o0Z-4T-lYD"/>
                             <constraint firstItem="mrA-6c-ec9" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="oDH-de-uGr"/>
                             <constraint firstItem="QOY-zg-aMK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="xnZ-xe-BUv"/>
                             <constraint firstItem="e34-0l-ivg" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="yrZ-t3-eDM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="JXA-G4-is6">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="4Qk-3v-p7H">
+                            <connections>
+                                <action selector="goToSetting:" destination="Y6W-OH-hqX" id="Buf-8D-DhF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="differenceLabel" destination="Wv2-MV-ZH6" id="XhS-OL-lbF"/>
                         <outlet property="startButton" destination="mrA-6c-ec9" id="10u-vu-0qg"/>
@@ -186,10 +205,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="78"/>
+            <point key="canvasLocation" x="1026.0869565217392" y="77.678571428571431"/>
+        </scene>
+        <!--Tuner-->
+        <scene sceneID="bne-L1-xJt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Xz-YX-bZE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tuner" image="tuningfork" catalog="system" id="nQB-6u-vLJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ZKE-PO-cf3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Black Background"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="KgF-eH-nS4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L2D-Cq-jRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115.94202898550725" y="77.678571428571431"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Gitra Text Logo" width="154.5" height="47"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="tuningfork" catalog="system" width="128" height="116"/>
         <namedColor name="Black Background">
             <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

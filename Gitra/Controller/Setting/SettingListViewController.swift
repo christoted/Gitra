@@ -25,17 +25,18 @@ class SettingListViewController: UIViewController{
         tableView.dataSource = self
         tableView.reloadData()
         checkSourcePage()
+        
     }
     
     func checkSourcePage() {
         switch senderPage {
         case 0 :
             saveKey = "inputMode"
-            footerLabel.text = "By choosing voice command, you will be able to input chord by using your voice."
+            footerLabel.text = "By choosing voice command, you will be able to input a chord by using your voice. Please restart the app to see the changes."
             self.title = " Chord Input Mode"
         case 3 :
             saveKey = "chordSpeed"
-            footerLabel.text = "Determine the chord playback speed on the instruction mode. Default value is normal."
+            footerLabel.text = "Determine the chord playback speed on the instruction mode. The default value is normal."
             self.title = "Chord Speed"
         case 4 :
             saveKey = ""

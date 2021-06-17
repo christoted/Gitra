@@ -21,23 +21,24 @@ class NetworkManager {
         let url = URL(string: queryURL)
         
         let request = URLRequest(url: url!)
-        
+        var chordModel = ChordModel()
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let response = response as? HTTPURLResponse else {
                 
                 return
             }
-            
+          
             if let dataSave = data {
                 if ( response.statusCode == 200) {
                     let decoder = JSONDecoder()
                     if let chordResponse = try?
                         decoder.decode([ChordResponse].self, from: dataSave) as [ChordResponse] {
-                        
+                         
                         var chordModel = ChordModel()
+                     
                         
-                        chordResponse.map { (response)  in
+                        chordResponse.forEach { (response)  in
                             chordModel.chordName = response.chordName
                             chordModel.enharmonicChordName = response.enharmonicChordName
                             chordModel.fingering = response.fingering

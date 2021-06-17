@@ -22,7 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-Ed-2CU">
-                                <rect key="frame" x="128" y="0.0" width="158" height="47"/>
+                                <rect key="frame" x="130" y="0.0" width="154" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Z6U-iN-ImZ"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which chord do you want to play?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh6-hG-rBJ">
                                 <rect key="frame" x="69.5" y="221.5" width="275.5" height="21"/>
@@ -34,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="242.5" width="414" height="323"/>
                                 <color key="tintColor" name="Yellow Accent"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-Eo-Z0E">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-Eo-Z0E" customClass="RoundedButton" customModule="Gitra" customModuleProvider="target">
                                 <rect key="frame" x="80" y="565.5" width="254" height="50"/>
                                 <color key="backgroundColor" name="Yellow Accent"/>
                                 <constraints>
@@ -52,12 +55,12 @@
                         <viewLayoutGuide key="safeArea" id="N4W-Ju-2Nq"/>
                         <color key="backgroundColor" name="Black Background"/>
                         <constraints>
-                            <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="Hbn-Ed-2CU" secondAttribute="trailing" constant="128" id="7eY-LT-7JF"/>
+                            <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="Hbn-Ed-2CU" secondAttribute="trailing" constant="130" id="7eY-LT-7JF"/>
                             <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="centerX" secondItem="55y-Fg-iKz" secondAttribute="centerX" id="91L-tJ-duf"/>
                             <constraint firstItem="9xL-au-uMG" firstAttribute="top" secondItem="oh6-hG-rBJ" secondAttribute="bottom" id="H50-Tr-dC7"/>
                             <constraint firstItem="9xL-au-uMG" firstAttribute="height" secondItem="55y-Fg-iKz" secondAttribute="height" multiplier="0.4" id="QPE-fW-os0"/>
                             <constraint firstItem="N4W-Ju-2Nq" firstAttribute="trailing" secondItem="9xL-au-uMG" secondAttribute="trailing" id="Rz5-pd-xWi"/>
-                            <constraint firstItem="Hbn-Ed-2CU" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" constant="128" id="S1b-nf-XOw"/>
+                            <constraint firstItem="Hbn-Ed-2CU" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" constant="130" id="S1b-nf-XOw"/>
                             <constraint firstItem="9xL-au-uMG" firstAttribute="centerY" secondItem="55y-Fg-iKz" secondAttribute="centerY" id="Ypn-N0-xwd"/>
                             <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="leading" secondItem="N4W-Ju-2Nq" secondAttribute="leading" constant="80" id="d5L-5Q-vgL"/>
                             <constraint firstItem="ozQ-Eo-Z0E" firstAttribute="top" secondItem="9xL-au-uMG" secondAttribute="bottom" id="hK8-8Z-Vtg"/>
@@ -68,24 +71,41 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="dha-aZ-utT">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="204-mh-nOp">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="204-mh-nOp">
                             <color key="tintColor" name="Yellow Accent"/>
+                            <connections>
+                                <action selector="goToSetting:" destination="iFh-B7-1L4" id="KuD-cc-tia"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chooseButton" destination="ozQ-Eo-Z0E" id="bPD-7D-RVL"/>
                         <outlet property="chordPicker" destination="9xL-au-uMG" id="fuu-Z5-tmf"/>
+                        <segue destination="vog-ep-oNE" kind="show" identifier="todetail" id="1Jz-y5-QyO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWc-rz-OjZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1231.8840579710145" y="123.88392857142857"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--ChordDetail-->
+        <scene sceneID="S7Z-wQ-RxG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChordDetail" id="vog-ep-oNE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qfy-DA-CPK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zt-rZ-H6E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2003" y="69"/>
+        </scene>
+        <!--Chord-->
         <scene sceneID="mv2-Ut-HMS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="meY-uD-2LW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chord" image="music.note.list" catalog="system" id="XJ6-z4-4IW"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nYe-qz-WtL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -106,7 +126,8 @@
     </scenes>
     <resources>
         <image name="Gitra Text Logo" width="154.5" height="47"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <namedColor name="Black Background">
             <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
