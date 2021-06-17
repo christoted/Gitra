@@ -206,6 +206,8 @@ class ChordVoiceViewController: UIViewController {
             }
         }
     }
+    
+    var chordToResponse = ""
 
     private func cancelSpeechRecognitization() {
         
@@ -225,14 +227,27 @@ class ChordVoiceViewController: UIViewController {
             
             guard let chordSave = chord else {return}
 
-            let chordToResponse = Helper().convertStringToParam(chord: chordSave)
+            chordToResponse = Helper().convertStringToParam(chord: chordSave)
             
             print(chordToResponse)
-        
-            DispatchQueue.global().async {
+            
+           performSegue(withIdentifier: "toChordDetail", sender: self)
+            
+            //For Checking But Duplicate
+         /*
+            DispatchQueue.global(qos: .background).async {
                 
-                NetworkManager().getSpecificChord(chord: chordToResponse) { chordResult in
+                self.task = nil
+                
+                print("HELLO")
+                
+                NetworkManager().getSpecificChord(chord: self.chordToResponse) { chordResult in
                     print(chordResult.chordName!)
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "toChordDetail", sender: self)
+                    }
+                   
                 } completionFailed: { isFailed in
                     
                     let textFailed = "Chord not found, please input again"
@@ -258,10 +273,28 @@ class ChordVoiceViewController: UIViewController {
                     }
                 }
             }
+ */
         }
+ 
+            
         request.endAudio()
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toChordDetail" {
+            DispatchQueue.global().async {
+                NetworkManager().getSpecificChord(chord:self.chordToResponse) { model in
+                    
+                    let destination = segue.destination as? ChordDetailViewController
+                    
+                    destination?.chordModel = model
+                } completionFailed: { failed in
+                    print(failed)
+                }
+            }
+        }
     }
     
     private func requestPermission() {
