@@ -286,6 +286,9 @@ class ChordDetailViewController: UIViewController {
                 changeString(isNext: 1)
                 speakInstruction()
                // print("Next bawah")
+            } else if ( lowerCased == "previous") {
+                changeString(isNext: 2)
+                speakInstruction()
             } else if ( lowerCased == "repeat") {
                 changeString(isNext: 3)
                 speakInstruction()
