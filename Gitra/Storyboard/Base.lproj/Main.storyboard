@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ki7-0D-bbx">
-                                <rect key="frame" x="157" y="214" width="76" height="17"/>
+                                <rect key="frame" x="158" y="214" width="74.333333333333314" height="17"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="Yellow Accent"/>
                                 <nil key="highlightedColor"/>

@@ -19,6 +19,8 @@ class ChordDetailViewController: UIViewController {
     @IBOutlet var openCloseIndicators:UIView!
     @IBOutlet weak var commandLabel: UILabel!
     
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
+    
     
     @IBOutlet weak var previousz: UIButton!
     @IBOutlet weak var nextz: UIButton!
@@ -31,7 +33,6 @@ class ChordDetailViewController: UIViewController {
     var resultTitle: String?
     var senderPage: ChordPickerViewController?
     
-
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
@@ -90,6 +91,9 @@ class ChordDetailViewController: UIViewController {
             next()
         })
         
+        let settingButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = settingButton
+        
         self.tabBarController?.tabBar.isHidden = true
         
     }
@@ -128,11 +132,16 @@ class ChordDetailViewController: UIViewController {
 //        translateToCoordinate(chord:queryChord)
 //        displayIndicators()
 //        generateStringForLabel()
-      
         
         indicatorView.startAnimating()
+
     }
     
+    @objc func addTapped(){
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
+    }
     
     
     //number of frets juga
@@ -545,6 +554,8 @@ class Speaker: NSObject {
     func stop() {
         synth.stopSpeaking(at: .immediate)
     }
+    
+
 }
 
 extension Speaker: AVSpeechSynthesizerDelegate {
