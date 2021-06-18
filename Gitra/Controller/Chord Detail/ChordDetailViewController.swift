@@ -20,9 +20,9 @@ class ChordDetailViewController: UIViewController {
     @IBOutlet weak var commandLabel: UILabel!
     
     
-    @IBOutlet weak var previousz: UIBarButtonItem!
-    @IBOutlet weak var nextz: UIBarButtonItem!
-    @IBOutlet weak var repeatz: UIBarButtonItem!
+    @IBOutlet weak var previousz: UIButton!
+    @IBOutlet weak var nextz: UIButton!
+    @IBOutlet weak var repeatz: UIButton!
     
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
@@ -73,36 +73,29 @@ class ChordDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setAlpha(isHide: true)
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
-                
             self.navigationSetup()
-            
             guard let chordModelSave = chordModel else {
                 return
             }
-            
             self.translateToCoordinate(chord: chordModelSave)
             self.displayIndicators()
             self.generateStringForLabel()
-            
-            
-          
             self.title = resultTitle
-            
-          
-          
             indicatorView.stopAnimating()
             indicatorView.hidesWhenStopped = true
-
             UIView.animate(withDuration: 0.5) {
                 self.setAlpha(isHide: false)
             }
-            
             playChord(strings)
             next()
-            
         })
         
+        self.tabBarController?.tabBar.isHidden = true
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setAlpha(isHide: Bool){
