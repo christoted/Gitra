@@ -51,7 +51,7 @@ class ChordPickerViewController: UIViewController {
     
         if segue.identifier == "todetail" {
             DispatchQueue.global().async {
-                NetworkManager().getSpecificChord(chord:self.result.urlParameter) { model in
+                NetworkManager().getSpecificChord(chord:self.result.urlParameter!) { model in
                     
                     let destination = segue.destination as? ChordDetailViewController
                     destination?.chordModel = model
@@ -75,7 +75,7 @@ class ChordPickerViewController: UIViewController {
         tension = chord[chordPicker.selectedRow(inComponent: 1)].tension?[chordPicker.selectedRow(inComponent: 2)] ?? ""
         
         result.accessibilityLabel = selectedChordLabel()
-        chooseButton.accessibilityLabel = "Choose Chord, " + result.accessibilityLabel
+        chooseButton.accessibilityLabel = "Choose Chord, " + result.accessibilityLabel!
     }
     
     func selectedChordLabel() -> String {
