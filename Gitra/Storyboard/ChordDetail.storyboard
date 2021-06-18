@@ -31,7 +31,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTD-9k-G5f">
-                                <rect key="frame" x="20" y="543" width="374" height="33"/>
+                                <rect key="frame" x="20" y="542.5" width="374" height="33"/>
                                 <string key="text">Say 'next' to move to the next string.
 Say ‘repeat’ to repeat the instructions.</string>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
@@ -39,50 +39,59 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37x-T5-CIC">
-                                <rect key="frame" x="20" y="626" width="374" height="17"/>
+                                <rect key="frame" x="20" y="625.5" width="374" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Italic" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="Orange Accent"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wc-26-Ulr">
-                                <rect key="frame" x="20" y="818" width="374" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Previous" image="chevron.left" catalog="system" id="dG8-nj-PjR">
-                                        <connections>
-                                            <action selector="previouszTapped:" destination="4gU-dv-6MT" id="OZ5-mC-8r8"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Next" image="chevron.right" catalog="system" width="305.5" id="8hI-nF-EL2">
-                                        <connections>
-                                            <action selector="nextzTapped:" destination="4gU-dv-6MT" id="Wi4-k2-ugY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Skip" image="chevron.right.2" catalog="system" id="Tb8-UJ-Y3h">
-                                        <connections>
-                                            <action selector="repeatzTapped:" destination="4gU-dv-6MT" id="69Z-nT-u0D"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" name="White Background"/>
-                                <color key="barTintColor" name="Black Background"/>
-                            </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ood-n9-ZZx">
                                 <rect key="frame" x="71.5" y="55" width="271" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiP-aF-VgG">
-                                <rect key="frame" x="52.5" y="80" width="11" height="21"/>
+                                <rect key="frame" x="53" y="80.5" width="10.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
-                                <rect key="frame" x="20" y="516" width="374" height="17"/>
+                                <rect key="frame" x="20" y="516" width="374" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xz4-c5-Xss">
+                                <rect key="frame" x="5" y="738" width="404" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHk-KR-Cqu">
+                                        <rect key="frame" x="0.0" y="0.0" width="134.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="chevron.backward" catalog="system"/>
+                                        <connections>
+                                            <action selector="previouszTapped:" destination="4gU-dv-6MT" eventType="touchDown" id="6XS-AK-bYd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebc-ve-L8E">
+                                        <rect key="frame" x="134.5" y="0.0" width="135" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="chevron.forward" catalog="system"/>
+                                        <connections>
+                                            <action selector="nextzTapped:" destination="4gU-dv-6MT" eventType="touchDown" id="q1B-6q-Zec"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hab-ZR-kSo">
+                                        <rect key="frame" x="269.5" y="0.0" width="134.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="repeat" catalog="system"/>
+                                        <connections>
+                                            <action selector="repeatzTapped:" destination="4gU-dv-6MT" eventType="touchDown" id="Qz1-sE-D8V"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n8M-nl-EB8"/>
                         <color key="backgroundColor" name="Black Background"/>
@@ -91,10 +100,13 @@ Say ‘repeat’ to repeat the instructions.</string>
                             <constraint firstItem="ood-n9-ZZx" firstAttribute="width" secondItem="zhT-JP-5Mp" secondAttribute="width" id="3Z5-tH-5Fr"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="centerX" secondItem="n8M-nl-EB8" secondAttribute="centerX" id="4tZ-1r-V6p"/>
                             <constraint firstItem="uTD-9k-G5f" firstAttribute="top" secondItem="6LP-7f-TxD" secondAttribute="bottom" constant="10" id="5jc-n0-b5u"/>
+                            <constraint firstItem="Xz4-c5-Xss" firstAttribute="leading" secondItem="7ZE-hZ-2KM" secondAttribute="leading" constant="5" id="61V-ca-Jfq"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="n8M-nl-EB8" secondAttribute="top" constant="85" id="EHi-kp-LMm"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="GiP-aF-VgG" secondAttribute="bottom" constant="-16" id="FUm-kp-jC8"/>
                             <constraint firstItem="ood-n9-ZZx" firstAttribute="leading" secondItem="zhT-JP-5Mp" secondAttribute="leading" id="GgQ-tk-cRz"/>
                             <constraint firstItem="37x-T5-CIC" firstAttribute="leading" secondItem="6LP-7f-TxD" secondAttribute="leading" id="KPZ-PP-rcI"/>
+                            <constraint firstItem="Xz4-c5-Xss" firstAttribute="bottom" secondItem="n8M-nl-EB8" secondAttribute="bottom" id="Ls6-LV-NB0"/>
+                            <constraint firstAttribute="trailing" secondItem="Xz4-c5-Xss" secondAttribute="trailing" constant="5" id="WjT-Af-hlV"/>
                             <constraint firstItem="zhT-JP-5Mp" firstAttribute="top" secondItem="ood-n9-ZZx" secondAttribute="bottom" id="ZtD-dD-chn"/>
                             <constraint firstItem="uTD-9k-G5f" firstAttribute="trailing" secondItem="6LP-7f-TxD" secondAttribute="trailing" id="aHS-9v-JFH"/>
                             <constraint firstItem="n8M-nl-EB8" firstAttribute="trailing" secondItem="6LP-7f-TxD" secondAttribute="trailing" constant="20" id="aMm-xy-gya"/>
@@ -107,7 +119,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="C Major" id="e8X-cd-SON">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="6DB-r6-jLx">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="6DB-r6-jLx">
                             <color key="tintColor" name="Yellow Accent"/>
                         </barButtonItem>
                     </navigationItem>
@@ -115,10 +127,10 @@ Say ‘repeat’ to repeat the instructions.</string>
                         <outlet property="fretImage" destination="zhT-JP-5Mp" id="oMc-qj-mYn"/>
                         <outlet property="instructionLabel" destination="6LP-7f-TxD" id="vTV-uo-i3e"/>
                         <outlet property="lblCommand" destination="37x-T5-CIC" id="7Yp-Bt-yG9"/>
-                        <outlet property="nextz" destination="8hI-nF-EL2" id="a48-d2-3oy"/>
+                        <outlet property="nextz" destination="Ebc-ve-L8E" id="e4f-96-sR0"/>
                         <outlet property="openCloseIndicators" destination="ood-n9-ZZx" id="JbC-tD-MC5"/>
-                        <outlet property="previousz" destination="dG8-nj-PjR" id="AbC-ez-dIa"/>
-                        <outlet property="repeatz" destination="Tb8-UJ-Y3h" id="oFV-By-fam"/>
+                        <outlet property="previousz" destination="AHk-KR-Cqu" id="Qh8-9d-hqh"/>
+                        <outlet property="repeatz" destination="Hab-ZR-kSo" id="sjM-nM-8ac"/>
                         <outlet property="startFret" destination="GiP-aF-VgG" id="YMp-mg-Ndn"/>
                     </connections>
                 </viewController>
@@ -151,10 +163,10 @@ Say ‘repeat’ to repeat the instructions.</string>
     </scenes>
     <resources>
         <image name="Frets" width="270" height="411"/>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="chevron.right.2" catalog="system" width="128" height="105"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="repeat" catalog="system" width="128" height="99"/>
         <namedColor name="Black Background">
             <color red="0.050999999046325684" green="0.050999999046325684" blue="0.043000001460313797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

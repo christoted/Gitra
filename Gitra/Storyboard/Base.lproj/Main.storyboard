@@ -21,7 +21,7 @@
             <objects>
                 <viewController storyboardIdentifier="onboarding" id="BYZ-38-t0r" customClass="OnBoardingAnimation" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="yfp-Ag-Rf4">
@@ -71,6 +71,9 @@
                                 <state key="normal" title="Proceed">
                                     <color key="titleColor" name="Black Background"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonDidTapped:" destination="BYZ-38-t0r" eventType="touchDown" id="bPL-uf-LUK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -21,9 +21,9 @@ class ChordDetailViewController: UIViewController {
     @IBOutlet var instructionLabel : UILabel!
     @IBOutlet var openCloseIndicators:UIView!
         
-    @IBOutlet weak var previousz: UIBarButtonItem!
-    @IBOutlet weak var nextz: UIBarButtonItem!
-    @IBOutlet weak var repeatz: UIBarButtonItem!
+    @IBOutlet weak var previousz: UIButton!
+    @IBOutlet weak var nextz: UIButton!
+    @IBOutlet weak var repeatz: UIButton!
     
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")

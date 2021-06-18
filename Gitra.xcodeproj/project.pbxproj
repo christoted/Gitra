@@ -30,16 +30,14 @@
 		52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52698D1B266DE9D8004F7AD6 /* LaunchScreen.storyboard */; };
 		5293C813266F339100151BF7 /* ChordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C812266F339100151BF7 /* ChordResponse.swift */; };
 		5293C816266F346E00151BF7 /* ChordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293C815266F346E00151BF7 /* ChordModel.swift */; };
-		52BD6A9626799FB500CB5521 /* siri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9526799FB500CB5521 /* siri.m4a */; };
-		52BD6A9826799FC600CB5521 /* audio.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9726799FC600CB5521 /* audio.json */; };
-		52BD6A9A2679A35600CB5521 /* musicbar.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A992679A35600CB5521 /* musicbar.json */; };
-		52BD6A9C2679B97000CB5521 /* volumen.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BD6A9B2679B97000CB5521 /* volumen.json */; };
 		52C517DA267121A6002B5136 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52C517D9267121A6002B5136 /* Lottie */; };
 		52EE72E226724D5500B3E7EE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72E126724D5500B3E7EE /* Helper.swift */; };
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
-		79C7DC9B2671E8A4006D4104 /* ChordInputModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */; };
-		79C7DC9D2671ED4E006D4104 /* ChordSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */; };
 		79C7DC9F2673B224006D4104 /* SettingsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */; };
+		7C79C6D5267B942C006CBF4E /* audio.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C79C6D1267B942C006CBF4E /* audio.json */; };
+		7C79C6D6267B942C006CBF4E /* musicbar.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C79C6D2267B942C006CBF4E /* musicbar.json */; };
+		7C79C6D7267B942C006CBF4E /* volumen.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C79C6D3267B942C006CBF4E /* volumen.json */; };
+		7C79C6D8267B942C006CBF4E /* siri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7C79C6D4267B942C006CBF4E /* siri.m4a */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
 		904DC629267258DC00DD799E /* E5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FB267258D900DD799E /* E5.mp3 */; };
 		904DC62A267258DC00DD799E /* G5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FC267258D900DD799E /* G5.mp3 */; };
@@ -139,15 +137,15 @@
 		52698D1E266DE9D8004F7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5293C812266F339100151BF7 /* ChordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordResponse.swift; sourceTree = "<group>"; };
 		5293C815266F346E00151BF7 /* ChordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordModel.swift; sourceTree = "<group>"; };
-		52BD6A9526799FB500CB5521 /* siri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = siri.m4a; path = ../../../../../Downloads/siri.m4a; sourceTree = "<group>"; };
-		52BD6A9726799FC600CB5521 /* audio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = audio.json; path = ../../../../../Downloads/audio.json; sourceTree = "<group>"; };
-		52BD6A992679A35600CB5521 /* musicbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = musicbar.json; path = ../../../../../Downloads/musicbar.json; sourceTree = "<group>"; };
-		52BD6A9B2679B97000CB5521 /* volumen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = volumen.json; path = ../../../../../Downloads/volumen.json; sourceTree = "<group>"; };
 		52EE72E126724D5500B3E7EE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordInputModeViewController.swift; sourceTree = "<group>"; };
 		79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordSpeedViewController.swift; sourceTree = "<group>"; };
 		79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabase.swift; sourceTree = "<group>"; };
+		7C79C6D1267B942C006CBF4E /* audio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = audio.json; path = ../../../../Downloads/Archive/audio.json; sourceTree = "<group>"; };
+		7C79C6D2267B942C006CBF4E /* musicbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = musicbar.json; path = ../../../../Downloads/Archive/musicbar.json; sourceTree = "<group>"; };
+		7C79C6D3267B942C006CBF4E /* volumen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = volumen.json; path = ../../../../Downloads/Archive/volumen.json; sourceTree = "<group>"; };
+		7C79C6D4267B942C006CBF4E /* siri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = siri.m4a; path = ../../../../Downloads/Archive/siri.m4a; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
 		904DC5FB267258D900DD799E /* E5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E5.mp3; sourceTree = "<group>"; };
 		904DC5FC267258D900DD799E /* G5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G5.mp3; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 				90BA3CD1267A2EA4004F1804 /* SettingsDatabase.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
 				90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */,
-				522785D6266E5B17005BF33E /* SettingViewController.swift */,
 				79C7DC9A2671E8A4006D4104 /* ChordInputModeViewController.swift */,
 				79C7DC9C2671ED4E006D4104 /* ChordSpeedViewController.swift */,
 				79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */,
@@ -410,10 +407,10 @@
 		52698D0C266DE9D5004F7AD6 /* Gitra */ = {
 			isa = PBXGroup;
 			children = (
-				52BD6A992679A35600CB5521 /* musicbar.json */,
-				52BD6A9526799FB500CB5521 /* siri.m4a */,
-				52BD6A9B2679B97000CB5521 /* volumen.json */,
-				52BD6A9726799FC600CB5521 /* audio.json */,
+				7C79C6D1267B942C006CBF4E /* audio.json */,
+				7C79C6D2267B942C006CBF4E /* musicbar.json */,
+				7C79C6D4267B942C006CBF4E /* siri.m4a */,
+				7C79C6D3267B942C006CBF4E /* volumen.json */,
 				522785AE266E57EB005BF33E /* Storyboard */,
 				522785AD266E57DF005BF33E /* View */,
 				522785AB266E57B1005BF33E /* Controller */,
@@ -589,12 +586,12 @@
 				904DC62B267258DC00DD799E /* F#3.mp3 in Resources */,
 				904DC652267258DC00DD799E /* A2.mp3 in Resources */,
 				904DC63E267258DC00DD799E /* C4.mp3 in Resources */,
+				7C79C6D6267B942C006CBF4E /* musicbar.json in Resources */,
 				BD9EE8B6266E3D2B0081B951 /* Product Sans Bold.ttf in Resources */,
-				52BD6A9A2679A35600CB5521 /* musicbar.json in Resources */,
 				904DC647267258DC00DD799E /* A4.mp3 in Resources */,
 				904DC63C267258DC00DD799E /* F#2.mp3 in Resources */,
+				7C79C6D5267B942C006CBF4E /* audio.json in Resources */,
 				904DC633267258DC00DD799E /* C#6.mp3 in Resources */,
-				52BD6A9826799FC600CB5521 /* audio.json in Resources */,
 				904DC63B267258DC00DD799E /* D5.mp3 in Resources */,
 				BD9EE8B5266E3D2B0081B951 /* Product Sans Bold Italic.ttf in Resources */,
 				904DC632267258DC00DD799E /* C#4.mp3 in Resources */,
@@ -604,8 +601,8 @@
 				522785E5266E5D2F005BF33E /* ChordPickerChord.storyboard in Resources */,
 				904DC634267258DC00DD799E /* E3.mp3 in Resources */,
 				BD9EE8B4266E3D2B0081B951 /* Product Sans Regular.ttf in Resources */,
+				7C79C6D7267B942C006CBF4E /* volumen.json in Resources */,
 				52698D1A266DE9D8004F7AD6 /* Assets.xcassets in Resources */,
-				52BD6A9C2679B97000CB5521 /* volumen.json in Resources */,
 				904DC63F267258DC00DD799E /* A#5.mp3 in Resources */,
 				904DC62E267258DC00DD799E /* G#2.mp3 in Resources */,
 				904DC62A267258DC00DD799E /* G5.mp3 in Resources */,
@@ -615,6 +612,7 @@
 				52698D15266DE9D5004F7AD6 /* Main.storyboard in Resources */,
 				904DC635267258DC00DD799E /* F3.mp3 in Resources */,
 				904DC642267258DC00DD799E /* G2.mp3 in Resources */,
+				7C79C6D8267B942C006CBF4E /* siri.m4a in Resources */,
 				522785BA266E58FC005BF33E /* Setting.storyboard in Resources */,
 				BD9EE8B3266E3D2B0081B951 /* Product Sans Italic.ttf in Resources */,
 				904DC64A267258DC00DD799E /* B4.mp3 in Resources */,
@@ -625,7 +623,6 @@
 				904DC649267258DC00DD799E /* G#5.mp3 in Resources */,
 				904DC64F267258DC00DD799E /* A#2.mp3 in Resources */,
 				904DC64C267258DC00DD799E /* D4.mp3 in Resources */,
-				52BD6A9626799FB500CB5521 /* siri.m4a in Resources */,
 				904DC62D267258DC00DD799E /* B5.mp3 in Resources */,
 				904DC64B267258DC00DD799E /* A#4.mp3 in Resources */,
 				522785E1266E5CE4005BF33E /* ChordPickerTuner.storyboard in Resources */,
@@ -834,14 +831,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4NVTRVW5X;
+				DEVELOPMENT_TEAM = 37PZ9N9MY5;
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.apapun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -854,14 +851,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4NVTRVW5X;
+				DEVELOPMENT_TEAM = 37PZ9N9MY5;
 				INFOPLIST_FILE = Gitra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Zhafransyah.test;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.apapun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
