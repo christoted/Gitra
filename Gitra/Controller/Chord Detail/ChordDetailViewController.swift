@@ -28,7 +28,7 @@ class ChordDetailViewController: UIViewController {
     
     //Chord Model for param
     var chordModel:ChordModel?
-    var resultTest: String?
+    var resultTitle: String?
     var senderPage: ChordPickerViewController?
     
 
@@ -83,7 +83,12 @@ class ChordDetailViewController: UIViewController {
             self.translateToCoordinate(chord: chordModelSave)
             self.displayIndicators()
             self.generateStringForLabel()
-            self.title = chordModelSave.chordName
+            
+            
+          
+            self.title = resultTitle
+            
+          
           
             indicatorView.stopAnimating()
             indicatorView.hidesWhenStopped = true
@@ -132,11 +137,7 @@ class ChordDetailViewController: UIViewController {
 //        generateStringForLabel()
       
         
-      
-      
         indicatorView.startAnimating()
-        
-        
     }
     
     

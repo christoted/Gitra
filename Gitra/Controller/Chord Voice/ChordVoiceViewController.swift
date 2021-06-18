@@ -213,6 +213,8 @@ class ChordVoiceViewController: UIViewController {
     }
     
     var chordToResponse = ""
+    
+    var chordNameModel = ChordName()
 
     private func cancelSpeechRecognitization() {
         
@@ -231,22 +233,23 @@ class ChordVoiceViewController: UIViewController {
             let chord = self.lblResult.text
             
             guard let chordSave = chord else {return}
-
-            chordToResponse = Helper().convertStringToParam(chord: chordSave)
             
-            print(chordToResponse)
+            chordNameModel = Helper().convertStringToParam(chord: chordSave)
+        
+            print(chordNameModel.urlParameter)
             
-         //  performSegue(withIdentifier: "toChordDetail", sender: self)
+            guard let chordURLParameterSave = chordNameModel.urlParameter else {
+                return
+            }
             
             //For Checking But Duplicate
-         
-            DispatchQueue.global(qos: .background).async {
+            DispatchQueue.global().async {
                 
                 self.task = nil
                 
                 print("HELLO")
                 
-                NetworkManager().getSpecificChord(chord: self.chordToResponse) { chordResult in
+                NetworkManager().getSpecificChord(chord: chordURLParameterSave) { chordResult in
                     print(chordResult.chordName!)
                     
                     DispatchQueue.main.async {
@@ -288,13 +291,23 @@ class ChordVoiceViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let chordURLParameterSave = chordNameModel.urlParameter else {
+            return
+        }
+        
         if segue.identifier == "toChordDetail" {
             DispatchQueue.global().async {
-                NetworkManager().getSpecificChord(chord:self.chordToResponse) { model in
+                NetworkManager().getSpecificChord(chord:chordURLParameterSave) { model in
                     
                     let destination = segue.destination as? ChordDetailViewController
-                    
                     destination?.chordModel = model
+                    
+                    DispatchQueue.main.async {
+                        destination?.resultTitle = self.chordNameModel.title
+                    }
+                    
+                    
                 } completionFailed: { failed in
                     print(failed)
                 }
