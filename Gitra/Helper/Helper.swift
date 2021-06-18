@@ -7,34 +7,43 @@
 
 import Foundation
 
+struct ChordName {
+    var title: String
+    var accessibilityLabel: String
+    var urlParameter: String
+}
+
 class Helper {
-
-    func convertStringToParam(chord: String) -> String {
-        let roots = ["C": ["c", "sea"],
-                     "D": ["d", "the"],
-                     "E": ["e"],
-                     "F": ["f"],
-                     "G": ["g"],
-                     "A": ["a"],
-                     "B": ["b", "bee"]]
-        let symbols = ["b": ["flat", "b", "♭"],
-                         "#": ["sharp", "#", "♯"]]
-        let qualities = ["maj": ["major", "maj"],
-                         "m": ["minor", "min"],
-                         "add": ["add"],
-                         "aug": ["aug", "augmented"],
-                         "dim": ["dim", "diminished"],
-                         "sus": ["sus", "suspended"]]
-        let tensions = [2: ["2", "two"],
-                        4: ["4", "four"],
-                        5: ["5", "five", "fifth"],
-                        6: ["6", "six", "sixth"],
-                        7: ["7", "seven", "seventh"],
-                        9: ["9", "nine", "ninth"],
-                        11: ["11", "eleven"],
-                        13: ["13", "thirteen"]]
-
-
+    
+    let roots = ["C": ["c", "sea", "she", "see"],
+                 "D": ["d", "the", "t"],
+                 "E": ["e"],
+                 "F": ["f", "have", "if"],
+                 "G": ["g"],
+                 "A": ["a"],
+                 "B": ["b", "bee"]]
+    let symbols = ["b": ["flat", "b", "♭"],
+                     "#": ["sharp", "#", "♯", "shark"]]
+    let qualities = ["maj": ["major", "maj"],
+                     "m": ["minor", "min"],
+                     "add": ["add"],
+                     "aug": ["augmented", "aug"],
+                     "dim": ["diminished", "dim"],
+                     "sus": ["suspended", "sus"]]
+    let tensions = [2: ["2", "two"],
+                    4: ["4", "four"],
+                    5: ["5", "five", "fifth"],
+                    6: ["6", "six", "sixth"],
+                    7: ["7", "seven", "seventh"],
+                    9: ["9", "nine", "ninth"],
+                    11: ["11", "eleven"],
+                    13: ["13", "thirteen"]]
+    
+    func convertStringToParam(chord: String) -> ChordName {
+        
+        var outputChord = ChordName(title: "", accessibilityLabel: "", urlParameter: "")
+        var outputAccessibility = ""
+        
         var output = chord.lowercased()
         
         //Split the String
@@ -46,6 +55,7 @@ class Helper {
         }
         //Take the first index value
         output = checkRoot(splitChordInput[0])
+        outputAccessibility = output
 
         //Determine chord root
         func checkRoot(_ text: String) -> String {
@@ -60,27 +70,27 @@ class Helper {
         }
         
         //Determine sharp & flat
-        func checkPitch(_ text: String) -> String {
+        func checkPitch(_ text: String) -> (String, String) {
             for (notation, symbol) in symbols {
                 for char in symbol {
                     if text.contains(char) {
-                        return notation
+                        return (notation, (" " + symbol[0]))
                     }
                 }
             }
-            return ""
+            return ("","")
         }
 
         //Determine chord quality
-        func checkQuality(_ text: String) -> String {
+        func checkQuality(_ text: String) -> (String, String) {
             for (notation, quality) in qualities {
                 for char in quality {
                     if text.contains(char) {
-                        return notation
+                        return (notation, (" " + quality[0]))
                     }
                 }
             }
-            return ""
+            return ("","")
         }
 
         //Determine chord tension
@@ -94,24 +104,58 @@ class Helper {
             }
             return ""
         }
-    
+        
+        //Swapping sharp with flat chord
+        func swappingSharp(_ text: String) -> (String, String) {
+            switch text {
+            case "C#" :
+                return ("Db", "D flat")
+            case "D#" :
+                return ("Eb", "E flat")
+            case "F#" :
+                return ("Gb", "G flat")
+            case "G#" :
+                return ("Ab", "A flat")
+            case "A#" :
+                return ("Bb", "B flat")
+            default :
+                return (text, text)
+            }
+        }
+        
         //Merging input
         for (index, text) in splitChordInput.enumerated() where index > 0 {
             
+            let pitch = checkPitch(text)
+            let quality = checkQuality(text)
+            let tension = checkTension(text)
+            
             //Check if the second word is # or flat
-            if index == 1 && (checkPitch(text) != "") {
-                output.append(checkPitch(text))
+            if index == 1 && (pitch.0 != "") {
+                output.append(pitch.0)
+                outputAccessibility = output
+                
+                output = swappingSharp(output).0
+                outputAccessibility = swappingSharp(outputAccessibility).1
+                
                 output.append("_")
                 continue
-            } else if index == 1 && (checkPitch(text) == "") {
+            } else if index == 1 && (pitch.0 == "") {
                 output.append("_")
-            } else if (index == 1 || index == 2) && checkQuality(text) == "major" {
+            } else if (index == 1 || index == 2) && quality.0 == "major" {
                 output.append("maj")
+                outputAccessibility.append("major")
             }
             
-            output.append(checkQuality(text))
-            output.append(checkPitch(text))
-            output.append(checkTension(text))
+            output.append(quality.0)
+            outputAccessibility.append(quality.1)
+            
+            output.append(pitch.0)
+            outputAccessibility.append(pitch.1)
+            
+            output.append(tension)
+            outputAccessibility.append(tension)
+            
         }
             
         if output.contains("maj") && !output.contains("maj7") && (output.count == 5 || output.count == 6) {
@@ -120,9 +164,14 @@ class Helper {
         
         output.capitalizeFirstLetter()
         
-        return output
+        outputChord.title = output.replacingOccurrences(of: "_", with: "")
+        outputChord.accessibilityLabel = outputAccessibility
+        outputChord.urlParameter = output
+        
+        print("Title:", outputChord.title, "Label:", outputChord.accessibilityLabel, "URL :", outputChord.urlParameter)
+        
+        return outputChord
     }
-    
 }
 
 extension String {
