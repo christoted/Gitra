@@ -15,6 +15,8 @@ class ChordPickerViewController: UIViewController {
     var note = Database.shared.getNote()
     var chord = Database.shared.getChord()
     
+    var result = ChordName(title: "", accessibilityLabel: "", urlParameter: "")
+    
     var root = ""
     var quality = ""
     var tension = ""
@@ -35,33 +37,29 @@ class ChordPickerViewController: UIViewController {
         updateUI()
     }
     
-    var result = ""
-    
     @IBAction func chooseChord(_ sender: Any) {
         var input = root + "_" + quality + tension
         input = transformChordAPI(input)
-        result = input
+        result.urlParameter = input
+        result.title = input.replacingOccurrences(of: "_", with: "")
         
         performSegue(withIdentifier: "todetail", sender: self)
-        print(input)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
         if segue.identifier == "todetail" {
             DispatchQueue.global().async {
-                NetworkManager().getSpecificChord(chord:self.result) { model in
+                NetworkManager().getSpecificChord(chord:self.result.urlParameter) { model in
                     
                     let destination = segue.destination as? ChordDetailViewController
-                    
-                    print("OY", model)
-                    
                     destination?.chordModel = model
+                    
                 } completionFailed: { failed in
                     print(failed)
                 }
             }
-         
         }
     }
  
@@ -76,13 +74,12 @@ class ChordPickerViewController: UIViewController {
         quality = chord[chordPicker.selectedRow(inComponent: 1)].quality ?? ""
         tension = chord[chordPicker.selectedRow(inComponent: 1)].tension?[chordPicker.selectedRow(inComponent: 2)] ?? ""
         
-        chooseButton.accessibilityLabel = selectedChordLabel()
+        result.accessibilityLabel = selectedChordLabel()
+        chooseButton.accessibilityLabel = "Choose Chord, " + result.accessibilityLabel
     }
     
     func selectedChordLabel() -> String {
-        let selectedChord = (transformChordAccessibility(root) +  transformChordAccessibility(quality) + transformChordAccessibility(tension))
-        
-        return "Choose Chord, \(selectedChord)"
+        return (transformChordAccessibility(root) +  transformChordAccessibility(quality) + transformChordAccessibility(tension))
     }
     
     func transformChordAPI(_ input: String) -> String {
