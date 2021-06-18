@@ -34,6 +34,10 @@ class ChordVoiceViewController: UIViewController {
     
     let speechSynthesizer = AVSpeechSynthesizer()
     
+    override func viewWillAppear(_ animated: Bool) {
+        lblResult.text = "Say Something..."
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +61,7 @@ class ChordVoiceViewController: UIViewController {
         
         lblWhich.isAccessibilityElement = true
         lblWhich.accessibilityLabel = "Tap Twice"
+        
         
     }
     
@@ -231,10 +236,10 @@ class ChordVoiceViewController: UIViewController {
             
             print(chordToResponse)
             
-           performSegue(withIdentifier: "toChordDetail", sender: self)
+         //  performSegue(withIdentifier: "toChordDetail", sender: self)
             
             //For Checking But Duplicate
-         /*
+         
             DispatchQueue.global(qos: .background).async {
                 
                 self.task = nil
@@ -273,7 +278,7 @@ class ChordVoiceViewController: UIViewController {
                     }
                 }
             }
- */
+ 
         }
  
             
