@@ -8,9 +8,9 @@
 import Foundation
 
 struct ChordName {
-    var title: String
-    var accessibilityLabel: String
-    var urlParameter: String
+    var title: String?
+    var accessibilityLabel: String?
+    var urlParameter: String?
 }
 
 class Helper {

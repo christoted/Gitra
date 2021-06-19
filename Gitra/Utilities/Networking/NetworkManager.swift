@@ -48,7 +48,7 @@ class NetworkManager {
                             completion(chordModel)
                         }
                         
-                        completion(chordModel)
+                     //   completion(chordModel)
                         
                     } else {
                         print("ERROR CAN'T DECODE JSON")
