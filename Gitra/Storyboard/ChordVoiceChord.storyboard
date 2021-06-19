@@ -23,7 +23,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="RHl-43-aw8">
                                 <rect key="frame" x="130" y="0.0" width="130" height="50"/>
-                                <accessibility key="accessibilityConfiguration" label="Gitra Logo"/>
+                                <accessibility key="accessibilityConfiguration" label="Gitra">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="f9V-v8-wxD"/>
                                 </constraints>
@@ -61,7 +64,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Eut-xh-Kom">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="kvG-pJ-PCm">
+                        <barButtonItem key="rightBarButtonItem" title="Setting" image="gearshape.fill" catalog="system" id="kvG-pJ-PCm">
                             <color key="tintColor" name="Yellow Accent"/>
                             <connections>
                                 <action selector="goToSetting:" destination="ILa-G7-7LS" id="gi6-1C-FiM"/>

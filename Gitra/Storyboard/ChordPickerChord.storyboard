@@ -71,7 +71,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="dha-aZ-utT">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="204-mh-nOp">
+                        <barButtonItem key="rightBarButtonItem" title="Setting" image="gearshape.fill" catalog="system" id="204-mh-nOp">
                             <color key="tintColor" name="Yellow Accent"/>
                             <connections>
                                 <action selector="goToSetting:" destination="iFh-B7-1L4" id="KuD-cc-tia"/>

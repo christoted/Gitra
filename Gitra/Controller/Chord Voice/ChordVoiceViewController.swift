@@ -35,6 +35,12 @@ class ChordVoiceViewController: UIViewController {
     let speechSynthesizer = AVSpeechSynthesizer()
     
     override func viewWillAppear(_ animated: Bool) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
+        } catch {
+            print("Error")
+        }
+        
         lblResult.text = "Say Something..."
     }
     
@@ -54,7 +60,7 @@ class ChordVoiceViewController: UIViewController {
         requestPermission()
         
         textLogo.isAccessibilityElement = true
-        textLogo.accessibilityHint = "Which Chord, do you want to play? Please tap twice the The Guitar Image Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
+        textLogo.accessibilityHint = "Which chord do you want to play? Please tap twice the The Guitar Image Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
         
         imageTap.isAccessibilityElement = true
         imageTap.accessibilityHint = ""
@@ -107,7 +113,6 @@ class ChordVoiceViewController: UIViewController {
         }
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
             try AVAudioSession.sharedInstance().setMode(AVAudioSession.Mode.default)
@@ -297,16 +302,13 @@ class ChordVoiceViewController: UIViewController {
         }
         
         if segue.identifier == "toChordDetail" {
+            let destination = segue.destination as? ChordDetailViewController
+            
             DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord:chordURLParameterSave) { model in
                     
-                    let destination = segue.destination as? ChordDetailViewController
                     destination?.chordModel = model
-                    
-                    DispatchQueue.main.async {
-                        destination?.selectedChord = self.chordNameModel
-                    }
-                    
+                    destination?.selectedChord = self.chordNameModel
                     
                 } completionFailed: { failed in
                     print(failed)
@@ -340,4 +342,6 @@ class ChordVoiceViewController: UIViewController {
         
         self.present(controller, animated: true, completion: nil)
     }
+    
+    @IBAction func unwindToVoice(_ sender: UIStoryboardSegue) {}
 }

@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
 import Speech
 import AVFoundation
 import Lottie
 import Foundation
 
 class ChordDetailViewController: UIViewController {
+    
     @IBOutlet var fretImage:UIImageView!
     @IBOutlet var startFret:UILabel!
     @IBOutlet var instructionLabel : UILabel!
@@ -21,14 +21,13 @@ class ChordDetailViewController: UIViewController {
     
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     
-    
     @IBOutlet weak var previousz: UIButton!
     @IBOutlet weak var nextz: UIButton!
     @IBOutlet weak var repeatz: UIButton!
     
     //Chord Model for param
     var chordModel:ChordModel?
-    var resultTitle: String?
+    var selectedChord: ChordName?
     var senderPage: ChordPickerViewController?
     
     var chordDelay: Double = 0.2
@@ -42,6 +41,10 @@ class ChordDetailViewController: UIViewController {
     var request = SFSpeechAudioBufferRecognitionRequest()
     var task: SFSpeechRecognitionTask!
 
+    var workItemSpeech: DispatchWorkItem?
+    var workItemCommand: DispatchWorkItem?
+    var workItemRecognizer: DispatchWorkItem?
+    
     @IBOutlet weak var lblCommand: UILabel!
     
     //Audio
@@ -53,15 +56,6 @@ class ChordDetailViewController: UIViewController {
     let speechSynthesizer = AVSpeechSynthesizer()
 
     let speaker = Speaker()
-
-    let queryChord = ChordResponse(
-            strings: "X 3 2 0 1 0",
-            fingering: "X 3 2 X 1 X",
-            chordName: "C,,,",
-            enharmonicChordName: "C,,,",
-            voicingID: "9223372036855826559",
-            tones: "C,E,G"
-        )
     
     var countFinger = 0
     var strings = [0,0,0,0,0,0] //0 is open and -1 is dead
@@ -71,32 +65,51 @@ class ChordDetailViewController: UIViewController {
     var indicators:[FingerIndicator] = []
     
     var countFail:Int = 0
+    var goToSetting: Bool = false
+
+    //MARK: - View Updates
     
     override func viewWillAppear(_ animated: Bool) {
-        self.lottieAnimation2()
+        self.navigationSetup()
+        if goToSetting {
+            speakInstruction()
+        }
+        
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont(name: "Product Sans Bold", size: 18)
+        titleLabel.text = selectedChord?.title
+        titleLabel.accessibilityLabel = selectedChord?.accessibilityLabel
+        self.navigationItem.titleView = titleLabel
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = ""
+    
+        self.lottieAnimation(yPos: self.view.frame.maxY * 0.4, show: true)
         setAlpha(isHide: true)
+        
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
-            self.navigationSetup()
+            
             guard let chordModelSave = chordModel else {
                 return
             }
+            
             self.translateToCoordinate(chord: chordModelSave)
             self.displayIndicators()
             self.generateStringForLabel()
-            self.title = resultTitle
+            
             UIView.animate(withDuration: 0.5) {
                 self.setAlpha(isHide: false)
             }
-            playChord(strings)
-
-        //    next()
-
             
-            let delay: DispatchTime = .now() + 6*chordDelay + 0.5
+            playChord(strings)
+            changeString(isNext: 1)
+            
+            let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
             
             DispatchQueue.main.asyncAfter(deadline: delay){
-                next()
-                print(delay)
+                speakInstruction()
             }
 
             animationView.stop()
@@ -104,71 +117,21 @@ class ChordDetailViewController: UIViewController {
 
         })
         
-        let settingButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = settingButton
-        
-        self.tabBarController?.tabBar.isHidden = true
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    private func lottieAnimation2(){
-        UIView.animate(withDuration: 0.5) {
-            self.animationView.alpha = 1
-        }
+        destroySpeakRecognition()
+        hideAnimation()
         
-        animationView.animation = Animation.named("loading-animation-1")
-        animationView.frame = CGRect(x: self.view.frame.midX - 25, y: self.view.frame.midY * 0.75, width: 50, height: 50)
-        animationView.contentMode = .scaleAspectFit
-        animationView.isHidden = false
-        animationView.loopMode = .loop
-        animationView.play()
-        view.insertSubview(animationView, aboveSubview: view)
-    }
-    
-    private func setAlpha(isHide: Bool){
-        if (isHide) {
-            fretImage.alpha = 0
-            startFret.alpha = 0
-            instructionLabel.alpha = 0
-            openCloseIndicators.alpha = 0
-            commandLabel.alpha = 0
-            lblCommand.alpha = 0
-        } else {
-            fretImage.alpha = 1
-            startFret.alpha = 1
-            instructionLabel.alpha = 1
-            openCloseIndicators.alpha = 1
-            commandLabel.alpha = 1
-            lblCommand.alpha = 1
-            
-            
-            
-        }
-      
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = ""
-//        navigationSetup()
-//        translateToCoordinate(chord:queryChord)
-//        displayIndicators()
-//        generateStringForLabel()
-        
+        workItemSpeech?.cancel()
+        workItemRecognizer?.cancel()
+        speaker.stop()
 
     }
-    
-    @objc func addTapped(){
-        let pvc = UIStoryboard(name: "Setting", bundle: nil)
-        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
-        self.navigationController?.pushViewController(settingVC, animated: true)
-    }
-    
+        
+    //MARK: - Displaying Chord, Fingering, & Frets Position
     
     //number of frets juga
     //open or dead
@@ -188,7 +151,6 @@ class ChordDetailViewController: UIViewController {
             
             if (currString == 5) {
                 print("lima")
-                
             }
             
         }else if isNext == 2{
@@ -229,14 +191,121 @@ class ChordDetailViewController: UIViewController {
         }
     }
     
-    func navigationSetup(){
-        //>>>:(
+    //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
+    //it also determine the starting fret and how many indicator(s) are present in the diagram
+    func translateToCoordinate(chord:ChordModel){
+        guard let s = chord.strings else {return}
+        let stringsComponents = s.split{ $0.isWhitespace }.map { String($0) }
+        guard let f = chord.fingering else {return}
+        let fingeringComponents = f.split{ $0.isWhitespace }.map { String($0) }
+        
+        for i in 0..<stringsComponents.count{
+            if stringsComponents[i] != "X"{
+                let fret = Int(stringsComponents[i])!
+                
+                strings[i] = fret
+                if(fret < startingFret && fret > 0){ //this determines the starting point by assesing the minimal fret value
+                    startingFret = fret
+                }
+                if(fret>0){ //counting which indicator is going to be present
+                    countFinger += 1
+                }
+            }else{ //if the component is X
+                strings[i] = -1
+            }
+            
+            if fingeringComponents[i] != "X"{
+                fingering[i] = Int(fingeringComponents[i])!
+            }else{ //if the component is X
+                fingering[i] = -1
+            }
+        }
+        
+        if startingFret <= 2{
+            startingFret = 1
+        }
     }
+    
+    func displayIndicators(){
+        let fretWidth = fretImage.frame.width
+        let fretHeight = fretImage.frame.height
+        
+        let size = CGFloat(fretWidth * 2/27)
+//        let leading = CGFloat(1 / 27 * fretWidth)
+        let top = 1 / 41 * fretHeight
+        let betweenString = CGFloat((25 / 27 * fretWidth) / 5)
+        let betweenFret = CGFloat((fretHeight - top) / 5)
+        
+        for i in 0..<strings.count{
+            let indicator: FingerIndicator = {
+                let button = FingerIndicator(title: fingering[i])
+                return button
+            }()
+            if fingering[i]>0{ //check if there's an indicator or not
+                fretImage.addSubview(indicator)
+                indicator.layer.cornerRadius = size/2
+                indicator.frame = CGRect(x: CGFloat((CGFloat(i) * betweenString)), y:  CGFloat(4 * top + (CGFloat(strings[i]-startingFret) * betweenFret)), width: size, height: size)
+            }
+            indicators.append(indicator)
+        }
+        startFret.text = String(startingFret - 1)
+        
+        for i in 0..<strings.count{
+            if strings[i] > 0{
+                continue
+            }else{
+                let xPosition = CGFloat(i) * betweenString
+                let yPosition = CGFloat(0)
+                
+                let stringIndicator = UIImageView(frame: CGRect(x: xPosition, y: yPosition, width: size, height: size))
+                
+                if strings[i] == 0{
+                    stringIndicator.image = openIndicator
+                }else{
+                    stringIndicator.image = closeIndicator
+                }
+                
+                openCloseIndicators.addSubview(stringIndicator)
+                
+            }
+        }
+    }
+    
+    func guitarFingering(_ finger: Int) -> String {
+        switch finger {
+        case 1 :
+            return "index finger"
+        case 2 :
+            return "middle finger"
+        case 3 :
+            return "ring finger"
+        case 4 :
+            return "pinky finger"
+        default:
+            return ""
+        }
+    }
+    
+    func guitarString(_ index: Int) -> String {
+        switch index {
+        case 1 :
+            return "1st"
+        case 2 :
+            return "2nd"
+        case 3 :
+            return "3rd"
+        default :
+            return "\(index)th"
+        }
+    }
+    
 
+    //MARK: - Speech Recognition
+    
     private func speechRecognitionActive() {
         
         self.playSound()
-        lottieAnimation()
+        lottieAnimation(yPos: self.commandLabel.frame.maxY, show: true)
         
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
@@ -333,13 +402,28 @@ class ChordDetailViewController: UIViewController {
                 audioEngine.stop()
                 audioEngine.inputNode.removeTap(onBus: 0)
                 
-                //Sound Feedback On
-                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(String(describing: self.title))")
+                //Sound Feedback On87
+                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(selectedChord?.accessibilityLabel ?? "a new Chord")")
             
                 speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                 speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-                speechSynthesizer.speak(speechUtterance)
                 
+                playChord(strings)
+                let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
+                DispatchQueue.global().asyncAfter(deadline: delay){
+                    self.speechSynthesizer.speak(speechUtterance)
+                }
+                
+                let defaults = UserDefaults.standard.integer(forKey: "inputMode")
+                
+                DispatchQueue.main.asyncAfter(deadline: delay + 4){
+                    if defaults == 0 {
+                        self.performSegue(withIdentifier: "unwindVoice", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "unwindPicker", sender: self)
+                    }
+                }
+
             } else if ( lowerCased == "start over") {
                 currString = -1
                 changeString(isNext: 1)
@@ -374,34 +458,80 @@ class ChordDetailViewController: UIViewController {
                     
                     self.lblCommand.text = "Listening..."
                     
-                    request.endAudio()
-                    audioEngine.stop()
-                    audioEngine.inputNode.removeTap(onBus: 0)
+                    destroySpeakRecognition()
                 }
                 
             }
         }
-        
+        destroySpeakRecognition()
+    }
+    
+    private func destroySpeakRecognition() {
+        lottieAnimation(yPos: self.commandLabel.frame.maxY, show: false)
         request.endAudio()
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
     }
     
-    private func lottieAnimation(){
+    //MARK: - UI Updates
+    
+    private func navigationSetup(){
+        let settingButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = settingButton
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "Setting"
         
-        self.animationView.alpha = 1
-        animationView.animation = Animation.named("loading-animation-1")
-        animationView.frame = CGRect(x: self.view.frame.midX - 25, y: self.commandLabel.frame.maxY, width: 50, height: 50)
-        animationView.isHidden = false
-        animationView.loopMode = .loop
-        animationView.play()
-        view.insertSubview(animationView, belowSubview: self.fretImage)
-       
+        self.tabBarController?.tabBar.isHidden = true
+        lblCommand.text = ""
     }
     
-    private func hideAnimation() {
-        animationView.isHidden = true
+    private func setAlpha(isHide: Bool){
+        if (isHide) {
+            fretImage.alpha = 0
+            startFret.alpha = 0
+            instructionLabel.alpha = 0
+            openCloseIndicators.alpha = 0
+            commandLabel.alpha = 0
+            navigationItem.titleView?.alpha = 0
+        } else {
+            fretImage.alpha = 1
+            startFret.alpha = 1
+            instructionLabel.alpha = 1
+            openCloseIndicators.alpha = 1
+            commandLabel.alpha = 1
+            navigationItem.titleView?.alpha = 1
+        }
     }
+    
+    private func lottieAnimation(yPos: CGFloat, show: Bool){
+        
+        if show {
+            animationView.isHidden = false
+        } else {
+            animationView.isHidden = true
+            animationView.alpha = 0
+        }
+        
+        animationView.animation = Animation.named("loading-animation-1")
+        animationView.frame = CGRect(x: self.view.frame.midX - 25, y: yPos, width: 50, height: 50)
+        animationView.contentMode = .scaleAspectFit
+        
+        animationView.loopMode = .loop
+        animationView.play()
+        view.insertSubview(animationView, aboveSubview: view)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = 1
+        }
+    }
+        
+    private func hideAnimation() {
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = 0
+        }
+//        animationView.isHidden = true
+    }
+    
+    //MARK: - Sound Related
     
     private func playSound() {
         guard let url = Bundle.main.path(forResource: "siri", ofType: "m4a") else {
@@ -428,86 +558,6 @@ class ChordDetailViewController: UIViewController {
         }
     }
 
-    //function to translate the strings from API into arrays (the 'strings' and 'fingering' array
-    //it also determine the starting fret and how many indicator(s) are present in the diagram
-    func translateToCoordinate(chord:ChordModel){
-        guard let s = chord.strings else {return}
-        let stringsComponents = s.split{ $0.isWhitespace }.map { String($0) }
-        guard let f = chord.fingering else {return}
-        let fingeringComponents = f.split{ $0.isWhitespace }.map { String($0) }
-        
-        for i in 0..<stringsComponents.count{
-            if stringsComponents[i] != "X"{
-                let fret = Int(stringsComponents[i])!
-                
-                strings[i] = fret
-                if(fret < startingFret && fret > 0){ //this determines the starting point by assesing the minimal fret value
-                    startingFret = fret
-                }
-                if(fret>0){ //counting which indicator is going to be present
-                    countFinger += 1
-                }
-            }else{ //if the component is X
-                strings[i] = -1
-            }
-            
-            if fingeringComponents[i] != "X"{
-                fingering[i] = Int(fingeringComponents[i])!
-            }else{ //if the component is X
-                fingering[i] = -1
-            }
-        }
-        
-        if startingFret <= 2{
-            startingFret = 1
-        }
-    }
-    
-    func displayIndicators(){
-        let fretWidth = fretImage.frame.width
-        let fretHeight = fretImage.frame.height
-        
-        let size = CGFloat(fretWidth * 2/27)
-//        let leading = CGFloat(1 / 27 * fretWidth)
-        let top = 1 / 41 * fretHeight
-        let betweenString = CGFloat((25 / 27 * fretWidth) / 5)
-        let betweenFret = CGFloat((fretHeight - top) / 5)
-        
-        for i in 0..<strings.count{
-            let indicator: FingerIndicator = {
-                let button = FingerIndicator(title: fingering[i])
-                return button
-            }()
-            if fingering[i]>0{ //check if there's an indicator or not
-                fretImage.addSubview(indicator)
-                indicator.layer.cornerRadius = size/2
-                indicator.frame = CGRect(x: CGFloat((CGFloat(i) * betweenString)), y:  CGFloat(4 * top + (CGFloat(strings[i]-startingFret) * betweenFret)), width: size, height: size)
-            }
-            indicators.append(indicator)
-        }
-        startFret.text = String(startingFret - 1)
-        
-        for i in 0..<strings.count{
-            if strings[i] > 0{
-                continue
-            }else{
-                let xPosition = CGFloat(i) * betweenString
-                let yPosition = CGFloat(0)
-                
-                let stringIndicator = UIImageView(frame: CGRect(x: xPosition, y: yPosition, width: size, height: size))
-                
-                if strings[i] == 0{
-                    stringIndicator.image = openIndicator
-                }else{
-                    stringIndicator.image = closeIndicator
-                }
-                
-                openCloseIndicators.addSubview(stringIndicator)
-                
-            }
-        }
-    }
-    
     func playChord(_ stringsArray: [Int]) {
         var note = [String]()
     
@@ -533,12 +583,81 @@ class ChordDetailViewController: UIViewController {
        NotesMapping.shared.playSounds(note, withDelay: chordDelay)
     }
     
-    func currentNote(_ senar: Int) -> String {
+    private func currentNote(_ senar: Int) -> String {
         let fret = strings[5-senar]
         if fret >= 0 {
             return Database.shared.getGuitarNote(senar, strings[(5 - senar)])
         }
         return ""
+    }
+    
+    private func speakInstruction() {
+        let tempString = currString
+        let userDefaults = UserDefaults.standard.integer(forKey: "inputCommand")
+        
+        speaker.stop()
+        speaker.speak(instructionLabel.text!, playNote: currentNote(currString))
+        
+        let delay: DispatchTime = (currentNote(currString) == "") ? (.now() + 0) : (.now() + 3)
+        
+        workItemSpeech = DispatchWorkItem{
+            //Check if user move to the next string before completing the instruction.
+            if self.currString == tempString {
+                self.speaker.speak(self.instructionLabel.text!, playNote: self.currentNote(self.currString))
+            }
+        }
+        
+        workItemCommand = DispatchWorkItem{
+            self.speaker.speak("Say 'next' to move to the next string. Say ‘repeat’ to repeat the instructions. Say 'finish' to end the session.", playNote: "")
+        }
+        
+        workItemRecognizer = DispatchWorkItem{
+            //Check if user move to the next string before completing the instruction.
+            self.speechRecognitionActive()
+            self.lblCommand.text = ""
+        }
+        
+        if userDefaults == 0 {
+            DispatchQueue.main.asyncAfter(deadline: delay, execute: workItemSpeech!)
+            DispatchQueue.main.asyncAfter(deadline: delay + 4, execute: workItemRecognizer!)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: delay, execute: workItemSpeech!)
+            DispatchQueue.main.asyncAfter(deadline: delay + 4, execute: workItemCommand!)
+            DispatchQueue.main.asyncAfter(deadline: delay + 11, execute: workItemRecognizer!)
+        }
+    }
+    
+    //MARK: - IBAction & Other Function
+    
+    @IBAction func previouszTapped(_ sender: UIBarButtonItem){
+        destroySpeakRecognition()
+        changeString(isNext: 2)
+        speakInstruction()
+        countFail = 0
+    }
+    
+    @IBAction func nextzTapped(_ sender: UIBarButtonItem){
+        destroySpeakRecognition()
+        next()
+        countFail = 0
+    }
+    
+    private func next() {
+        changeString(isNext: 1)
+        speakInstruction()
+    }
+    
+    @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
+        destroySpeakRecognition()
+        speakInstruction()
+    }
+    
+    @objc func addTapped(){
+        goToSetting = true
+        
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     private func alertView(message: String) {
@@ -550,76 +669,9 @@ class ChordDetailViewController: UIViewController {
         
         self.present(controller, animated: true, completion: nil)
     }
-    
-    func guitarFingering(_ finger: Int) -> String {
-        switch finger {
-        case 1 :
-            return "index finger"
-        case 2 :
-            return "middle finger"
-        case 3 :
-            return "ring finger"
-        case 4 :
-            return "pinky finger"
-        default:
-            return ""
-        }
-    }
-    
-    func guitarString(_ index: Int) -> String {
-        switch index {
-        case 1 :
-            return "1st"
-        case 2 :
-            return "2nd"
-        case 3 :
-            return "3rd"
-        default :
-            return "\(index)th"
-        }
-    }
-    
-    @IBAction func previouszTapped(_ sender: UIBarButtonItem){
-        changeString(isNext: 2)
-        speakInstruction()
-        countFail = 0
-    }
-    
-    @IBAction func nextzTapped(_ sender: UIBarButtonItem){
-        next()
-        countFail = 0
-    }
-    
-    func next() {
-        changeString(isNext: 1)
-        speakInstruction()
-    }
-    
-    @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
-     //   speakInstruction()
-        NotesMapping.shared.playSounds(["C3", "E3", "G3", "C4", "E4"])
-    }
-    
-    func speakInstruction() {
-        let tempString = currString
-        speaker.stop()
-        speaker.speak(instructionLabel.text!, playNote: currentNote(currString))
-        
-        let delay: DispatchTime = (currentNote(currString) == "") ? (.now() + 0) : (.now() + 3)
-        DispatchQueue.main.asyncAfter(deadline: delay) {
-            //Check if user move to the next string before completing the instruction.
-            if self.currString == tempString {
-                self.speaker.speak(self.instructionLabel.text!, playNote: self.currentNote(self.currString))
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: delay + 5) {
-            //Check if user move to the next string before completing the instruction.
-            self.speechRecognitionActive()
-            self.lblCommand.text = ""
-        }
-    }
 }
+
+//MARK: - Speaker Class
 
 class Speaker: NSObject {
     let synth = AVSpeechSynthesizer()
@@ -641,8 +693,6 @@ class Speaker: NSObject {
     func stop() {
         synth.stopSpeaking(at: .immediate)
     }
-    
-
 }
 
 extension Speaker: AVSpeechSynthesizerDelegate {

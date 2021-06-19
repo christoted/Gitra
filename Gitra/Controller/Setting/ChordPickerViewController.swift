@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ChordPickerViewController: UIViewController {
     
@@ -22,6 +23,11 @@ class ChordPickerViewController: UIViewController {
     var tension = ""
     
     override func viewWillAppear(_ animated: Bool) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
+        } catch {
+            print("Error")
+        }
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -48,15 +54,16 @@ class ChordPickerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(result)
         
         if segue.identifier == "todetail" {
+            
+            let destination = segue.destination as? ChordDetailViewController
+            destination?.selectedChord = self.result
+            
             DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord:self.result.urlParameter!) { model in
                     
-                    let destination = segue.destination as? ChordDetailViewController
                     destination?.chordModel = model
-                    destination?.selectedChord = self.result
                     
                 } completionFailed: { failed in
                     print(failed)
@@ -174,17 +181,17 @@ extension ChordPickerViewController: UIPickerViewDelegate {
         
         if component == 0 {
             pickerLabel?.text = note[row]
-            pickerLabel?.accessibilityLabel = "Root, " + transformChordAccessibility(note[row]) + "."
+            pickerLabel?.accessibilityLabel = "Chord Root, " + transformChordAccessibility(note[row]) + "."
             pickerLabel?.accessibilityTraits = .adjustable
         }
         else if component == 1 {
             pickerLabel?.text = chord[row].quality
-            pickerLabel?.accessibilityLabel = "Type, " + transformChordAccessibility(chord[row].quality ?? "") + "."
+            pickerLabel?.accessibilityLabel = "Chord Type, " + transformChordAccessibility(chord[row].quality ?? "") + "."
             pickerLabel?.accessibilityTraits = .adjustable
         } else {
             let selectedRow = chordPicker.selectedRow(inComponent: 1)
             pickerLabel?.text = chord[selectedRow].tension?[row]
-            pickerLabel?.accessibilityLabel = "Tension, " + transformChordAccessibility(chord[selectedRow].tension?[row] ?? "") + "."
+            pickerLabel?.accessibilityLabel = "Chord Tension, " + transformChordAccessibility(chord[selectedRow].tension?[row] ?? "") + "."
             pickerLabel?.accessibilityTraits = .adjustable
         }
         
@@ -201,4 +208,6 @@ extension ChordPickerViewController: UIPickerViewDelegate {
             self.updateUI()
         }
     }
+    
+    @IBAction func unwindToPicker(_ sender: UIStoryboardSegue) {}
 }
