@@ -72,6 +72,8 @@ class ChordDetailViewController: UIViewController {
     var startingFret = 100 //initialize max value to compare
     var indicators:[FingerIndicator] = []
     
+    var countFail:Int = 0
+    
     override func viewWillAppear(_ animated: Bool) {
         setAlpha(isHide: true)
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
@@ -287,7 +289,7 @@ class ChordDetailViewController: UIViewController {
     }
     
     private func cancelSpeechRecognitization(resultCommand: String) {
-        
+                
         if ( task != nil) {
             task.finish()
             task.cancel()
@@ -298,16 +300,24 @@ class ChordDetailViewController: UIViewController {
             let lowerCased = resultCommand.lowercased()
             
             if (lowerCased == "next") {
+                countFail = 0
+                
                 changeString(isNext: 1)
                 speakInstruction()
                // print("Next bawah")
             } else if ( lowerCased == "previous") {
+                countFail = 0
+                
                 changeString(isNext: 2)
                 speakInstruction()
             } else if ( lowerCased == "repeat") {
+                countFail = 0
+                
                 changeString(isNext: 3)
                 speakInstruction()
             } else if ( lowerCased == "finish") {
+                countFail = 0
+                
                 request.endAudio()
                 audioEngine.stop()
                 audioEngine.inputNode.removeTap(onBus: 0)
@@ -323,6 +333,41 @@ class ChordDetailViewController: UIViewController {
                 currString = -1
                 changeString(isNext: 1)
                 speakInstruction()
+                countFail = 0
+            } else {
+                //If the word is not match from the constraint above
+                //Sound Feedback On
+                
+                if ( countFail < 2) {
+                    let speechUtterance = AVSpeechUtterance(string: "Voice feedback is not available, please Input your voice again")
+
+                    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                    speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+                    speechSynthesizer.speak(speechUtterance)
+                    countFail = countFail + 1
+                    
+                    self.timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false, block: { (timer) in
+                        // Do whatever needs to be done when the timer expires
+                        self.speechRecognitionActive()
+                        self.lblCommand.text = "Listening..."
+                        
+                    })
+              
+                    print(countFail)
+                } else {
+                    let speechUtterance = AVSpeechUtterance(string: "Please use the button instead")
+
+                    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                    speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+                    speechSynthesizer.speak(speechUtterance)
+                    
+                    self.lblCommand.text = "Listening..."
+                    
+                    request.endAudio()
+                    audioEngine.stop()
+                    audioEngine.inputNode.removeTap(onBus: 0)
+                }
+                
             }
         }
         
@@ -524,10 +569,12 @@ class ChordDetailViewController: UIViewController {
     @IBAction func previouszTapped(_ sender: UIBarButtonItem){
         changeString(isNext: 2)
         speakInstruction()
+        countFail = 0
     }
     
     @IBAction func nextzTapped(_ sender: UIBarButtonItem){
         next()
+        countFail = 0
     }
     
     func next() {
