@@ -41,7 +41,7 @@ class ChordPickerViewController: UIViewController {
         var input = root + "_" + quality + tension
         input = transformChordAPI(input)
         result.urlParameter = input
-        result.title = result.title.replacingOccurrences(of: "_", with: "")
+        result.title = result.title?.replacingOccurrences(of: "_", with: "")
         
         performSegue(withIdentifier: "todetail", sender: self)
         

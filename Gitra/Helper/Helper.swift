@@ -174,8 +174,7 @@ class Helper {
         outputChord.accessibilityLabel = outputAccessibility
         outputChord.urlParameter = output
         
-        print("Title:", outputChord.title, "Label:", outputChord.accessibilityLabel, "URL :", outputChord.urlParameter)
-        
+//        print("Title:", outputChord.title!, "Label:", outputChord.accessibilityLabel!, "URL :", outputChord.urlParameter!)
         return outputChord
     }
 }
