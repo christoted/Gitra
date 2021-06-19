@@ -304,7 +304,7 @@ class ChordVoiceViewController: UIViewController {
                     destination?.chordModel = model
                     
                     DispatchQueue.main.async {
-                        destination?.resultTitle = self.chordNameModel.title
+                        destination?.selectedChord = self.chordNameModel
                     }
                     
                     

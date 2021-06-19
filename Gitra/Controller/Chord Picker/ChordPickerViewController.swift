@@ -56,6 +56,7 @@ class ChordPickerViewController: UIViewController {
                     
                     let destination = segue.destination as? ChordDetailViewController
                     destination?.chordModel = model
+                    destination?.selectedChord = self.result
                     
                 } completionFailed: { failed in
                     print(failed)
