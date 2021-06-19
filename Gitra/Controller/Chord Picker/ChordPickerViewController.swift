@@ -61,6 +61,7 @@ class ChordPickerViewController: UIViewController {
                     print(failed)
                 }
             }
+            self.hidesBottomBarWhenPushed = true
         }
     }
  
