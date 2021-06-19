@@ -35,6 +35,8 @@
 		52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72EC26726B2100B3E7EE /* SoundHelper.swift */; };
 		79C7DC9F2673B224006D4104 /* SettingsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */; };
 		7CC7CDD7266F491F001C0C9C /* OnBoardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */; };
+		7CDD803C267E0F6100E68ED1 /* loading-animation-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD803A267E0F6100E68ED1 /* loading-animation-2.json */; };
+		7CDD803D267E0F6100E68ED1 /* loading-animation-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD803B267E0F6100E68ED1 /* loading-animation-1.json */; };
 		904DC629267258DC00DD799E /* E5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FB267258D900DD799E /* E5.mp3 */; };
 		904DC62A267258DC00DD799E /* G5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FC267258D900DD799E /* G5.mp3 */; };
 		904DC62B267258DC00DD799E /* F#3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904DC5FD267258DA00DD799E /* F#3.mp3 */; };
@@ -143,6 +145,8 @@
 		52EE72EC26726B2100B3E7EE /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		79C7DC9E2673B224006D4104 /* SettingsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabase.swift; sourceTree = "<group>"; };
 		7CC7CDD6266F491F001C0C9C /* OnBoardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingAnimation.swift; sourceTree = "<group>"; };
+		7CDD803A267E0F6100E68ED1 /* loading-animation-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "loading-animation-2.json"; path = "../../../../../../Downloads/GITRA-2/JSON Files/loading-animation-2.json"; sourceTree = "<group>"; };
+		7CDD803B267E0F6100E68ED1 /* loading-animation-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "loading-animation-1.json"; path = "../../../../../../Downloads/GITRA-2/JSON Files/loading-animation-1.json"; sourceTree = "<group>"; };
 		904DC5FB267258D900DD799E /* E5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E5.mp3; sourceTree = "<group>"; };
 		904DC5FC267258D900DD799E /* G5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G5.mp3; sourceTree = "<group>"; };
 		904DC5FD267258DA00DD799E /* F#3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "F#3.mp3"; sourceTree = "<group>"; };
@@ -365,7 +369,6 @@
 		522785F4266E5E9D005BF33E /* Chord Picker */ = {
 			isa = PBXGroup;
 			children = (
-				522785D0266E5B04005BF33E /* ChordPickerViewController.swift */,
 				522785F9266E5F36005BF33E /* ChordPickerTunerViewController.swift */,
 			);
 			path = "Chord Picker";
@@ -386,6 +389,7 @@
 				90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */,
 				90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
+				522785D0266E5B04005BF33E /* ChordPickerViewController.swift */,
 				90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */,
 			);
 			path = Setting;
@@ -483,6 +487,8 @@
 		90766AFB267A475000FFA576 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				7CDD803B267E0F6100E68ED1 /* loading-animation-1.json */,
+				7CDD803A267E0F6100E68ED1 /* loading-animation-2.json */,
 				90766B02267A637C00FFA576 /* circle-grow-2.json */,
 				90766B00267A629F00FFA576 /* circle-grow.json */,
 				90766AF3267A474000FFA576 /* audio.json */,
@@ -591,6 +597,7 @@
 				904DC646267258DC00DD799E /* C5.mp3 in Resources */,
 				522785C0266E591B005BF33E /* ChordVoice.storyboard in Resources */,
 				522785C3266E5925005BF33E /* ChordPicker.storyboard in Resources */,
+				7CDD803C267E0F6100E68ED1 /* loading-animation-2.json in Resources */,
 				904DC645267258DC00DD799E /* C#3.mp3 in Resources */,
 				52698D1D266DE9D8004F7AD6 /* LaunchScreen.storyboard in Resources */,
 				904DC63A267258DC00DD799E /* F#5.mp3 in Resources */,
@@ -631,6 +638,7 @@
 				904DC64A267258DC00DD799E /* B4.mp3 in Resources */,
 				904DC640267258DC00DD799E /* B2.mp3 in Resources */,
 				904DC63D267258DC00DD799E /* F2.mp3 in Resources */,
+				7CDD803D267E0F6100E68ED1 /* loading-animation-1.json in Resources */,
 				904DC637267258DC00DD799E /* C3.mp3 in Resources */,
 				522785E8266E5D6B005BF33E /* ChordVoiceChord.storyboard in Resources */,
 				904DC649267258DC00DD799E /* G#5.mp3 in Resources */,

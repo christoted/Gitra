@@ -26,8 +26,6 @@ class ChordDetailViewController: UIViewController {
     @IBOutlet weak var nextz: UIButton!
     @IBOutlet weak var repeatz: UIButton!
     
-    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    
     //Chord Model for param
     var chordModel:ChordModel?
     var resultTitle: String?
@@ -75,6 +73,7 @@ class ChordDetailViewController: UIViewController {
     var countFail:Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
+        self.lottieAnimation2()
         setAlpha(isHide: true)
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
             self.navigationSetup()
@@ -85,8 +84,6 @@ class ChordDetailViewController: UIViewController {
             self.displayIndicators()
             self.generateStringForLabel()
             self.title = resultTitle
-            indicatorView.stopAnimating()
-            indicatorView.hidesWhenStopped = true
             UIView.animate(withDuration: 0.5) {
                 self.setAlpha(isHide: false)
             }
@@ -101,8 +98,9 @@ class ChordDetailViewController: UIViewController {
                 next()
                 print(delay)
             }
-            
-            
+
+            animationView.stop()
+            animationView.alpha = 0
 
         })
         
@@ -115,6 +113,20 @@ class ChordDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func lottieAnimation2(){
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = 1
+        }
+        
+        animationView.animation = Animation.named("loading-animation-1")
+        animationView.frame = CGRect(x: self.view.frame.midX - 25, y: self.view.frame.midY * 0.75, width: 50, height: 50)
+        animationView.contentMode = .scaleAspectFit
+        animationView.isHidden = false
+        animationView.loopMode = .loop
+        animationView.play()
+        view.insertSubview(animationView, aboveSubview: view)
     }
     
     private func setAlpha(isHide: Bool){
@@ -148,7 +160,6 @@ class ChordDetailViewController: UIViewController {
 //        displayIndicators()
 //        generateStringForLabel()
         
-        indicatorView.startAnimating()
 
     }
     
@@ -377,8 +388,10 @@ class ChordDetailViewController: UIViewController {
     }
     
     private func lottieAnimation(){
-        animationView.animation = Animation.named("volumen")
-        animationView.frame = view.bounds
+        
+        self.animationView.alpha = 1
+        animationView.animation = Animation.named("loading-animation-1")
+        animationView.frame = CGRect(x: self.view.frame.midX - 25, y: self.commandLabel.frame.maxY, width: 50, height: 50)
         animationView.isHidden = false
         animationView.loopMode = .loop
         animationView.play()
