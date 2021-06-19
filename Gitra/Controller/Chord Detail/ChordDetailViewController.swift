@@ -300,16 +300,24 @@ class ChordDetailViewController: UIViewController {
             let lowerCased = resultCommand.lowercased()
             
             if (lowerCased == "next") {
+                countFail = 0
+                
                 changeString(isNext: 1)
                 speakInstruction()
                // print("Next bawah")
             } else if ( lowerCased == "previous") {
+                countFail = 0
+                
                 changeString(isNext: 2)
                 speakInstruction()
             } else if ( lowerCased == "repeat") {
+                countFail = 0
+                
                 changeString(isNext: 3)
                 speakInstruction()
             } else if ( lowerCased == "finish") {
+                countFail = 0
+                
                 request.endAudio()
                 audioEngine.stop()
                 audioEngine.inputNode.removeTap(onBus: 0)
@@ -325,6 +333,7 @@ class ChordDetailViewController: UIViewController {
                 currString = -1
                 changeString(isNext: 1)
                 speakInstruction()
+                countFail = 0
             } else {
                 //If the word is not match from the constraint above
                 //Sound Feedback On
@@ -560,10 +569,12 @@ class ChordDetailViewController: UIViewController {
     @IBAction func previouszTapped(_ sender: UIBarButtonItem){
         changeString(isNext: 2)
         speakInstruction()
+        countFail = 0
     }
     
     @IBAction func nextzTapped(_ sender: UIBarButtonItem){
         next()
+        countFail = 0
     }
     
     func next() {
