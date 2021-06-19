@@ -19,10 +19,12 @@ class ChordDetailViewController: UIViewController {
     @IBOutlet var openCloseIndicators:UIView!
     @IBOutlet weak var commandLabel: UILabel!
     
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     
-    @IBOutlet weak var previousz: UIBarButtonItem!
-    @IBOutlet weak var nextz: UIBarButtonItem!
-    @IBOutlet weak var repeatz: UIBarButtonItem!
+    
+    @IBOutlet weak var previousz: UIButton!
+    @IBOutlet weak var nextz: UIButton!
+    @IBOutlet weak var repeatz: UIButton!
     
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
@@ -31,7 +33,7 @@ class ChordDetailViewController: UIViewController {
     var resultTitle: String?
     var senderPage: ChordPickerViewController?
     
-
+    var chordDelay: Double = 0.2
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
@@ -75,36 +77,44 @@ class ChordDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setAlpha(isHide: true)
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
-                
             self.navigationSetup()
-            
             guard let chordModelSave = chordModel else {
                 return
             }
-            
             self.translateToCoordinate(chord: chordModelSave)
             self.displayIndicators()
             self.generateStringForLabel()
-            
-            
-          
             self.title = resultTitle
-            
-          
-          
             indicatorView.stopAnimating()
             indicatorView.hidesWhenStopped = true
-
             UIView.animate(withDuration: 0.5) {
                 self.setAlpha(isHide: false)
             }
-            
             playChord(strings)
-            next()
+
+        //    next()
+
             
+            let delay: DispatchTime = .now() + 6*chordDelay + 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: delay){
+                next()
+                print(delay)
+            }
+            
+            
+
         })
         
+        let settingButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = settingButton
         
+        self.tabBarController?.tabBar.isHidden = true
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setAlpha(isHide: Bool){
@@ -137,11 +147,16 @@ class ChordDetailViewController: UIViewController {
 //        translateToCoordinate(chord:queryChord)
 //        displayIndicators()
 //        generateStringForLabel()
-      
         
         indicatorView.startAnimating()
+
     }
     
+    @objc func addTapped(){
+        let pvc = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = pvc.instantiateViewController(withIdentifier: "setting")
+        self.navigationController?.pushViewController(settingVC, animated: true)
+    }
     
     
     //number of frets juga
@@ -473,13 +488,27 @@ class ChordDetailViewController: UIViewController {
     
     func playChord(_ stringsArray: [Int]) {
         var note = [String]()
+    
+        let timeDelay = UserDefaults.standard.integer(forKey: "chordSpeed")
+        
+        switch timeDelay {
+        case 0:
+            chordDelay = 0.5
+        case 1:
+            chordDelay = 0.2
+        case 2:
+            chordDelay = 0.05
+        default:
+            break
+        }
         
         for (index, frets) in stringsArray.enumerated() {
             if frets >= 0 {
                 note.append(Database.shared.getGuitarNote((5 - index), frets))
             }
         }
-       NotesMapping.shared.playSounds(note)
+        
+       NotesMapping.shared.playSounds(note, withDelay: chordDelay)
     }
     
     func currentNote(_ senar: Int) -> String {
@@ -588,6 +617,8 @@ class Speaker: NSObject {
     func stop() {
         synth.stopSpeaking(at: .immediate)
     }
+    
+
 }
 
 extension Speaker: AVSpeechSynthesizerDelegate {
