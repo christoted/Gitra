@@ -60,11 +60,6 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-xE-DBY">
-                                <rect key="frame" x="186" y="360" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1882379458" green="0.99966400860000004" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yAu-lN-Srn">
                                 <rect key="frame" x="5" y="774" width="369.66666666666669" height="36"/>
                                 <subviews>
@@ -132,7 +127,6 @@ Say ‘repeat’ to repeat the instructions.</string>
                     <connections>
                         <outlet property="commandLabel" destination="uTD-9k-G5f" id="IFA-vE-XtK"/>
                         <outlet property="fretImage" destination="zhT-JP-5Mp" id="oMc-qj-mYn"/>
-                        <outlet property="indicatorView" destination="CZz-xE-DBY" id="yZO-iD-qGw"/>
                         <outlet property="instructionLabel" destination="6LP-7f-TxD" id="vTV-uo-i3e"/>
                         <outlet property="lblCommand" destination="37x-T5-CIC" id="7Yp-Bt-yG9"/>
                         <outlet property="nextz" destination="JfP-Uu-Qes" id="uwT-4p-3TS"/>
