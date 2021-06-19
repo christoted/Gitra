@@ -42,8 +42,8 @@ class Helper {
     func convertStringToParam(chord: String) -> ChordName {
         
         var outputChord = ChordName(title: "", accessibilityLabel: "", urlParameter: "")
+        var outputTitle = ""
         var outputAccessibility = ""
-        
         var output = chord.lowercased()
         
         //Split the String
@@ -55,6 +55,7 @@ class Helper {
         }
         //Take the first index value
         output = checkRoot(splitChordInput[0])
+        outputTitle = output
         outputAccessibility = output
 
         //Determine chord root
@@ -109,15 +110,15 @@ class Helper {
         func swappingSharp(_ text: String) -> (String, String) {
             switch text {
             case "C#" :
-                return ("Db", "D flat")
+                return ("Db", "C sharp")
             case "D#" :
-                return ("Eb", "E flat")
+                return ("Eb", "D sharp")
             case "F#" :
-                return ("Gb", "G flat")
+                return ("Gb", "F Sharp")
             case "G#" :
-                return ("Ab", "A flat")
+                return ("Ab", "G sharp")
             case "A#" :
-                return ("Bb", "B flat")
+                return ("Bb", "A sharp")
             default :
                 return (text, text)
             }
@@ -133,7 +134,9 @@ class Helper {
             //Check if the second word is # or flat
             if index == 1 && (pitch.0 != "") {
                 output.append(pitch.0)
+                
                 outputAccessibility = output
+                outputTitle = output
                 
                 output = swappingSharp(output).0
                 outputAccessibility = swappingSharp(outputAccessibility).1
@@ -148,12 +151,15 @@ class Helper {
             }
             
             output.append(quality.0)
+            outputTitle.append(quality.0)
             outputAccessibility.append(quality.1)
             
             output.append(pitch.0)
+            outputTitle.append(pitch.0)
             outputAccessibility.append(pitch.1)
             
             output.append(tension)
+            outputTitle.append(tension)
             outputAccessibility.append(tension)
             
         }
@@ -164,7 +170,7 @@ class Helper {
         
         output.capitalizeFirstLetter()
         
-        outputChord.title = output.replacingOccurrences(of: "_", with: "")
+        outputChord.title = outputTitle.replacingOccurrences(of: "_", with: "")
         outputChord.accessibilityLabel = outputAccessibility
         outputChord.urlParameter = output
         

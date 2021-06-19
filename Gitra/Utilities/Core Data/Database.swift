@@ -19,7 +19,7 @@ class Database {
     }
     
     func seedNote() {
-        noteList = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+        noteList = ["C", "D♯", "D", "E♯", "E", "F", "G♯", "G", "A♯", "A", "B♯", "B"]
     }
     
     func seedChord() {

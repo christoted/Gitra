@@ -41,14 +41,15 @@ class ChordPickerViewController: UIViewController {
         var input = root + "_" + quality + tension
         input = transformChordAPI(input)
         result.urlParameter = input
-        result.title = input.replacingOccurrences(of: "_", with: "")
+        result.title = result.title.replacingOccurrences(of: "_", with: "")
         
         performSegue(withIdentifier: "todetail", sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+        print(result)
+        
         if segue.identifier == "todetail" {
             DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord:self.result.urlParameter) { model in
@@ -79,7 +80,7 @@ class ChordPickerViewController: UIViewController {
     }
     
     func selectedChordLabel() -> String {
-        return (transformChordAccessibility(root) +  transformChordAccessibility(quality) + transformChordAccessibility(tension))
+        return (transformChordAccessibility(root) +  " " + transformChordAccessibility(quality) +  " " + transformChordAccessibility(tension))
     }
     
     func transformChordAPI(_ input: String) -> String {
@@ -102,16 +103,19 @@ class ChordPickerViewController: UIViewController {
         output = output.replacingOccurrences(of: "/", with: "")
         output = output.replacingOccurrences(of: "minor", with: "m")
         output = output.trimmingCharacters(in: .whitespaces)
-        
         output.capitalizeFirstLetter()
+        
+        result.title = output
+        output = swappingSharp(output)
         
         return output
     }
     
     func transformChordAccessibility(_ input: String) -> String {
         var output = input
-        output = output.replacingOccurrences(of: "♯", with: "Sharp")
-        output = output.replacingOccurrences(of: "♭", with: "Flat")
+        output = output.replacingOccurrences(of: "♯", with: " Sharp")
+        output = output.replacingOccurrences(of: "♭", with: " Flat")
+        output = output.replacingOccurrences(of: "-", with: "")
         
         switch output {
         case "Dim":
@@ -123,6 +127,18 @@ class ChordPickerViewController: UIViewController {
         default:
             break
         }
+        return output
+    }
+    
+    func swappingSharp(_ text: String) -> String {
+        var output = text
+        
+        output = output.replacingOccurrences(of: "C#", with: "Db")
+        output = output.replacingOccurrences(of: "D#", with: "Eb")
+        output = output.replacingOccurrences(of: "F#", with: "Gb")
+        output = output.replacingOccurrences(of: "G#", with: "Ab")
+        output = output.replacingOccurrences(of: "A#", with: "Bb")
+        
         return output
     }
 }
