@@ -33,6 +33,7 @@ class ChordDetailViewController: UIViewController {
     var resultTitle: String?
     var senderPage: ChordPickerViewController?
     
+    var chordDelay: Double = 0.2
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
 
@@ -88,7 +89,19 @@ class ChordDetailViewController: UIViewController {
                 self.setAlpha(isHide: false)
             }
             playChord(strings)
+
             next()
+
+            
+            let delay: DispatchTime = .now() + 6*chordDelay + 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: delay){
+                next()
+                print(delay)
+            }
+            
+            
+
         })
         
         let settingButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(addTapped))
@@ -439,13 +452,27 @@ class ChordDetailViewController: UIViewController {
     
     func playChord(_ stringsArray: [Int]) {
         var note = [String]()
+    
+        let timeDelay = UserDefaults.standard.integer(forKey: "chordSpeed")
+        
+        switch timeDelay {
+        case 0:
+            chordDelay = 0.5
+        case 1:
+            chordDelay = 0.2
+        case 2:
+            chordDelay = 0.05
+        default:
+            break
+        }
         
         for (index, frets) in stringsArray.enumerated() {
             if frets >= 0 {
                 note.append(Database.shared.getGuitarNote((5 - index), frets))
             }
         }
-       NotesMapping.shared.playSounds(note)
+        
+       NotesMapping.shared.playSounds(note, withDelay: chordDelay)
     }
     
     func currentNote(_ senar: Int) -> String {
