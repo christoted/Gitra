@@ -90,7 +90,7 @@ class ChordDetailViewController: UIViewController {
             }
             playChord(strings)
 
-            next()
+        //    next()
 
             
             let delay: DispatchTime = .now() + 6*chordDelay + 0.5
