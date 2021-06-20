@@ -73,6 +73,9 @@ class ChordVoiceViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        request.endAudio()
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
         cancelSpeechRecognitization()
     }
     

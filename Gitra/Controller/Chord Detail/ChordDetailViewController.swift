@@ -535,6 +535,8 @@ class ChordDetailViewController: UIViewController {
     
     func playChord(_ stringsArray: [Int]) {
         var note = [String]()
+        var animatedImages = [UIImage]()
+        var stringCount = 0.0
         
         let timeDelay = UserDefaults.standard.integer(forKey: "chordSpeed")
         
@@ -552,11 +554,22 @@ class ChordDetailViewController: UIViewController {
         for (index, frets) in stringsArray.enumerated() {
             if frets >= 0 {
                 note.append(Database.shared.getGuitarNote((5 - index), frets))
+                animatedImages.append(UIImage(named: "FretsGlow-" + String(6-index)) ?? UIImage())
+                stringCount += 1.0
             }
         }
         
+        //Animating the image sequence
+        fretImage.stopAnimating()
+        fretImage.animationImages = animatedImages
+        fretImage.animationDuration = chordDelay * stringCount
+        fretImage.animationRepeatCount = 1
+        
         NotesMapping.shared.playSounds(note, withDelay: chordDelay)
-
+        
+        //Start animating
+        fretImage.startAnimating()
+        fretImage.image = animatedImages.last
     }
     
     private func currentNote(_ senar: Int) -> String {

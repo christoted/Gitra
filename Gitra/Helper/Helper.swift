@@ -171,6 +171,10 @@ class Helper {
         
         output.capitalizeFirstLetter()
         
+        if (output.count > 0) && (Array(output)[0] == "_") {
+            return ChordName(title: "", accessibilityLabel: "", urlParameter: "")
+        }
+        
         outputChord.title = outputTitle.replacingOccurrences(of: "_", with: "")
         outputChord.accessibilityLabel = outputAccessibility
         outputChord.urlParameter = output
