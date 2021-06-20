@@ -35,7 +35,8 @@ class SettingsDatabase{
         self.inputCommand = UserDefaults.standard.integer(forKey: "inputCommand")
         self.chordSpeed = UserDefaults.standard.integer(forKey: "chordSpeed")
         
-        settings = [SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
+        settings = [
+//            SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
                     SettingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
                     SettingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
                     SettingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),
@@ -48,7 +49,8 @@ class SettingsDatabase{
         self.inputCommand = UserDefaults.standard.integer(forKey: "inputCommand")
         self.chordSpeed = UserDefaults.standard.integer(forKey: "chordSpeed")
         
-        settings = [SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
+        settings = [
+//            SettingsType(titleSettings: "Chord Input Mode", type: .description, selected: inputModes, menu: ["Voice Command", "Picker"]),
                     SettingsType(titleSettings: "Welcome Screen", type: .toggle, selected: welcomeScreen),
                     SettingsType(titleSettings: "Input Command Guides", type: .toggle, selected: inputCommand),
                     SettingsType(titleSettings: "Chord Speed", type: .description, selected: chordSpeed, menu: ["Slow", "Normal", "Fast"]),

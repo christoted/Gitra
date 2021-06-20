@@ -21,6 +21,7 @@ class SettingListViewController: UIViewController{
         super.viewDidLoad()
         
         navigationController?.navigationBar.shadowImage = UIImage()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
@@ -30,15 +31,15 @@ class SettingListViewController: UIViewController{
     
     func checkSourcePage() {
         switch senderPage {
-        case 0 :
-            saveKey = "inputMode"
-            footerLabel.text = "By choosing voice command, you will be able to input a chord by using your voice. Please restart the app to see the changes."
-            self.title = " Chord Input Mode"
-        case 3 :
+//        case 0 :
+//            saveKey = "inputMode"
+//            footerLabel.text = "By choosing voice command, you will be able to input a chord by using your voice. Please restart the app to see the changes."
+//            self.title = " Chord Input Mode"
+        case 2 :
             saveKey = "chordSpeed"
             footerLabel.text = "Determine the chord playback speed on the instruction mode. The default value is normal."
             self.title = "Chord Speed"
-        case 4 :
+        case 3 :
             saveKey = ""
             footerLabel.text = ""
             self.title = "Instructions"
@@ -57,7 +58,7 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         //Deselect all row to remove checkmark
-        if senderPage != 4 {
+        if senderPage != 3 {
             for i in 0...(settingList[senderPage ?? 0].menu!.count - 1) {
                 tableView.cellForRow(at: [0,i])?.accessoryType = .none
             }
@@ -65,8 +66,8 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
             cell?.accessoryType = .checkmark
             UserDefaults.standard.setValue(indexPath.row, forKey: saveKey)
         }
-        if senderPage == 4 {
-            sender = settingList[indexPath.row].id
+        if senderPage == 3 {
+            sender = indexPath.row
             performSegue(withIdentifier: "instructionSegue", sender: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -85,11 +86,11 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "GitraSettingCell")
         cell.textLabel?.text = settingList[senderPage ?? -1].menu?[indexPath.row]
         
-        if ((indexPath.row) == UserDefaults.standard.integer(forKey: saveKey)) && (senderPage != 4) {
+        if ((indexPath.row) == UserDefaults.standard.integer(forKey: saveKey)) && (senderPage != 3) {
             cell.accessoryType = .checkmark
         }
         
-        if senderPage == 4 {
+        if senderPage == 3 {
             cell.accessoryType = .disclosureIndicator
         }
         

@@ -30,6 +30,7 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
+        self.tabBarController?.tabBar.isHidden = false
         self.extendedLayoutIncludesOpaqueBars = true
         
         do {

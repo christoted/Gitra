@@ -369,6 +369,7 @@
 		522785F4266E5E9D005BF33E /* Chord Picker */ = {
 			isa = PBXGroup;
 			children = (
+				522785D0266E5B04005BF33E /* ChordPickerViewController.swift */,
 				522785F9266E5F36005BF33E /* ChordPickerTunerViewController.swift */,
 			);
 			path = "Chord Picker";
@@ -389,7 +390,6 @@
 				90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */,
 				90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
-				522785D0266E5B04005BF33E /* ChordPickerViewController.swift */,
 				90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */,
 			);
 			path = Setting;

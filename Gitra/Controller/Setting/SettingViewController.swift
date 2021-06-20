@@ -28,6 +28,8 @@ class SettingViewController: UIViewController{
         SettingsDatabase.shared.reloadDatabase()
         settingsList = SettingsDatabase.shared.getSettings()
         tableView.reloadData()
+        
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,7 +45,7 @@ extension SettingViewController: UITableViewDelegate{
         //Identify the sender
         sender = indexPath.row
         
-        if (indexPath.row == 0) || (indexPath.row == 3) || (indexPath.row == 4) {
+        if (indexPath.row == 2) || (indexPath.row == 3) {
             performSegue(withIdentifier: "SettingsListSegue", sender: nil)
         }
     }

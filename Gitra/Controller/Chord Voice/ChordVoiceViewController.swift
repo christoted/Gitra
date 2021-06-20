@@ -41,6 +41,8 @@ class ChordVoiceViewController: UIViewController {
             print("Error")
         }
         
+        self.tabBarController?.tabBar.isHidden = false
+        
         lblResult.text = "Say Something..."
     }
     
