@@ -125,6 +125,7 @@ class ChordDetailViewController: UIViewController {
         hideAnimation()
         
         workItemSpeech?.cancel()
+        workItemCommand?.cancel()
         workItemRecognizer?.cancel()
         speaker.stop()
 
@@ -139,25 +140,25 @@ class ChordDetailViewController: UIViewController {
         var prev = 0
         if currString - 1 >= 0 {
             prev = indicators.count - currString - 1
-        }else{
+        } else {
             prev = 5
         }
         indicators[prev].backgroundColor = UIColor.ColorLibrary.whiteAccent
         indicators[prev].setTitleColor(UIColor.ColorLibrary.blackAccent, for: .normal)
         
-        if isNext == 1{
+        if isNext == 1 {
             currString = (currString + 1) % 6
             
             if (currString == 5) {
                 print("lima")
             }
             
-        }else if isNext == 2{
+        } else if isNext == 2 {
            currString = (currString - 1)
             if currString < 0{
                 currString = 5
             }
-        }else if isNext == 3 {
+        } else if isNext == 3 {
             
         }
         
@@ -166,6 +167,7 @@ class ChordDetailViewController: UIViewController {
         fretImage.image = UIImage(named: imageName)
         indicators[indicators.count - 1 - currString].backgroundColor = UIColor.ColorLibrary.orangeAccent
         indicators[indicators.count - 1 - currString].setTitleColor(UIColor.ColorLibrary.whiteAccent, for: .normal)
+        previousz.isEnabled = currString == 0 ? false : true
         
     }
     
@@ -381,8 +383,13 @@ class ChordDetailViewController: UIViewController {
             if (lowerCased == "next") {
                 countFail = 0
                 
-                changeString(isNext: 1)
-                speakInstruction()
+                if currString < 5 {
+                    changeString(isNext: 1)
+                    speakInstruction()
+                } else {
+                    finish()
+                }
+                
                // print("Next bawah")
             } else if ( lowerCased == "previous") {
                 countFail = 0
@@ -401,27 +408,28 @@ class ChordDetailViewController: UIViewController {
                 audioEngine.stop()
                 audioEngine.inputNode.removeTap(onBus: 0)
                 
+                finish()
                 //Sound Feedback On87
-                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(selectedChord?.accessibilityLabel ?? "a new Chord")")
-            
-                speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-                
-                playChord(strings)
-                let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
-                DispatchQueue.global().asyncAfter(deadline: delay){
-                    self.speechSynthesizer.speak(speechUtterance)
-                }
-                
-                let defaults = UserDefaults.standard.integer(forKey: "inputMode")
-                
-                DispatchQueue.main.asyncAfter(deadline: delay + 4){
-                    if defaults == 0 {
-                        self.performSegue(withIdentifier: "unwindVoice", sender: self)
-                    } else {
-                        self.performSegue(withIdentifier: "unwindPicker", sender: self)
-                    }
-                }
+//                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(selectedChord?.accessibilityLabel ?? "a new Chord")")
+//
+//                speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//                speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+//
+//                playChord(strings)
+//                let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
+//                DispatchQueue.global().asyncAfter(deadline: delay){
+//                    self.finish()
+//                }
+//
+//                let defaults = UserDefaults.standard.integer(forKey: "inputMode")
+//
+//                DispatchQueue.main.asyncAfter(deadline: delay + 4){
+//                    if defaults == 0 {
+//                        self.performSegue(withIdentifier: "unwindVoice", sender: self)
+//                    } else {
+//                        self.performSegue(withIdentifier: "unwindPicker", sender: self)
+//                    }
+//                }
 
             } else if ( lowerCased == "start over") {
                 currString = -1
@@ -626,10 +634,19 @@ class ChordDetailViewController: UIViewController {
         }
     }
     
+    private func destroyAllSound() {
+        destroySpeakRecognition()
+        workItemSpeech?.cancel()
+        workItemCommand?.cancel()
+        workItemRecognizer?.cancel()
+        speaker.stop()
+    }
+    
     //MARK: - IBAction & Other Function
     
     @IBAction func previouszTapped(_ sender: UIBarButtonItem){
         destroySpeakRecognition()
+        destroyAllSound()
         changeString(isNext: 2)
         speakInstruction()
         countFail = 0
@@ -637,17 +654,48 @@ class ChordDetailViewController: UIViewController {
     
     @IBAction func nextzTapped(_ sender: UIBarButtonItem){
         destroySpeakRecognition()
+        destroyAllSound()
         next()
         countFail = 0
     }
     
     private func next() {
-        changeString(isNext: 1)
-        speakInstruction()
+        if currString < 5 {
+            
+            changeString(isNext: 1)
+            speakInstruction()
+            
+        } else {
+            finish()
+        }
+    }
+    
+    private func finish() {
+        
+        destroyAllSound()
+        
+        playChord(strings)
+        
+        let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
+        
+        DispatchQueue.global().asyncAfter(deadline: delay){
+            self.speaker.speak("Congratulation You have Learn \(self.selectedChord?.accessibilityLabel ?? "a new Chord")", playNote: "")
+        }
+        
+        let defaults = UserDefaults.standard.integer(forKey: "inputMode")
+        
+        DispatchQueue.main.asyncAfter(deadline: delay + 4){
+            if defaults == 0 {
+                self.performSegue(withIdentifier: "unwindVoice", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "unwindPicker", sender: self)
+            }
+        }
     }
     
     @IBAction func repeatzTapped(_ sender: UIBarButtonItem){
         destroySpeakRecognition()
+        destroyAllSound()
         speakInstruction()
     }
     
