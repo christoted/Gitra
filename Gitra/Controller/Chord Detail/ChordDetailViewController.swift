@@ -90,11 +90,11 @@ class ChordDetailViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [self] in
             
-            guard let chordModelSave = chordModel else {
+            guard chordModel != nil else {
                 return
             }
             
-            self.translateToCoordinate(chord: chordModelSave)
+            self.translateToCoordinate(chord: chordModel!)
             self.displayIndicators()
             self.generateStringForLabel()
             
@@ -150,7 +150,6 @@ class ChordDetailViewController: UIViewController {
             currString = (currString + 1) % 6
             
             if (currString == 5) {
-                print("lima")
             }
             
         } else if isNext == 2 {
@@ -312,7 +311,8 @@ class ChordDetailViewController: UIViewController {
         let recordingFormat = node.outputFormat(forBus: 0)
         
         request = SFSpeechAudioBufferRecognitionRequest()
-        guard request != nil else {
+        
+        guard request == request else {
             fatalError("Unable to Create SFSpeech Object")
         }
         

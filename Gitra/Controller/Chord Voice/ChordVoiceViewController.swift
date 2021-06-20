@@ -118,7 +118,7 @@ class ChordVoiceViewController: UIViewController {
             try AVAudioSession.sharedInstance().setActive(true)
             
             try AVAudioSession.sharedInstance().setMode(AVAudioSession.Mode.default)
-                 //try audioSession.setMode(AVAudioSessionModeMeasurement)
+            //try audioSession.setMode(AVAudioSessionModeMeasurement)
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
             try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             
@@ -140,14 +140,20 @@ class ChordVoiceViewController: UIViewController {
         isStart = !isStart
         
         if (isStart) {
-            self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (timer) in
-                // Do whatever needs to be done when the timer expires
+            //Start with delay if voice over running
+            if UIAccessibility.isVoiceOverRunning {
+                self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (timer) in
+                    // Do whatever needs to be done when the timer expires
+                    self.playSound()
+                    self.lottieAnimation()
+                    self.speechRecognitionActive()
+                })
+                //Start immediately if no voice over detected
+            } else {
                 self.playSound()
                 self.lottieAnimation()
                 self.speechRecognitionActive()
-            })
-           
-          
+            }
             
         } else {
             cancelSpeechRecognitization()
@@ -160,7 +166,7 @@ class ChordVoiceViewController: UIViewController {
         let recordingFormat = node.outputFormat(forBus: 0)
         
         request = SFSpeechAudioBufferRecognitionRequest()
-        guard request != nil else {
+        guard request == request else {
             fatalError("Unable to Create SFSpeech Object")
         }
         
@@ -189,17 +195,17 @@ class ChordVoiceViewController: UIViewController {
         task = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             
             var isFinal = false
-
+            
             if let result = result {
                 self.lblResult.text = result.bestTranscription.formattedString
                 // Should I compare the result here to see if it changed?
                 isFinal = result.isFinal
             }
-
+            
             if isFinal {
-              //  self.cancelSpeechRecognitization()
-//                self.restartSpeechTimer()
-//                print("ISFinal")
+                //  self.cancelSpeechRecognitization()
+                //                self.restartSpeechTimer()
+                //                print("ISFinal")
             }
             else if error == nil {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
@@ -223,7 +229,7 @@ class ChordVoiceViewController: UIViewController {
     var chordToResponse = ""
     
     var chordNameModel = ChordName()
-
+    
     private func cancelSpeechRecognitization() {
         
         if ( task != nil) {
@@ -232,7 +238,7 @@ class ChordVoiceViewController: UIViewController {
             task = nil
             
             let speechUtterance = AVSpeechUtterance(string: self.lblResult.text!)
-        
+            
             speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
             speechSynthesizer.speak(speechUtterance)
@@ -243,8 +249,6 @@ class ChordVoiceViewController: UIViewController {
             guard let chordSave = chord else {return}
             
             chordNameModel = Helper().convertStringToParam(chord: chordSave)
-        
-            print(chordNameModel.urlParameter)
             
             guard let chordURLParameterSave = chordNameModel.urlParameter else {
                 return
@@ -255,23 +259,20 @@ class ChordVoiceViewController: UIViewController {
                 
                 self.task = nil
                 
-                print("HELLO")
-                
                 NetworkManager().getSpecificChord(chord: chordURLParameterSave) { chordResult in
-                    print(chordResult.chordName!)
                     
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "toChordDetail", sender: self)
                     }
-                   
+                    
                 } completionFailed: { isFailed in
                     
                     let textFailed = "Chord not found, please input again"
-                   
+                    
                     if ( isFailed == true) {
                         
                         let speechUtterance = AVSpeechUtterance(string: textFailed)
-                    
+                        
                         speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                         speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
                         self.speechSynthesizer.speak(speechUtterance)
@@ -283,16 +284,14 @@ class ChordVoiceViewController: UIViewController {
                                 self.playSound()
                                 self.lottieAnimation()
                                 self.speechRecognitionActive()
-
+                                
                             })
                         }
                     }
                 }
             }
- 
         }
- 
-            
+        
         request.endAudio()
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
@@ -308,7 +307,7 @@ class ChordVoiceViewController: UIViewController {
             let destination = segue.destination as? ChordDetailViewController
             destination?.selectedChord = self.chordNameModel
             print(self.chordNameModel)
-
+            
             DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord:chordURLParameterSave) { model in
                     

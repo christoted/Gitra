@@ -8,7 +8,6 @@
 import Foundation
 
 class NetworkManagerProtocol {
-    
 }
 
 class NetworkManager {
@@ -21,7 +20,7 @@ class NetworkManager {
         let url = URL(string: queryURL)
         
         let request = URLRequest(url: url!)
-        var chordModel = ChordModel()
+//        var chordModel = ChordModel()
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let response = response as? HTTPURLResponse else {
@@ -37,7 +36,6 @@ class NetworkManager {
                          
                         var chordModel = ChordModel()
                      
-                        
                         chordResponse.forEach { (response)  in
                             chordModel.chordName = response.chordName
                             chordModel.enharmonicChordName = response.enharmonicChordName
@@ -47,9 +45,7 @@ class NetworkManager {
                             
                             completion(chordModel)
                         }
-                        
-                     //   completion(chordModel)
-                        
+                                                
                     } else {
                         print("ERROR CAN'T DECODE JSON")
                     }
@@ -61,14 +57,9 @@ class NetworkManager {
                    
                 }
             }
-        
         }
-        
-        
         task.resume()
-        
     }
-    
 }
 
 

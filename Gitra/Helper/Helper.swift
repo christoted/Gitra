@@ -21,10 +21,10 @@ class Helper {
                  "F": ["f", "have", "if"],
                  "G": ["g"],
                  "A": ["a"],
-                 "B": ["b", "bee"]]
+                 "B": ["b", "bee", "be"]]
     let symbols = ["b": ["flat", "b", "♭"],
-                     "#": ["sharp", "#", "♯", "shark", "shack"]]
-    let qualities = ["maj": ["major", "maj"],
+                     "#": ["sharp", "#", "♯", "shark", "shack", "shirt"]]
+    let qualities = ["maj": ["major", "maj", "ranger"],
                      "m": ["minor", "min"],
                      "add": ["add"],
                      "aug": ["augmented", "aug"],
@@ -45,6 +45,7 @@ class Helper {
         var outputTitle = ""
         var outputAccessibility = ""
         var output = chord.lowercased()
+        output = output.replacingOccurrences(of: "-", with: " ")
         
         //Split the String
         //Example string a = "D sharp major seven" -> "D", "sharp", "major", "seven"
