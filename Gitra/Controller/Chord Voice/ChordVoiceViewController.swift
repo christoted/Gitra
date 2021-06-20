@@ -50,7 +50,8 @@ class ChordVoiceViewController: UIViewController {
         UINavigationBar.appearance().isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
         self.extendedLayoutIncludesOpaqueBars = false
-        checkDefault()
+
+//        checkDefault()
         
         // Do any additional setup after loading the view.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))

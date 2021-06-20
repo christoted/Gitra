@@ -100,11 +100,11 @@
             </objects>
             <point key="canvasLocation" x="2132" y="-35"/>
         </scene>
-        <!--Chord-->
+        <!--Voice Command-->
         <scene sceneID="Abj-aj-M3x">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2WM-yd-HbP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chord" image="music.note.list" catalog="system" id="PVm-U9-wCG"/>
+                    <tabBarItem key="tabBarItem" title="Voice Command" image="music.note.list" catalog="system" id="PVm-U9-wCG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="aie-ao-0kP">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>

@@ -66,7 +66,7 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
             UserDefaults.standard.setValue(indexPath.row, forKey: saveKey)
         }
         if senderPage == 4 {
-            sender = indexPath.row
+            sender = settingList[indexPath.row].id
             performSegue(withIdentifier: "instructionSegue", sender: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
