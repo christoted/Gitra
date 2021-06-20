@@ -18,7 +18,7 @@
             <objects>
                 <viewController storyboardIdentifier="chordpickerchord" id="iFh-B7-1L4" customClass="ChordPickerViewController" customModule="Gitra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="55y-Fg-iKz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gitra Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hbn-Ed-2CU">
@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which chord do you want to play?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh6-hG-rBJ">
-                                <rect key="frame" x="68.5" y="220.5" width="277.5" height="22"/>
+                                <rect key="frame" x="69.5" y="221.5" width="275.5" height="21"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="18"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
