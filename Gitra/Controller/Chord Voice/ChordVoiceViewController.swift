@@ -142,9 +142,10 @@ class ChordVoiceViewController: UIViewController {
                 // Do whatever needs to be done when the timer expires
                 self.playSound()
                 self.lottieAnimation()
+                self.speechRecognitionActive()
             })
            
-            speechRecognitionActive()
+          
             
         } else {
             cancelSpeechRecognitization()
