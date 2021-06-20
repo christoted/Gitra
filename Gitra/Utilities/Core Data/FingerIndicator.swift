@@ -20,6 +20,7 @@ class FingerIndicator: UIButton {
         setTitleColor(.black, for: .normal)
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         layer.masksToBounds = true
+        isAccessibilityElement = false
         
     }
     
