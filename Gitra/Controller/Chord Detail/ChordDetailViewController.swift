@@ -84,12 +84,11 @@ class ChordDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = ""
     
         self.lottieAnimation(yPos: self.view.frame.maxY * 0.4, show: true)
         setAlpha(isHide: true)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [self] in
             
             guard let chordModelSave = chordModel else {
                 return

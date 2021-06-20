@@ -63,12 +63,14 @@ class ChordVoiceViewController: UIViewController {
         textLogo.accessibilityHint = "Which chord do you want to play? Please tap twice the The Guitar Image Below. Please wait the Siri Voice done, then input the chord by your voice, and wait 5 second to know the feedback chord"
         
         imageTap.isAccessibilityElement = true
-        imageTap.accessibilityHint = ""
+        imageTap.accessibilityLabel = "Guitar icon, tap twice"
         
-        lblWhich.isAccessibilityElement = true
-        lblWhich.accessibilityLabel = "Tap Twice"
+        lblWhich.isAccessibilityElement = false
         
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        cancelSpeechRecognitization()
     }
     
     @IBAction func goToSetting(_ sender: Any) {
@@ -138,7 +140,7 @@ class ChordVoiceViewController: UIViewController {
         isStart = !isStart
         
         if (isStart) {
-            self.timer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false, block: { (timer) in
+            self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (timer) in
                 // Do whatever needs to be done when the timer expires
                 self.playSound()
                 self.lottieAnimation()
@@ -304,12 +306,13 @@ class ChordVoiceViewController: UIViewController {
         
         if segue.identifier == "toChordDetail" {
             let destination = segue.destination as? ChordDetailViewController
-            
+            destination?.selectedChord = self.chordNameModel
+            print(self.chordNameModel)
+
             DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord:chordURLParameterSave) { model in
                     
                     destination?.chordModel = model
-                    destination?.selectedChord = self.chordNameModel
                     
                 } completionFailed: { failed in
                     print(failed)

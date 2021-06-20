@@ -23,7 +23,7 @@ class Helper {
                  "A": ["a"],
                  "B": ["b", "bee"]]
     let symbols = ["b": ["flat", "b", "♭"],
-                     "#": ["sharp", "#", "♯", "shark"]]
+                     "#": ["sharp", "#", "♯", "shark", "shack"]]
     let qualities = ["maj": ["major", "maj"],
                      "m": ["minor", "min"],
                      "add": ["add"],
