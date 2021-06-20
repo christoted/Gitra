@@ -59,6 +59,7 @@ class ChordPickerViewController: UIViewController {
             
             let destination = segue.destination as? ChordDetailViewController
             destination?.selectedChord = self.result
+            destination?.senderPage = 1
             
             DispatchQueue.global().async {
                 NetworkManager().getSpecificChord(chord:self.result.urlParameter!) { model in

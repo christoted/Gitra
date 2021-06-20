@@ -309,6 +309,7 @@ class ChordVoiceViewController: UIViewController {
         if segue.identifier == "toChordDetail" {
             let destination = segue.destination as? ChordDetailViewController
             destination?.selectedChord = self.chordNameModel
+            destination?.senderPage = 0
             print(self.chordNameModel)
             
             DispatchQueue.global().async {

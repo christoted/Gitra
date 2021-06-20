@@ -88,7 +88,7 @@ extension SettingViewController: UITableViewDataSource{
     @objc func switchChanged(_ sender: UISwitch!){
         let status = sender.isOn ? 1 : 0
         
-        if sender.tag == 1{
+        if sender.tag == 0{
             UserDefaults.standard.set(status, forKey: "welcomeScreen")
         } else {
             UserDefaults.standard.set(status, forKey: "inputCommand")

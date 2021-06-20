@@ -28,19 +28,19 @@ class ChordDetailViewController: UIViewController {
     //Chord Model for param
     var chordModel:ChordModel?
     var selectedChord: ChordName?
-    var senderPage: ChordPickerViewController?
+    var senderPage: Int?
     
     var chordDelay: Double = 0.2
     var openIndicator:UIImage = #imageLiteral(resourceName: "O")
     var closeIndicator:UIImage = #imageLiteral(resourceName: "X")
-
+    
     let animationView = AnimationView()
     
     let audioEngine = AVAudioEngine()
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
     var request = SFSpeechAudioBufferRecognitionRequest()
     var task: SFSpeechRecognitionTask!
-
+    
     var workItemSpeech: DispatchWorkItem?
     var workItemCommand: DispatchWorkItem?
     var workItemRecognizer: DispatchWorkItem?
@@ -54,7 +54,7 @@ class ChordDetailViewController: UIViewController {
     var timer: Timer?
     
     let speechSynthesizer = AVSpeechSynthesizer()
-
+    
     let speaker = Speaker()
     
     var countFinger = 0
@@ -66,7 +66,7 @@ class ChordDetailViewController: UIViewController {
     
     var countFail:Int = 0
     var goToSetting: Bool = false
-
+    
     //MARK: - View Updates
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +84,7 @@ class ChordDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.lottieAnimation(yPos: self.view.frame.maxY * 0.4, show: true)
         setAlpha(isHide: true)
         
@@ -110,10 +110,10 @@ class ChordDetailViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: delay){
                 speakInstruction()
             }
-
+            
             animationView.stop()
             animationView.alpha = 0
-
+            
         })
     }
     
@@ -126,9 +126,9 @@ class ChordDetailViewController: UIViewController {
         workItemCommand?.cancel()
         workItemRecognizer?.cancel()
         speaker.stop()
-
-    }
         
+    }
+    
     //MARK: - Displaying Chord, Fingering, & Frets Position
     
     //number of frets juga
@@ -151,7 +151,7 @@ class ChordDetailViewController: UIViewController {
             }
             
         } else if isNext == 2 {
-           currString = (currString - 1)
+            currString = (currString - 1)
             if currString < 0{
                 currString = 5
             }
@@ -229,7 +229,7 @@ class ChordDetailViewController: UIViewController {
         let fretHeight = fretImage.frame.height
         
         let size = CGFloat(fretWidth * 2/27)
-//        let leading = CGFloat(1 / 27 * fretWidth)
+        //        let leading = CGFloat(1 / 27 * fretWidth)
         let top = 1 / 41 * fretHeight
         let betweenString = CGFloat((25 / 27 * fretWidth) / 5)
         let betweenFret = CGFloat((fretHeight - top) / 5)
@@ -296,7 +296,7 @@ class ChordDetailViewController: UIViewController {
             return "\(index)th"
         }
     }
-
+    
     //MARK: - Speech Recognition
     
     private func speechRecognitionActive() {
@@ -367,7 +367,7 @@ class ChordDetailViewController: UIViewController {
     }
     
     private func cancelSpeechRecognitization(resultCommand: String) {
-                
+        
         if ( task != nil) {
             task.finish()
             task.cancel()
@@ -387,7 +387,7 @@ class ChordDetailViewController: UIViewController {
                     finish()
                 }
                 
-               // print("Next bawah")
+                // print("Next bawah")
             } else if ( lowerCased == "previous") {
                 countFail = 0
                 
@@ -406,7 +406,7 @@ class ChordDetailViewController: UIViewController {
                 audioEngine.inputNode.removeTap(onBus: 0)
                 
                 finish()
-
+                
             } else if ( lowerCased == "start over") {
                 currString = -1
                 changeString(isNext: 1)
@@ -498,12 +498,12 @@ class ChordDetailViewController: UIViewController {
             self.animationView.alpha = 1
         }
     }
-        
+    
     private func hideAnimation() {
         UIView.animate(withDuration: 0.5) {
             self.animationView.alpha = 0
         }
-//        animationView.isHidden = true
+        //        animationView.isHidden = true
     }
     
     //MARK: - Sound Related
@@ -532,10 +532,10 @@ class ChordDetailViewController: UIViewController {
             print("Error ", error.localizedDescription)
         }
     }
-
+    
     func playChord(_ stringsArray: [Int]) {
         var note = [String]()
-    
+        
         let timeDelay = UserDefaults.standard.integer(forKey: "chordSpeed")
         
         switch timeDelay {
@@ -555,7 +555,8 @@ class ChordDetailViewController: UIViewController {
             }
         }
         
-       NotesMapping.shared.playSounds(note, withDelay: chordDelay)
+        NotesMapping.shared.playSounds(note, withDelay: chordDelay)
+
     }
     
     private func currentNote(_ senar: Int) -> String {
@@ -650,10 +651,10 @@ class ChordDetailViewController: UIViewController {
             self.speaker.speak("Congratulation You have Learn \(self.selectedChord?.accessibilityLabel ?? "a new Chord")", playNote: "")
         }
         
-        let defaults = UserDefaults.standard.integer(forKey: "inputMode")
+        //        let defaults = UserDefaults.standard.integer(forKey: "inputMode")
         
         DispatchQueue.main.asyncAfter(deadline: delay + 4){
-            if defaults == 0 {
+            if self.senderPage == 0 {
                 self.performSegue(withIdentifier: "unwindVoice", sender: self)
             } else {
                 self.performSegue(withIdentifier: "unwindPicker", sender: self)
@@ -691,7 +692,7 @@ class ChordDetailViewController: UIViewController {
 class Speaker: NSObject {
     let synth = AVSpeechSynthesizer()
     var note = ""
-
+    
     override init() {
         super.init()
         synth.delegate = self
