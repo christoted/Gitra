@@ -115,8 +115,6 @@ class ChordDetailViewController: UIViewController {
             animationView.alpha = 0
 
         })
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -298,7 +296,6 @@ class ChordDetailViewController: UIViewController {
             return "\(index)th"
         }
     }
-    
 
     //MARK: - Speech Recognition
     
@@ -409,27 +406,6 @@ class ChordDetailViewController: UIViewController {
                 audioEngine.inputNode.removeTap(onBus: 0)
                 
                 finish()
-                //Sound Feedback On87
-//                let speechUtterance = AVSpeechUtterance(string: "Congratulation You have Learn \(selectedChord?.accessibilityLabel ?? "a new Chord")")
-//
-//                speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//                speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-//
-//                playChord(strings)
-//                let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
-//                DispatchQueue.global().asyncAfter(deadline: delay){
-//                    self.finish()
-//                }
-//
-//                let defaults = UserDefaults.standard.integer(forKey: "inputMode")
-//
-//                DispatchQueue.main.asyncAfter(deadline: delay + 4){
-//                    if defaults == 0 {
-//                        self.performSegue(withIdentifier: "unwindVoice", sender: self)
-//                    } else {
-//                        self.performSegue(withIdentifier: "unwindPicker", sender: self)
-//                    }
-//                }
 
             } else if ( lowerCased == "start over") {
                 currString = -1
@@ -441,11 +417,7 @@ class ChordDetailViewController: UIViewController {
                 //Sound Feedback On
                 
                 if ( countFail < 2) {
-                    let speechUtterance = AVSpeechUtterance(string: "Voice feedback is not available, please Input your voice again")
-
-                    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                    speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-                    speechSynthesizer.speak(speechUtterance)
+                    speaker.speak("Voice feedback is not available, please Input your voice again", playNote: "")
                     countFail = countFail + 1
                     
                     self.timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false, block: { (timer) in
@@ -454,20 +426,16 @@ class ChordDetailViewController: UIViewController {
                         self.lblCommand.text = "Listening..."
                         
                     })
-              
+                    
                     print(countFail)
+                    
                 } else {
-                    let speechUtterance = AVSpeechUtterance(string: "Please use the button instead")
-
-                    speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                    speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-                    speechSynthesizer.speak(speechUtterance)
+                    speaker.speak("Please use the button instead", playNote: "")
                     
                     self.lblCommand.text = "Listening..."
                     
                     destroySpeakRecognition()
                 }
-                
             }
         }
         destroySpeakRecognition()

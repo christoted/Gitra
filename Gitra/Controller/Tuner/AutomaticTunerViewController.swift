@@ -150,12 +150,7 @@ class AutomaticTunerViewController: UIViewController, TunerDelegate {
             position = CGPoint(x: mappedPos, y: 0)
             
             if abs(freqGap) < target * 0.005 {
-                //Pake timer, create timer, countdown nyala
-                //Kalau timer == x trigger action
-                //Destroy timer kalau ga tuned in lagi
-                //Create timer saat status hijau (frequency stable)
-                //Make sure jalan di background thread
-
+                
                 statusLabel.text = "Hold"
                 indicatorCircle?.fillColor = UIColor.systemGreen.cgColor
                 

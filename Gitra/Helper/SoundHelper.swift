@@ -12,11 +12,9 @@ class SoundHelper {
     
     var audioPlayer: AVAudioPlayer?
     
-    
     func startMusic(filename: String) {
         if let bundle = Bundle.main.path(forResource: filename, ofType: "m4a") {
             let music = NSURL(fileURLWithPath: bundle)
-            
             
             do {
                 
@@ -28,13 +26,10 @@ class SoundHelper {
                 audioPlayer.prepareToPlay()
                 audioPlayer.play()
                 
-                
-            }catch let error {
+            } catch let error {
                 print(error.localizedDescription)
             }
             
         }
     }
-    
-    
 }
