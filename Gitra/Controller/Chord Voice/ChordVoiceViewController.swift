@@ -52,7 +52,7 @@ class ChordVoiceViewController: UIViewController {
         UINavigationBar.appearance().isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
         self.extendedLayoutIncludesOpaqueBars = false
-
+        self.tabBarController?.tabBar.isHidden = false
 //        checkDefault()
         
         // Do any additional setup after loading the view.
@@ -353,5 +353,7 @@ class ChordVoiceViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
-    @IBAction func unwindToVoice(_ sender: UIStoryboardSegue) {}
+    @IBAction func unwindToVoice(_ sender: UIStoryboardSegue) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }

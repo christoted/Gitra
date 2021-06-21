@@ -36,7 +36,7 @@ class TunerConductor {
     func update(_ pitch: AUValue, _ amp: AUValue) {
         
         //Noise filtering
-        guard amp > 0.1 else {
+        guard amp > 0.175 else {
             return
         }
         
@@ -59,7 +59,7 @@ class TunerConductor {
         silence = Fader(tappableNodeC, gain: 0)
         engine.output = silence
         
-        tracker = PitchTap(mic) { pitch, amp in
+        tracker = PitchTap(mic, bufferSize: 1_024) { pitch, amp in
             DispatchQueue.main.async {
                 self.update(pitch[0], amp[0])
             }

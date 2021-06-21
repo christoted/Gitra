@@ -33,7 +33,7 @@ class ChordPickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
         chordPicker.dataSource = self
@@ -210,5 +210,7 @@ extension ChordPickerViewController: UIPickerViewDelegate {
         }
     }
     
-    @IBAction func unwindToPicker(_ sender: UIStoryboardSegue) {}
+    @IBAction func unwindToPicker(_ sender: UIStoryboardSegue) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }

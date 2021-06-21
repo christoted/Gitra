@@ -40,6 +40,9 @@ Say ‘repeat’ to repeat the instructions.</string>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37x-T5-CIC">
                                 <rect key="frame" x="20" y="671" width="350" height="17"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" name="ProductSans-BoldItalic" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="Orange Accent"/>
                                 <nil key="highlightedColor"/>
@@ -68,7 +71,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyd-zf-MjB">
                                         <rect key="frame" x="0.0" y="0.0" width="123.33333333333333" height="36"/>
-                                        <accessibility key="accessibilityConfiguration" label="Previous"/>
+                                        <accessibility key="accessibilityConfiguration" label="Previous String"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.backward" catalog="system"/>
@@ -78,7 +81,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfP-Uu-Qes">
                                         <rect key="frame" x="123.33333333333334" y="0.0" width="123" height="36"/>
-                                        <accessibility key="accessibilityConfiguration" label="Next"/>
+                                        <accessibility key="accessibilityConfiguration" label="Next String"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.forward" catalog="system"/>
@@ -88,7 +91,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGn-4w-vca">
                                         <rect key="frame" x="246.33333333333334" y="0.0" width="123.33333333333334" height="36"/>
-                                        <accessibility key="accessibilityConfiguration" label="Repeat"/>
+                                        <accessibility key="accessibilityConfiguration" label="Repeat Instruction"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="repeat" catalog="system"/>

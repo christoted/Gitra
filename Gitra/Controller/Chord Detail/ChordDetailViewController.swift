@@ -126,7 +126,6 @@ class ChordDetailViewController: UIViewController {
         workItemCommand?.cancel()
         workItemRecognizer?.cancel()
         speaker.stop()
-        
     }
     
     //MARK: - Displaying Chord, Fingering, & Frets Position
@@ -466,14 +465,20 @@ class ChordDetailViewController: UIViewController {
             instructionLabel.alpha = 0
             openCloseIndicators.alpha = 0
             commandLabel.alpha = 0
-            navigationItem.titleView?.alpha = 0
+//            previousz.alpha = 0
+//            nextz.alpha = 0
+//            repeatz.alpha = 0
+//            navigationItem.titleView?.alpha = 0
         } else {
             fretImage.alpha = 1
             startFret.alpha = 1
             instructionLabel.alpha = 1
             openCloseIndicators.alpha = 1
             commandLabel.alpha = 1
-            navigationItem.titleView?.alpha = 1
+//            previousz.alpha = 1
+//            nextz.alpha = 1
+//            repeatz.alpha = 1
+//            navigationItem.titleView?.alpha = 1
         }
     }
     
