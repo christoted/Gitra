@@ -102,7 +102,10 @@ class ChordDetailViewController: UIViewController {
                 self.setAlpha(isHide: false)
             }
             
-            playChord(strings)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                playChord(strings)
+            }
+            
             changeString(isNext: 1)
             
             let delay: DispatchTime = .now() + (6 * chordDelay) + 0.5
