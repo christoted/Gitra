@@ -605,7 +605,7 @@ class ChordDetailViewController: UIViewController {
         }
         
         workItemCommand = DispatchWorkItem{
-            self.speaker.speak("Say 'next' to move to the next string. Say ‘repeat’ to repeat the instructions. Say 'finish' to end the session.", playNote: "")
+            self.speaker.speak("Say ‘repeat’ to repeat the instructions. Say 'next' to move to the next string. Say 'previous' to move to the previous string. Say 'finish' to end the session.", playNote: "")
         }
         
         workItemRecognizer = DispatchWorkItem{
@@ -620,7 +620,7 @@ class ChordDetailViewController: UIViewController {
         } else {
             DispatchQueue.main.asyncAfter(deadline: delay, execute: workItemSpeech!)
             DispatchQueue.main.asyncAfter(deadline: delay + 4, execute: workItemCommand!)
-            DispatchQueue.main.asyncAfter(deadline: delay + 11, execute: workItemRecognizer!)
+            DispatchQueue.main.asyncAfter(deadline: delay + 14, execute: workItemRecognizer!)
         }
     }
     

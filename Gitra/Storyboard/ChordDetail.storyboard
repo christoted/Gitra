@@ -31,15 +31,14 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTD-9k-G5f">
-                                <rect key="frame" x="20" y="587" width="350" height="34"/>
-                                <string key="text">Say 'next' to move to the next string.
-Say ‘repeat’ to repeat the instructions.</string>
+                                <rect key="frame" x="20" y="586.33333333333337" width="350" height="49"/>
+                                <string key="text">Say ‘repeat’ to repeat the instructions.  Say 'next' to move to the next string.  Say 'previous' to move to the previous string.</string>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37x-T5-CIC">
-                                <rect key="frame" x="20" y="671" width="350" height="17"/>
+                                <rect key="frame" x="20" y="685.33333333333337" width="350" height="16.333333333333371"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -61,7 +60,7 @@ Say ‘repeat’ to repeat the instructions.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-7f-TxD">
-                                <rect key="frame" x="20" y="560" width="350" height="17"/>
+                                <rect key="frame" x="20" y="560" width="350" height="16.333333333333371"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="textColor" name="White Background"/>
                                 <nil key="highlightedColor"/>
