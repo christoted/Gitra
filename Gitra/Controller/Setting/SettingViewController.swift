@@ -7,91 +7,105 @@
 
 import UIKit
 
-class SettingViewController: UIViewController{
+class SettingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var settingsList = SettingsDatabase.shared.getSettings()
-    var sender: Int?
+    
+    var settingVM = SettingViewViewModel()
+    var sender: SettingViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.shadowImage = UIImage()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.reloadData()
-        
+        setupUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SettingsDatabase.shared.reloadDatabase()
-        settingsList = SettingsDatabase.shared.getSettings()
-        tableView.reloadData()
-        
-        self.tabBarController?.tabBar.isHidden = true
+        reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? SettingListViewController
-        destination?.senderPage = self.sender
+        destination?.source = self.sender
+    }
+    
+    func setupUI() {
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func reloadData() {
+        settingVM.reloadData()
+        tableView.reloadData()
     }
 }
 
-extension SettingViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+// MARK: - Table View Delegate
+extension SettingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //Identify the sender
-        sender = indexPath.row
+        // Identify the sender
+        sender = settingVM.settingForRow(at: indexPath.row)
         
-        if (indexPath.row == 2) || (indexPath.row == 3) {
+        let currCellType = settingVM.settingForRow(at: indexPath.row).type
+        
+        // If current cell isn't toggle, perform segue
+        if currCellType != .toggle {
             performSegue(withIdentifier: "SettingsListSegue", sender: nil)
         }
     }
 }
 
-extension SettingViewController: UITableViewDataSource{
+// MARK: - Table View Datasource
+extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsList.count
+        return settingVM.settingListCount()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "SettingsTableViewCell")
         
-        cell.textLabel?.text = settingsList[indexPath.row].titleSettings
-        let selected = settingsList[indexPath.row].selected
+        let currCell = settingVM.settingForRow(at: indexPath.row)
         
+        // TODO: - Consider moving this to make it reusable
         let switchView = UISwitch(frame: .zero)
         switchView.onTintColor = .ColorLibrary.yellowAccent
         switchView.setOn(false, animated: true)
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         
-        if settingsList[indexPath.row].type == .click{
+        cell.textLabel?.text = currCell.title
+        
+        switch currCell.type {
+        case .click:
             cell.accessoryType = .disclosureIndicator
-        } else if settingsList[indexPath.row].type == .toggle{
+        case .description:
+            cell.accessoryType = .disclosureIndicator
+            cell.detailTextLabel?.text = currCell.selectedMenu
+        case .toggle:
             cell.accessoryView = switchView
-            if selected == 1{
-                switchView.setOn(true, animated: true)
-            } else {
-                switchView.setOn(false, animated: true)
-            }
-        } else if settingsList[indexPath.row].type == .description{
-            cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = settingsList[indexPath.row].menu?[selected!]
+            switchView.setOn(currCell.selected == 1, animated: true)
         }
         
         return cell
     }
     
-    @objc func switchChanged(_ sender: UISwitch!){
+    @objc func switchChanged(_ sender: UISwitch!) {
         let status = sender.isOn ? 1 : 0
         
-        if sender.tag == 0{
-            UserDefaults.standard.set(status, forKey: "welcomeScreen")
-        } else {
-            UserDefaults.standard.set(status, forKey: "inputCommand")
+        switch sender.tag {
+        case 0:
+            // Welcome Screen Toggle
+            settingVM.toggleSettings(value: status, forKey: .welcomeScreen)
+        case 1:
+            // Input Command Toggle
+            settingVM.toggleSettings(value: status, forKey: .inputCommand)
+        default:
+            break
         }
     }
 }

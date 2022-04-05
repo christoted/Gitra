@@ -98,7 +98,8 @@
 		90BA3CD3267A2EA4004F1804 /* InstructionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */; };
 		90BA3CD4267A2EA4004F1804 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */; };
 		90BA3CD5267A2EA4004F1804 /* SettingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */; };
-		90BA3CD8267A2F3C004F1804 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */; };
+		90BF406027FBDE7B00ED53E3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */; };
+		90BF406227FBE30500ED53E3 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF406127FBE30500ED53E3 /* SettingViewModel.swift */; };
 		90CD99972676106400464E25 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90CD99962676106400464E25 /* AudioKit */; };
 		90CD999A2676107E00464E25 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90CD99992676107E00464E25 /* SoundpipeAudioKit */; };
 		90CD999F267610F000464E25 /* AutomaticTunerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CD999E267610F000464E25 /* AutomaticTunerViewController.swift */; };
@@ -205,11 +206,11 @@
 		90799B64267A7D3D0050B25C /* OnboardingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHandler.swift; sourceTree = "<group>"; };
 		90B0163C2671085A0054ED9D /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
 		90B0163E26710C490054ED9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionListTableViewCell.swift; sourceTree = "<group>"; };
 		90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingListViewController.swift; sourceTree = "<group>"; };
 		90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		90BF406127FBE30500ED53E3 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		90CD999E267610F000464E25 /* AutomaticTunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticTunerViewController.swift; sourceTree = "<group>"; };
 		90CD99A0267611C600464E25 /* TunerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerData.swift; sourceTree = "<group>"; };
 		90CD99A2267689D700464E25 /* TunerConductor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerConductor.swift; sourceTree = "<group>"; };
@@ -386,11 +387,11 @@
 		522785FE266E5F6A005BF33E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				90BF406327FBE31300ED53E3 /* View Model */,
 				90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */,
 				90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */,
 				90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
-				90BA3CCD267A2EA4004F1804 /* SettingViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -496,6 +497,14 @@
 				90766AF5267A474100FFA576 /* volumen.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		90BF406327FBE31300ED53E3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				90BF406127FBE30500ED53E3 /* SettingViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		90CD999D267610D600464E25 /* Tuner */ = {
@@ -673,6 +682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90BF406027FBDE7B00ED53E3 /* SettingViewController.swift in Sources */,
 				522785A8266E579C005BF33E /* NetworkManager.swift in Sources */,
 				BD8BC1F92671B0E800A49D44 /* ColorLibrary.swift in Sources */,
 				904DC65E2672EB6A00DD799E /* NotesMapping.swift in Sources */,
@@ -693,9 +703,9 @@
 				90BA3CD4267A2EA4004F1804 /* InstructionViewController.swift in Sources */,
 				52698D0E266DE9D5004F7AD6 /* AppDelegate.swift in Sources */,
 				5293C813266F339100151BF7 /* ChordResponse.swift in Sources */,
-				90BA3CD8267A2F3C004F1804 /* SettingViewController.swift in Sources */,
 				522785FA266E5F36005BF33E /* ChordPickerTunerViewController.swift in Sources */,
 				522785F6266E5F0C005BF33E /* ChordVoiceTunerViewController.swift in Sources */,
+				90BF406227FBE30500ED53E3 /* SettingViewModel.swift in Sources */,
 				90BA3CD3267A2EA4004F1804 /* InstructionListTableViewCell.swift in Sources */,
 				90766B05267A67D000FFA576 /* SelectorViewController.swift in Sources */,
 				52EE72ED26726B2100B3E7EE /* SoundHelper.swift in Sources */,
