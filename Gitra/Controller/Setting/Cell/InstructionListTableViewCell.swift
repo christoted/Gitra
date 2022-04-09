@@ -10,6 +10,7 @@ import UIKit
 class InstructionListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var instructionList: UILabel!
+    
     var listArray = [String]()
     
     override func awakeFromNib() {

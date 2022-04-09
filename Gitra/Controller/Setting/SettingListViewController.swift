@@ -24,12 +24,13 @@ class SettingListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? InstructionViewController
-        destination?.senderPage = self.sender
+        destination?.source = self.sender
     }
     
     func setupUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        // TODO: Move to ViewModel (?)
         switch source?.key {
         case .chordSpeed:
             self.title = "Chord Speed"
@@ -41,14 +42,14 @@ class SettingListViewController: UIViewController {
     }
     
     func clearAccecoryType() {
-        //Deselect all row to remove checkmark
-        for i in 0...((source?.menu?.count ?? 0) - 1) {
+        // Deselect all row to remove checkmark
+        for i in 0..<(source?.menu?.count ?? 0) {
             tableView.cellForRow(at: [0,i])?.accessoryType = .none
         }
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: - TableView Delegate
 extension SettingListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let cell = tableView.cellForRow(at: indexPath)
@@ -57,9 +58,12 @@ extension SettingListViewController: UITableViewDelegate {
         case .description:
             clearAccecoryType()
             cell?.accessoryType = .checkmark
+            
+            // TODO: Move to ViewModel (?)
             UserDefaults.standard.setValue(indexPath.row, forKey: source?.key?.rawValue ?? "")
         case .click:
             sender = indexPath.row
+            // TODO: Store identifier in enum
             performSegue(withIdentifier: "instructionSegue", sender: nil)
         default:
             break
@@ -70,21 +74,21 @@ extension SettingListViewController: UITableViewDelegate {
     }
 }
 
-//MARK: - Table View Datasource
+//MARK: - TableView Datasource
 extension SettingListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: Handle Optional & nil coalescing, make it cleaner
         return source?.menu?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // TODO: Store identifier in enum
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "GitraSettingCell")
         cell.textLabel?.text = source?.menu?[indexPath.row]
         
         switch source?.type {
         case .description:
-            if indexPath.row == source?.selected {
-                cell.accessoryType = .checkmark
-            }
+            if indexPath.row == source?.selected { cell.accessoryType = .checkmark }
         case .click:
             cell.accessoryType = .disclosureIndicator
         default:

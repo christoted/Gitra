@@ -387,8 +387,8 @@
 		522785FE266E5F6A005BF33E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				90BF406427FC7A6B00ED53E3 /* Cell */,
 				90BF406327FBE31300ED53E3 /* View Model */,
-				90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */,
 				90BA3CCF267A2EA4004F1804 /* InstructionViewController.swift */,
 				90BA3CD0267A2EA4004F1804 /* SettingListViewController.swift */,
 				90BA3CD7267A2F3C004F1804 /* SettingViewController.swift */,
@@ -505,6 +505,14 @@
 				90BF406127FBE30500ED53E3 /* SettingViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		90BF406427FC7A6B00ED53E3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				90BA3CCE267A2EA4004F1804 /* InstructionListTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		90CD999D267610D600464E25 /* Tuner */ = {

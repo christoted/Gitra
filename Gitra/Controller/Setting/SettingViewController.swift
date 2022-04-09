@@ -42,7 +42,7 @@ class SettingViewController: UIViewController {
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: - TableView Delegate
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -55,23 +55,25 @@ extension SettingViewController: UITableViewDelegate {
         
         // If current cell isn't toggle, perform segue
         if currCellType != .toggle {
+            // TODO: Store identifier in enum
             performSegue(withIdentifier: "SettingsListSegue", sender: nil)
         }
     }
 }
 
-// MARK: - Table View Datasource
+// MARK: - TableView Datasource
 extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingVM.settingListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // TODO: Store identifier in enum
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "SettingsTableViewCell")
         
         let currCell = settingVM.settingForRow(at: indexPath.row)
         
-        // TODO: - Consider moving this to make it reusable
+        // TODO: Consider moving this to make it reusable
         let switchView = UISwitch(frame: .zero)
         switchView.onTintColor = .ColorLibrary.yellowAccent
         switchView.setOn(false, animated: true)
