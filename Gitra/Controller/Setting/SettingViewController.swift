@@ -37,7 +37,6 @@ class SettingViewController: UIViewController {
     }
     
     func reloadData() {
-        settingVM.reloadData()
         tableView.reloadData()
     }
 }
@@ -83,14 +82,16 @@ extension SettingViewController: UITableViewDataSource {
         cell.textLabel?.text = currCell.title
         
         switch currCell.type {
-        case .click:
+        case .disclosure:
             cell.accessoryType = .disclosureIndicator
-        case .description:
+        case .options:
             cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = currCell.selectedMenu
+            cell.detailTextLabel?.text = currCell.childTitle
         case .toggle:
             cell.accessoryView = switchView
-            switchView.setOn(currCell.selected == 1, animated: true)
+            switchView.setOn(currCell.value == 1, animated: true)
+        case .checkmark:
+            cell.accessoryType = .none
         }
         
         return cell

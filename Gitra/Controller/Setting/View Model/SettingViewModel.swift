@@ -25,18 +25,13 @@ extension SettingViewViewModel {
         return settingList[index]
     }
     
-    func reloadData() {
-        let settingData = SettingsDatabase.shared.getSettings()
-        settingList = settingData.map{ SettingViewModel.init(setting: $0) }
-    }
-    
-    func toggleSettings(value: Int, forKey key: SettingKeys) {
+    func toggleSettings(value: Int, forKey key: SettingKey) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 }
 
 struct SettingViewModel {
-    let setting: SettingsType
+    let setting: SettingMenu
 }
 
 extension SettingViewModel {
@@ -45,24 +40,24 @@ extension SettingViewModel {
         return setting.title
     }
     
-    var type: TypeSetting {
+    var type: SettingType {
         return setting.type
     }
     
-    var selected: Int {
-        return setting.selected ?? 0
+    var value: Int {
+        return UserDefaults.standard.integer(forKey: setting.saveKey?.rawValue ?? "")
     }
     
-    var menu: [String]? {
-        return setting.menu
+    var child: [SettingViewModel]? {
+        return setting.child?.map{ SettingViewModel.init(setting: $0) }
     }
     
-    var selectedMenu: String {
-        return setting.menu?[selected] ?? ""
+    var key: SettingKey? {
+        return setting.saveKey
     }
     
-    var key: SettingKeys? {
-        return setting.key
+    var childTitle: String {
+        return setting.child?[value].title ?? ""
     }
     
 }

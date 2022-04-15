@@ -43,7 +43,7 @@ class SettingListViewController: UIViewController {
     
     func clearAccecoryType() {
         // Deselect all row to remove checkmark
-        for i in 0..<(source?.menu?.count ?? 0) {
+        for i in 0..<(source?.child?.count ?? 0) {
             tableView.cellForRow(at: [0,i])?.accessoryType = .none
         }
     }
@@ -55,13 +55,13 @@ extension SettingListViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         
         switch source?.type {
-        case .description:
+        case .options:
             clearAccecoryType()
             cell?.accessoryType = .checkmark
             
             // TODO: Move to ViewModel (?)
             UserDefaults.standard.setValue(indexPath.row, forKey: source?.key?.rawValue ?? "")
-        case .click:
+        case .disclosure:
             sender = indexPath.row
             // TODO: Store identifier in enum
             performSegue(withIdentifier: "instructionSegue", sender: nil)
@@ -78,18 +78,18 @@ extension SettingListViewController: UITableViewDelegate {
 extension SettingListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Handle Optional & nil coalescing, make it cleaner
-        return source?.menu?.count ?? 0
+        return source?.child?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Store identifier in enum
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "GitraSettingCell")
-        cell.textLabel?.text = source?.menu?[indexPath.row]
+        cell.textLabel?.text = source?.child?[indexPath.row].title
         
         switch source?.type {
-        case .description:
-            if indexPath.row == source?.selected { cell.accessoryType = .checkmark }
-        case .click:
+        case .options:
+            if indexPath.row == source?.value { cell.accessoryType = .checkmark }
+        case .disclosure:
             cell.accessoryType = .disclosureIndicator
         default:
             break
