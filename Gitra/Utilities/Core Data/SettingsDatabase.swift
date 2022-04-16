@@ -24,6 +24,7 @@ enum SettingType {
     case options
     case checkmark
     case description
+    case info
     case none
 }
 
@@ -82,7 +83,9 @@ class SettingsDatabase {
             SettingMenu(title: "Welcome Screen", type: .toggle, saveKey: .welcomeScreen),
             SettingMenu(title: "Input Command Guide", type: .toggle, saveKey: .inputCommand),
             SettingMenu(title: "Chord Speed", type: .options, sectionFooter: "Determine the chord playback speed for the instruction mode. The default value is normal.", child: chordSpeedChild, saveKey: .chordSpeed),
-            SettingMenu(title: "Instructions", type: .disclosure, child: instructionChild)])
+            SettingMenu(title: "Instructions", type: .disclosure, child: instructionChild),
+            SettingMenu(title: "App Version", type: .info)
+        ])
     }
 }
 

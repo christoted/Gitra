@@ -95,6 +95,7 @@ extension SettingViewController: UITableViewDelegate {
         if settingVM.data.type == .options && currCell.type == .checkmark {
             clearAccecoryType()
             cell?.accessoryType = .checkmark
+            // TODO: Move User Defaults
             UserDefaults.standard.set(indexPath.row, forKey: settingVM.data.key?.rawValue ?? "")
         }
     }
@@ -127,12 +128,14 @@ extension SettingViewController: UITableViewDataSource {
             cell.accessoryView = customSwitch
         case .checkmark:
             cell.accessoryType = settingVM.data.value == indexPath.row ? .checkmark : .none
-        case .none:
-            break
         case .description:
             guard let descCell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
             descCell.setupContent(for: indexPath.row + 1,text: currCell.title)
             return descCell
+        case .info:
+            cell.detailTextLabel?.text = currCell.childTitle
+        case .none:
+            break
         }
         
         return cell

@@ -25,6 +25,7 @@ extension SettingViewModel {
     }
     
     func toggleSettings(value: Int, forKey key: SettingKey) {
+        // TODO: Move User Defaults
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 }
@@ -52,6 +53,7 @@ extension SettingMenuViewModel {
     }
     
     var value: Int {
+        // TODO: Move User Defaults
         return UserDefaults.standard.integer(forKey: setting.saveKey?.rawValue ?? "")
     }
     
@@ -66,6 +68,8 @@ extension SettingMenuViewModel {
     // For setting menu with 'option' type
     // childTitle should show the choosen option based on the data that was saved on UserDefaults
     var childTitle: String {
+        // TODO: Implement condition for info menu type
+        if setting.type == .info { return "\(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))" }
         return setting.child?[value].title ?? ""
     }
     
