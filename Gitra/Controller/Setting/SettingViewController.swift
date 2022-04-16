@@ -9,10 +9,23 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
+    }()
     
-    var settingVM = SettingViewViewModel()
-    var sender: SettingViewModel?
+    var settingVM: SettingViewModel
+    
+    init(settingVM: SettingViewModel) {
+        self.settingVM = settingVM
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,24 +33,43 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         setupUI()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? SettingListViewController
-        destination?.source = self.sender
-    }
-    
     func setupUI() {
+        // Main View
+        title = settingVM.data.pageTitle
         tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // Table View
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
     }
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func clearAccecoryType() {
+        // Deselect all row to remove checkmark
+        for i in 0..<settingVM.settingListCount() {
+            tableView.cellForRow(at: [0,i])?.accessoryType = .none
+        }
+    }
+    
+    @objc func switchChanged(_ sender: UISwitch!) {
+        let status = sender.isOn ? 1 : 0
+        settingVM.toggleSettings(value: status, forKey: .allCases[sender.tag])
     }
 }
 
@@ -47,15 +79,23 @@ extension SettingViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Identify the sender
-        sender = settingVM.settingForRow(at: indexPath.row)
+        let cell = tableView.cellForRow(at: indexPath)
+        let currCell = settingVM.settingForRow(at: indexPath.row)
         
-        let currCellType = settingVM.settingForRow(at: indexPath.row).type
+        // If currentCell has child
+        if currCell.hasChild {
+            let nextVM = settingVM.settingForRow(at: indexPath.row)
+            let nextVVM = SettingViewModel()
+            nextVVM.data = nextVM
+            let nextVC = SettingViewController(settingVM: nextVVM)
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
         
-        // If current cell isn't toggle, perform segue
-        if currCellType != .toggle {
-            // TODO: Store identifier in enum
-            performSegue(withIdentifier: "SettingsListSegue", sender: nil)
+        // If current page type is options (selected setting menu) and current cell type is checkmark
+        if settingVM.data.type == .options && currCell.type == .checkmark {
+            clearAccecoryType()
+            cell?.accessoryType = .checkmark
+            UserDefaults.standard.set(indexPath.row, forKey: settingVM.data.key?.rawValue ?? "")
         }
     }
 }
@@ -69,15 +109,8 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Store identifier in enum
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "SettingsTableViewCell")
-        
         let currCell = settingVM.settingForRow(at: indexPath.row)
-        
-        // TODO: Consider moving this to make it reusable
-        let switchView = UISwitch(frame: .zero)
-        switchView.onTintColor = .ColorLibrary.yellowAccent
-        switchView.setOn(false, animated: true)
-        switchView.tag = indexPath.row
-        switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        let currCellTag = currCell.key?.index ?? -1
         
         cell.textLabel?.text = currCell.title
         
@@ -88,27 +121,28 @@ extension SettingViewController: UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             cell.detailTextLabel?.text = currCell.childTitle
         case .toggle:
-            cell.accessoryView = switchView
-            switchView.setOn(currCell.value == 1, animated: true)
+            let customSwitch = CustomSwitch()
+            customSwitch.setupSwitch(self, tag: currCellTag, action: #selector(switchChanged))
+            customSwitch.setOn(currCell.value == 1, animated: true)
+            cell.accessoryView = customSwitch
         case .checkmark:
-            cell.accessoryType = .none
+            cell.accessoryType = settingVM.data.value == indexPath.row ? .checkmark : .none
+        case .none:
+            break
+        case .description:
+            guard let descCell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
+            descCell.setupContent(for: indexPath.row + 1,text: currCell.title)
+            return descCell
         }
         
         return cell
     }
     
-    @objc func switchChanged(_ sender: UISwitch!) {
-        let status = sender.isOn ? 1 : 0
-        
-        switch sender.tag {
-        case 0:
-            // Welcome Screen Toggle
-            settingVM.toggleSettings(value: status, forKey: .welcomeScreen)
-        case 1:
-            // Input Command Toggle
-            settingVM.toggleSettings(value: status, forKey: .inputCommand)
-        default:
-            break
-        }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return settingVM.data.header
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return settingVM.data.footer
     }
 }
